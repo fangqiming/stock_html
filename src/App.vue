@@ -69,6 +69,10 @@ export default {
           url:'DiagnosticStocks'
         } ,
         {
+          title:'排名',
+          url:'Rank'
+        } ,
+        {
           title:'数据区',
           url:'DataInquiry'
         },
@@ -88,7 +92,7 @@ export default {
             tempArr.splice(2,1);
           }
         } else if (getSession('authority').search('AD') == -1) {
-          tempArr.splice(3,1);
+          tempArr.splice(3,2);
         }
       } else {
         tempArr.splice(1,1);

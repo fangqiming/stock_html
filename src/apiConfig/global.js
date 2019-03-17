@@ -18,6 +18,10 @@ export default {
     //   title:'A股诊股',
     //   url:'DiagnosticStocks'
     // } ,
+    // {
+    //   title:'排名',
+    //   url:'Rank'
+    // } ,
     {
       title:'数据区',
       url:'DataInquiry'

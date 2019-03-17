@@ -8,6 +8,8 @@ import Login from '@/Login'
 import Register from '@/Register'
 import SignUp from '@/signUp'
 import DiagnosticStocks from '@/DiagnosticStocks'
+import Rank from '@/rank'
+
 
 import RecommendInfo from '@/RecommendInfo'
 import DataInquiry   from "@/DataInquiry"
@@ -86,6 +88,11 @@ export default new Router({
       path: '/price-table',
       name: 'PriceTable',
       component: PriceTable
+    },
+    {
+      path: '/rank',
+      name: 'Rank',
+      component: Rank
     }
   ]
 

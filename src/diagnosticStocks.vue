@@ -239,70 +239,70 @@
 
 
 
-  <div class="diagnosticStock3">
-    <div class="diagnosticStockInfo3">
-      <div class="diagnosticStockHead3">
-        <h3>得分排名{{rankDate}}</h3>
-      </div>
-      <div class="row-fluid">
-        <div class="span12">
-          <div class="list">
-            <template>
-              <div>
-                <table id="scoreRange" class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">
-                  <thead>
-                  <tr class="diagnosticStockTbTh3">
-                    <th>股票代码<br>
-                      公司名称
-                    </th>
-                    <!--<th>诊断日期</th>-->
-                    <th @click="changePXData('ai_score',1)">AI评分<i class="iconfont icon-paixu-jiangxu"  :class="{isActive:isFlag==1}"></i></th>
-                    <th  @click="changePXData('flush_score',2)">同花顺评分<i class="iconfont icon-paixu-jiangxu" :class="{isActive:isFlag==2}"></i></th>
-                    <th  @click="changePXData('total_score',3)">综合评分<i class="iconfont icon-paixu-jiangxu" :class="{isActive:isFlag==3}"></i></th>
-                  </tr>
-                  </thead>
+  <!--<div class="diagnosticStock3">-->
+    <!--<div class="diagnosticStockInfo3">-->
+      <!--<div class="diagnosticStockHead3">-->
+        <!--<h3>得分排名{{rankDate}}</h3>-->
+      <!--</div>-->
+      <!--<div class="row-fluid">-->
+        <!--<div class="span12">-->
+          <!--<div class="list">-->
+            <!--<template>-->
+              <!--<div>-->
+                <!--<table id="scoreRange" class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">-->
+                  <!--<thead>-->
+                  <!--<tr class="diagnosticStockTbTh3">-->
+                    <!--<th>股票代码<br>-->
+                      <!--公司名称-->
+                    <!--</th>-->
+                    <!--&lt;!&ndash;<th>诊断日期</th>&ndash;&gt;-->
+                    <!--<th @click="changePXData('ai_score',1)">AI评分<i class="iconfont icon-paixu-jiangxu"  :class="{isActive:isFlag==1}"></i></th>-->
+                    <!--<th  @click="changePXData('flush_score',2)">同花顺评分<i class="iconfont icon-paixu-jiangxu" :class="{isActive:isFlag==2}"></i></th>-->
+                    <!--<th  @click="changePXData('total_score',3)">综合评分<i class="iconfont icon-paixu-jiangxu" :class="{isActive:isFlag==3}"></i></th>-->
+                  <!--</tr>-->
+                  <!--</thead>-->
 
-                    <tbody v-if="items.length>0 && hasAuthority" >
-                    <tr v-for="(item,index) in  items">
-                      <td class="app_td">
-                        {{item.code}}<br>{{item.name}}
-                      </td>
-                      <!--<td>-->
-                      <!--{{item.date}}-->
+                    <!--<tbody v-if="items.length>0 && hasAuthority" >-->
+                    <!--<tr v-for="(item,index) in  items">-->
+                      <!--<td class="app_td">-->
+                        <!--{{item.code}}<br>{{item.name}}-->
                       <!--</td>-->
-                      <td>
-                        {{item.aiScore}}
-                      </td>
-                      <td>
-                        {{item.flushScore}}
-                      </td>
-                      <td>
-                        {{item.totalScore}}
-                      </td>
-                    </tr>
-                    </tbody>
-                    <tbody v-else-if="items.length<=0 && hasAuthority">
-                    <tr >
-                      <td colspan="9">暂无数据
-                      </td>
-                    </tr>
-                    </tbody>
-                    <tbody v-else>
-                    <tr >
-                      <td colspan="9">您没有权限查看评分排名
-                      </td>
-                    </tr>
-                    </tbody>
-                </table>
-              </div>
-              <pagination  :perPages="perPages" :page-index="currentPage" :total="count" :page-size="pageSize" @change="pageChange">
-              </pagination>
-            </template>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                      <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                      <!--&lt;!&ndash;{{item.date}}&ndash;&gt;-->
+                      <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                      <!--<td>-->
+                        <!--{{item.aiScore}}-->
+                      <!--</td>-->
+                      <!--<td>-->
+                        <!--{{item.flushScore}}-->
+                      <!--</td>-->
+                      <!--<td>-->
+                        <!--{{item.totalScore}}-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                    <!--<tbody v-else-if="items.length<=0 && hasAuthority">-->
+                    <!--<tr >-->
+                      <!--<td colspan="9">暂无数据-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                    <!--<tbody v-else>-->
+                    <!--<tr >-->
+                      <!--<td colspan="9">您没有权限查看评分排名-->
+                      <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+              <!--</div>-->
+              <!--<pagination  :perPages="perPages" :page-index="currentPage" :total="count" :page-size="pageSize" @change="pageChange">-->
+              <!--</pagination>-->
+            <!--</template>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
 
 
@@ -350,7 +350,7 @@
        /**
         * 获取诊股排名的第一页数据
         */
-       this.diagnosticStocksData();
+       // this.diagnosticStocksData();
       /**
        * 获取根据股票代码获取该股票的技术评分
        */

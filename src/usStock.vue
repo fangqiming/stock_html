@@ -133,7 +133,7 @@
                 </tbody>
                 <tbody v-else-if="recommends.length == 0 && recommendsCode != '11090010' && recommendsCode != '11090012'">
                 <tr >
-                  <td colspan="7">当前股市风险较高，暂不推荐操作</td>
+                  <td colspan="7">当天无推荐</td>
                 </tr>
                 </tbody>
                 <tbody v-else>

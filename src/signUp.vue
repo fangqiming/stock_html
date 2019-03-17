@@ -76,6 +76,10 @@
          //    title:'A股诊股',
          //    url:'DiagnosticStocks'
          //  } ,
+         //  {
+         //    title:'排名',
+         //    url:'Rank'
+         //  } ,
           {
             title:'数据区',
             url:'DataInquiry'
@@ -130,6 +134,10 @@
                   url:'DiagnosticStocks'
                 },
                 {
+                  title:'排名',
+                  url:'Rank'
+                } ,
+                {
                   title:'数据区',
                   url:'DataInquiry'
                 },
@@ -149,7 +157,7 @@
                     tempArr.splice(2,1);
                   }
                 } else if (getSession('authority').search('AD') == -1) {
-                  tempArr.splice(3,1);
+                  tempArr.splice(3,2);
                 }
               } else {
                 tempArr.splice(1,1);
