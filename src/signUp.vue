@@ -58,20 +58,20 @@
         setSession('access_code',"");
         setSession('authority',"")
         var tempArr=[
-          {
-            title:'A股',
-            url:'index'
-          }
-          ,
-         {
-           title:'美股',
-           url:'usStock'
-         }
-         ,
-          {
-            title:'讨论区',
-            url:'Forum'
-          } ,
+         //  {
+         //    title:'A股',
+         //    url:'index'
+         //  }
+         //  ,
+         // {
+         //   title:'美股',
+         //   url:'usStock'
+         // }
+         // ,
+         //  {
+         //    title:'讨论区',
+         //    url:'Forum'
+         //  } ,
          // {
          //    title:'A股诊股',
          //    url:'DiagnosticStocks'
@@ -80,14 +80,14 @@
          //    title:'排名',
          //    url:'Rank'
          //  } ,
-          {
-            title:'数据区',
-            url:'DataInquiry'
-          },
-          {
-            title:'价格表',
-            url:'PriceTable'
-          },
+         //  {
+         //    title:'数据区',
+         //    url:'DataInquiry'
+         //  },
+         //  {
+         //    title:'物价',
+         //    url:'PriceTable'
+         //  },
           {
             title:'登录',
             url:'SignUp'
@@ -115,35 +115,33 @@
               console.log(res.body.data.entity);
               var tempArr=[
                 {
-                  title:'A股',
+                  title:'每日勾股',
+                  url:'DiagnosticStocks'
+                },
+                {
+                  title:'A股公告',
                   url:'index'
                 }
                 ,
                 {
-                  title:'美股',
+                  title:'美股公告',
                   url:'usStock'
-                }
-                ,
-                {
-                  title:'讨论区',
-                  url:'Forum'
-                }
-                ,
-                {
-                  title:'A股诊股',
-                  url:'DiagnosticStocks'
                 },
                 {
-                  title:'排名',
-                  url:'Rank'
+                  title:'参考指标',
+                  url:'PriceTable'
+                },
+                {
+                  title:'账户管理',
+                  url:'InvestorRelation'
                 } ,
                 {
-                  title:'数据区',
-                  url:'DataInquiry'
+                  title:'AI排名',
+                  url:'Rank'
                 },
                 {
-                  title:'价格表',
-                  url:'PriceTable'
+                  title:'工具栏',
+                  url:'DataInquiry'
                 },
                 {
                   title:'退出',
@@ -151,17 +149,11 @@
                 }
               ];
               if (getSession('authority') != null && getSession('authority') != '') {
-                if(getSession('authority').search('US') == -1){
-                  tempArr.splice(1,1);
-                  if (getSession('authority').search('AD') == -1) {
-                    tempArr.splice(2,1);
-                  }
-                } else if (getSession('authority').search('AD') == -1) {
-                  tempArr.splice(3,2);
-                }
+                if(getSession('authority').search('AR') == -1){
+                  tempArr.splice(4,2);
+                 }
               } else {
-                tempArr.splice(1,1);
-                tempArr.splice(2,1);
+                tempArr.splice(4,2);
               }
               this.aa.seturl(tempArr);
               setTimeout(function(){

@@ -1,9 +1,8 @@
-let localhostDev = true;
+let localhostDev = false;
 //如果是本地开发，就把localhostDev 设置成true，连接就是拼成‘http://localhost:8080/api/test’
 //生产环境，就把localhostDev 设置成false，连接就是拼成‘http://xxx.com/api/test’
-//let _host= localhostDev ? 'http://1000stock.com:8082' : 'http://fqm0925.vicp.io';
 //let _host = localhostDev ? 'http://fqm0925.vicp.io:11336' : 'http://www.1000stock.com';
-let _host = localhostDev ? 'http://192.168.1.62:8081' : 'http://www.1000stock.com';
+let _host = localhostDev ? 'http://192.168.2.165:8080': 'http://www.1000stock.com';
 
 let httpUrl = {
   'newSearchLastGainApi': _host + '/trade/find_gain',//首页0331修改后获取最新赢利数据接口
@@ -78,10 +77,25 @@ let httpUrl = {
 ///////////////////////////////////////////物料价格接口////////////////////////////////////
   'materialPriceImgApi': _host + '/material/find_main',//查找主要的物料价格曲线
   'materialPriceTableApi': _host + '/material/search',//查找价格曲线排名
+  'materialPriceDetailApi': _host + '/material/get_detail',//查找物料详情曲线排名
 
+//////////////////////////////////////////基金接口////////////////////////////////////
+  'getFundListApi': _host + '/trade_us/find_actual_list',//查找主要的基金列表
+  'getFundListDetailApi': _host + '/trade_us/search_actual_detail',//查找主要的基金详情
+  'getFundListLineApi': _host + '/trade_us/get_actual_line',//查找主要的基金详情
 
+//////////////////////////////////////////每日勾股////////////////////////////////////
+  'getEveryStockApi': _host + '/diagnosis/find_everyday_stock',//查找每日勾股列表
 
+//////////////////////////////////////////投资人列表接口////////////////////////////////////
+  'getInvestorListApi': _host + '/data/find_investor_summary',//查找投资人列表列表
+  'getInvestorDetailApi': _host + '/data/find_detail',//查找投资人详情列表
 
+//////////////////////////////////////////排名接口////////////////////////////////////
+  'getProductPriceApi': _host + '/material/find_material_by_code',//根据股票代码获取公司的物料价格信息列表列表
+  'getShowNoticeApi': _host + '/material/find_notice_by_code',//根据股票代码获取公司公告
+  'getStockPoolApi': _host + '/material/find_stock_pool',//股池公告信息
+  'getcoreStatisticsApi': _host + '/diagnosis/find_rank_scatter',//得分统计
 
 };
 export {httpUrl}

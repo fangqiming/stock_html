@@ -9,7 +9,12 @@ import Register from '@/Register'
 import SignUp from '@/signUp'
 import DiagnosticStocks from '@/DiagnosticStocks'
 import Rank from '@/rank'
+import Dialog from '../components/dialog'
+import RealFund from '../components/RealFund'
+import InvestorRelation from '../components/investorRelation'
 
+
+import TestPage from '@/testPage'
 
 import RecommendInfo from '@/RecommendInfo'
 import DataInquiry   from "@/DataInquiry"
@@ -33,6 +38,11 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: Index
+    },
+    {
+      path: '/test-page',
+      name: 'TestPage',
+      component: TestPage
     },
     {
       path: '/us-stock',
@@ -93,6 +103,21 @@ export default new Router({
       path: '/rank',
       name: 'Rank',
       component: Rank
+    },
+    {
+      path: '/dialog',
+      name: 'Dialog',
+      component: Dialog
+    },
+    {
+      path: '/real-fund',
+      name: 'RealFund',
+      component: RealFund
+    },
+    {
+      path: '/investor-relation',
+      name: 'InvestorRelation',
+      component: InvestorRelation
     }
   ]
 

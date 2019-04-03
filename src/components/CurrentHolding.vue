@@ -2,7 +2,7 @@
   <div id="currentHolding" class="currentHoldingComponents">
     <div class="row currentHoldingRow">
       <div class="currentHoldingHeader">
-        <h3>A股当前持仓 <span>{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(北京时间)</span></span></h3>
+        <h3>勾股A股系统当前持仓 <span>{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(北京时间)</span></span></h3>
       </div>
       <div class="row-fluid">
       <div class="span6" style="float: left; width: 100%">
@@ -11,10 +11,9 @@
           <thead>
           <tr class="current-holding-thead-tr" >
             <th>股票代码<br>公司名称</th>
-            <th>买入日期</th>
-            <th>买入价格(￥)<br>当前价格(￥)</th>
-            <th>买入份数</th>
-            <th>买入成本(￥)<br>目前价值(￥)</th>
+            <th>买入日期<br>买入份数</th>
+            <th>买入价格<br>当前价格</th>
+            <th>买入成本<br>目前价值</th>
             <th>浮动盈亏率<br>浮动盈亏(￥)</th>
           </tr>
           </thead>
@@ -22,9 +21,8 @@
          <!-- <tr v-if="holding.length>0" v-for="(item,index) in holding" :class="item.gain>=0 ? 'success':''">-->
           <tr  v-for="(item,index) in holding" >
             <td>{{item.name}}<br>{{item.stockName}}</td>
-            <td>{{item.oldDate}}</td>
+            <td>{{item.oldDate}}<br>{{item.amount | setNum}}</td>
             <td><div class="data_box2">{{item.oldPrice | setNum}}<br>{{item.newPrice | setNum}}</div></td>
-            <td><div class="data_box2"></div>{{item.amount | setNum}}</td>
             <td><div class="data_box3">{{item.cost | setNum}}<br>{{item.value | setNum}}</div></td>
             <td><div class="data_box3">
               <span v-if="item.gain>0" :class="{Green:item.gain<0,Red:item.gain>=0}">+{{item.gain  | toFixed2 }}%<br>+{{item.earning  | setNum}}</span>
@@ -34,7 +32,7 @@
           </tbody>
             <tbody v-else-if="holding.length==0 && holdingCode != '11090010' && holdingCode != '11090012'">
               <tr >
-                <td colspan="12">目前市场不确定因素较多，暂时已清仓</td>
+                <td colspan="12">当前系统为空仓</td>
               </tr>
             </tbody>
             <tbody v-else>
@@ -47,19 +45,18 @@
         <table class="table table-striped table-bordered table-advance curHoldingTable app_table" contenteditable="false" >
           <thead>
           <tr class="current-holding-thead-tr" >
-            <th>股票代码/<br>公司名称</th>
-            <th>买入日期</th>
-            <th>买入价/<br>当前价<br>(￥)/<br>股票份数<br></th>
-            <!--<th>股票份数</th>-->
-            <th>买入成本/<br>目前价值<br>(￥)</th>
-            <th>盈亏率/<br>浮动盈亏<br>(￥)</th>
+            <th>股票代码<br>公司名称</th>
+            <th>买入日期<br>股票份数</th>
+            <th>买入价<br>当前价<br></th>
+            <th>买入成本<br>目前价值<br></th>
+            <th>盈亏率<br>浮动盈亏<br>(￥)</th>
           </tr>
           </thead>
           <tbody v-if="holding.length>0 && holdingCode != '11090010' && holdingCode != '11090012'">
           <tr v-for="(item,index) in holding" :class="item.gain>=0 ? 'success':''">
             <td>{{item.name}}<br>{{item.stockName}}</td>
-            <td>{{item.oldDate}}</td>
-            <td><div class="data_box2">{{item.oldPrice | setNum}}<br>{{item.newPrice   | setNum}}<br>{{item.amount   | setNum}}</div></td>
+            <td>{{item.oldDate}}<br>{{item.amount   | setNum}}</td>
+            <td><div class="data_box2">{{item.oldPrice | setNum}}<br>{{item.newPrice   | setNum}}</div></td>
             <!--<td class="data_box2_td"><div class="data_box2"></div>{{item.amount | setNum}}</td>-->
             <td><div class="data_box3">{{item.cost  | setNum}}<br>{{item.value  | setNum}}</div></td>
             <td><div class="data_box3">
@@ -70,7 +67,7 @@
           </tbody>
           <tbody v-else-if="holding.length==0 && holdingCode != '11090010' && holdingCode != '11090012'">
           <tr >
-            <td colspan="12">目前市场不确定因素较多，暂时已清仓</td>
+            <td colspan="12">当前系统为空仓</td>
           </tr>
           </tbody>
           <tbody v-else>

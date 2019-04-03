@@ -18,7 +18,7 @@
                   <th>买入日期<br/>卖出日期</th>
                   <th>股票代码<br/>公司名称</th>
                   <th>股票份数</th>
-                  <th>买入价(￥)<br/>卖出价(￥)</th>
+                  <th>买入价<br/>卖出价</th>
                   <th>浮动盈亏率<br/>浮动盈亏(￥)</th>
                 </tr>
                 </thead>
@@ -32,7 +32,7 @@
                   </td>
                   <td>
                       <div class="data_box3">
-                          {{item.amount}}
+                          {{item.amount |setNum}}
                       </div>
                   </td>
                   <td>
@@ -113,7 +113,7 @@
                   </td>
                   <td>
                     <div class="data_box3">
-                      {{reverseRecord.amount}}
+                      {{reverseRecord.amount |setNum}}
                     </div>
                   </td>
                   <td>

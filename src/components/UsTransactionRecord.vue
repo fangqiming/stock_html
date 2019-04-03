@@ -15,29 +15,25 @@
               <table class="transactionRecordTable table table-striped table-bordered table-advance">
                 <thead>
                 <tr class="recommend-thead-tr">
-                  <th>交易日期</th>
-                  <th>清仓日期<br/>清仓类型</th>
+                  <th>交易日期<br/>清仓日期</th>
                   <th>股票代码<br/>公司名称</th>
-                  <th>股票份数</th>
-                  <th>交易价格($)<br/>清仓价格($)</th>
+                  <th>清仓类型<br/>股票份数</th>
+                  <th>交易价格<br/>清仓价格</th>
                   <th>盈亏率<br/>盈亏额($)</th>
                 </tr>
                 </thead>
                 <tbody v-if="items.length>0">
                 <tr v-for="(item,index) in items">
                   <td>
-                    {{item.tradeDate}}
-                  </td>
-                  <td>
-                    {{item.newDate}}<br/><span :class="{SomeGreen:item.action=='平仓',Red:item.action == '卖出'}">{{item.action}}</span>
+                    {{item.tradeDate}}<br/>{{item.newDate}}
                   </td>
                   <td>
                     {{item.name}}<br/>{{item.companyName}}
                   </td>
                   <td>
-                      <div class="data_box3">
-                          {{item.amount}}
-                      </div>
+                    <div class="data_box3">
+                      <span :class="{SomeGreen:item.action=='平仓',Red:item.action == '卖出'}">{{item.action}}</span><br/>{{item.amount |setNum}}
+                    </div>
                   </td>
                   <td>
                     <div class="data_box3">

@@ -1,43 +1,17 @@
 <template>
   <div class="recommend">
-    <!--<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">-->
-      <!--&lt;!&ndash; 轮播（Carousel）指标 &ndash;&gt;-->
-      <!--<ol class="carousel-indicators">-->
-        <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
-        <!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
-        <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
-      <!--</ol>-->
-      <!--&lt;!&ndash; 轮播（Carousel）项目 &ndash;&gt;-->
-      <!--<div class="carousel-inner">-->
-        <!--&lt;!&ndash;<div style="color: red; font-size: x-large">温馨提示：系统维护中，部分信息暂时无法展示，我们会尽快恢复，谢谢理解！</div>&ndash;&gt;-->
-        <!--<div class="item active">-->
-          <!--<img src="https://aisharev1.oss-cn-beijing.aliyuncs.com/share/home_cycle_1.png" alt="First slide">-->
-        <!--</div>-->
-        <!--<div class="item">-->
-          <!--<img src="https://aisharev1.oss-cn-beijing.aliyuncs.com/share/home_cycle_2.png	" alt="Second slide">-->
-        <!--</div>-->
-        <!--<div class="item">-->
-          <!--<img src="https://aisharev1.oss-cn-beijing.aliyuncs.com/share/home_cycle_3.png" alt="Third slide">-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--&lt;!&ndash; 轮播（Carousel）导航 &ndash;&gt;-->
-      <!--<a class="carousel-control left" href="#myCarousel"-->
-         <!--data-slide="prev">&lsaquo;</a>-->
-      <!--<a class="carousel-control right" href="#myCarousel"-->
-         <!--data-slide="next">&rsaquo;</a>-->
-    <!--</div>-->
     <div class="paperTrading">
       <virtual-account :todayAccountBo="todayAccountBo" :totalAccountBo="totalAccountBo" ></virtual-account>
     </div>
     <div class="latest_recommend_list">
-      <latest-recommendation heading="A股业绩总览" :recommendations="recommendationsList"></latest-recommendation>
+      <latest-recommendation heading="勾股A股系统业绩总览" :recommendations="recommendationsList"></latest-recommendation>
     </div>
     <div class="index_contrast">
-      <index-contrast  heading="A股盈亏率对比"  @filterIndexCurImg="filterIndexCurImg($event)"  :GainInfo="GainInfo"  :select="curTime"></index-contrast>
+      <index-contrast  heading="勾股A股系统盈亏率对比"  @filterIndexCurImg="filterIndexCurImg($event)"  :GainInfo="GainInfo"  :select="curTime"></index-contrast>
     </div>
     <div class="operationAccount">
       <div class="currentHoldingHeader">
-        <h3>A股交易统计</h3>
+        <h3>勾股A股系统交易统计</h3>
         <h4 class="currentHoldingTime">{{holding.length ? holding[0].newData : ''}}</h4>
       </div>
       <div class="row operationAccountRow">
@@ -98,9 +72,9 @@
         </div>
       </div>
       <div class="showTransactionRecord">
-        <a>
+        <a >
           <router-link :to="{ path: '/components/transaction-record' }" >
-            查看交易记录
+            <u>查看交易记录</u>
           </router-link>
         </a>
       </div>
@@ -111,7 +85,7 @@
     <div class="index_recommend">
       <div class="recommendRow1 recommendRownew">
         <div class="recommendHeader">
-          <h3 style="width: 100%;text-align: center">A股交易计划<span class="recommentTime">{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(北京时间)</span></span></h3>
+          <h3 style="width: 100%;text-align: center">勾股A股系统交易计划<span class="recommentTime">{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(北京时间)</span></span></h3>
           <!--<h3 style="width: 100%;text-align: center">最新推荐 <span class="recommentTime">{{recommends.length>0 ? recommends[0].newDate : ""}}</span></h3>-->
         </div>
         <div class="recomment_row">
@@ -157,7 +131,50 @@
       </div>
 
     </div>
-    <div class="sysRegulation">
+      <!--实盘账户一览表-->
+      <div class="index_recommend">
+      <div class="recommendRow1 recommendRownew">
+        <div class="recommendHeader">
+          <h3 style="width: 100%;text-align: center">勾股A股系统实盘展示<span class="recommentTime">{{holding.length ? fundList.date : ''}}<span class="timeArea">(周更)</span></span></h3>
+        </div>
+        <div class="recomment_row">
+          <div class="row-fluid">
+            <div class="span12">
+              <table class="table table-striped table-bordered table-advance recomment_tb" >
+                <thead>
+                <tr class="recommend-thead-tr">
+                  <td class="font-weight-bold">账户</td>
+                  <td class="font-weight-bold">初始日期</td>
+                  <td class="font-weight-bold">总资产</td>
+                  <td class="font-weight-bold">初始净值<br>当前净值</td>
+                  <td class="font-weight-bold">最大回撤</td>
+                </tr>
+                </thead>
+                <tbody >
+                <tr v-for="(item,index) in fundList.list">
+                  <td class="routerStyle" @click="showFundDetail(item.name)">
+                       <u>{{item.name}}</u>
+                  </td>
+                  <td >{{item.startDate}}</td>
+                  <td  ><div class="data_box1">{{item.marketCap | setNum}}</div></td>
+                  <td  ><div class="data_box1">{{item.initNetWorth | toFixed4}}<br>{{item.netWorth}}</div></td>
+                  <td ><div class="data_box1">{{item.withdrawal|toFixed2}}%</div></td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+        <div class="showTransactionRecord showTransaction_Record">
+          <a class="recommend_info">
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <!--实盘账户一览表-->
+    <!--<div class="sysRegulation">
       <div class="sysRegulationHead">
         <h3 style="width: 100%; text-align: center">系统规则</h3>
       </div>
@@ -175,34 +192,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <!--<div class="SettingUpAssets">
-      <div class="SettingUpAssetsHead">
-        <h3 style="width: 100%; text-align: center">资产设置</h3>
-      </div>
-      <div class="SettingUpAssetsInfo">
-        <div class="row-fluid">
-          <div class="span12">
-            <table class="table table-striped table-bordered table-advance setting_recomment_tb" >
-              <tbody >
-              <tr >
-                <td  class="SettingUpAssetsItemName">总金额</td>
-                <td >
-                  <select id="stockMoney"   v-model="initAmount">
-                    <option  v-for="send  in stockMoney" name="sendSymbolId" :value="send.value" >{{send.value}}</option>
-                  </select>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            <div class="clear"></div>
-            <div>
-              <span  class="help-block textAlignLeft"><a class="aRemarks">注：</a>将总金额按照份数分成等分，按照每一个推荐股票买入一份金额的规则进行交易</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>-->
+
+
     <div class="feature">
       <div class="row_top">
         <div class="row row_about">
@@ -229,9 +221,9 @@
                   </div>
                   <div class="title">合作交流</div>
             </div>
-            <div class="desc">毕达正在策划私募基金，希望能与您共赢。与此同时，也愿与大资金机构或个人合作（5000万元资本以上），为您量身制定交易策略。有意者请与bd@pyttatec.com联系。如对我们的产品系统等有建议，请联系tec@pyttatec.com， 或前往 <router-link :to="{ path: '/forum' }" >
-              （讨论区）
-            </router-link>提出您的宝贵建议。谢谢！</div>
+            <div class="desc">
+              毕达正在策划私募基金，希望能与您共赢。与此同时，也愿与大资金机构或个人合作（5000万元资本以上），为您量身制定交易策略。有意者请与bd@pyttatec.com联系。如对我们的产品系统等有建议，请联系tec@pyttatec.com。
+              </div>
           </div>
         </div>
       </div>
@@ -314,7 +306,9 @@
         stockNum:[5,10],
         initAmount:"1000万",
         // initNum:10,
-        isLogin:true
+        isLogin:true,
+        type:'CN',
+        fundList:""
       }
     },
     components: {
@@ -410,6 +404,10 @@
        */
       this.fetchLastRecomData();
 
+      /**
+       * 获取基金信息列表
+       */
+       this.getFundList();
     },
 
     methods:{
@@ -434,8 +432,6 @@
 
       filterIndexCurImg(obj){
         this.curTime = obj.id;
-        console.log("444444444444444444444")
-        console.log(this.curTime)
         this.getGainInfo();
       },
       /**
@@ -498,7 +494,6 @@
           params:{diff:this.curTime}
         }).then(function (res) {
           if (res.body.code == 0) {
-            console.log(res)
             this.GainInfo = res.body.data.entity;
           } else {
             alert(res.body.message)
@@ -531,7 +526,6 @@
         this.$http.get(httpUrl.lastRecommendationApi).then(function(res){
           this.recommendsCode=res.body.code;
           if(res.body.code==0){
-            console.log(res.body.data.entities);
             if(res.body.data.entities[0]==null){
               this.recommends=[];
             }else{
@@ -543,8 +537,33 @@
         },function(){
           console.log("请求失败")
         });
-      }
+      },
 
+      getFundList(){
+        this.$http.get(httpUrl.getFundListApi,{
+          params:{type:this.type}
+        }).then(function (res) {
+          if (res.body.code == 0) {
+            this.fundList = res.body.data.entity;
+            console.log(res)
+          } else {
+            alert(res.body.message)
+          }
+        }, function () {
+          console.log("请求失败")
+        });
+      },
+
+      showFundDetail(name) {
+        sessionStorage.setItem('fundName', name);
+        sessionStorage.setItem('fundFlag', "CN");
+        this.$router.push({
+          name: 'RealFund',
+          params: {
+            "fundName": name
+          }
+        })
+      }
     },
     watch:{
       initAmount:function(val, oldVal){
@@ -567,6 +586,13 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   *
+  .font-weight-bold{
+    font-weight: bolder;
+  }
+  .routerStyle{
+    color: rgb(2, 117, 216);
+    cursor: pointer
+  }
   .recommentTip{
     text-align: left;
     /*color: red;*/
@@ -811,7 +837,10 @@
     height: 3rem;
     width: 15rem;
   }
-
+  .data_box1{
+    width: 63%;
+    text-align: right;
+  }
   /*
  屏幕兼容(平板)
   */
@@ -833,6 +862,8 @@
       width: 30%;
       font-size: x-small;
     }
+
+
 
     /*.carousel-inner {*/
     /*display: none;*/
@@ -930,6 +961,7 @@
       text-align: right;
       vertical-align: middle;
     }
+
     tr{
       font-size: 1.2rem;
     }
@@ -1037,5 +1069,9 @@
       font-size: 2rem;
     }
 
+  }
+  a {
+    color: rgb(2, 117, 216)!important;
+    font-weight: 400;
   }
 </style>

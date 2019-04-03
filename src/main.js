@@ -7,8 +7,11 @@ import $ from 'jquery'
 import 'bootstrap/js/bootstrap.min.js'
 import 'bootstrap/css/bootstrap.min.css'
 import {getSession} from "./apiConfig/cookie";
-import * as custom from "./apiConfig/filters"
+import * as custom from "./apiConfig/filters";
 import aa from "./apiConfig/global";
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false;
 //Vue.http.headers.common['Account-Code'] = 'root';

@@ -17,8 +17,6 @@
                         公司名称
                       </th>
                       <th> AI得分 </th>
-                      <th> 同花顺得分</th>
-                      <th> 综合得分</th>
                       <th>操作</th>
                     </tr>
                     </thead>
@@ -30,14 +28,68 @@
                       <td>
                         {{item.aiScore}}
                       </td>
-                      <td>
-                        {{item.flushScore}}
-                      </td>
-                      <td>
-                        {{item.totalScore}}
-                      </td>
                       <td @click="delSelfStock(item.code)" class="optStyle">
-                        删除
+                        <u>删除</u>
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tbody v-else>
+                    <tr >
+                      <td colspan="9">暂无数据
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diagnosticStock4">
+      <div class="diagnosticStockInfo4">
+        <div class="diagnosticStockHead3">
+          <h3>每日勾股{{everyStockDate}}</h3>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="list">
+              <template>
+                <div>
+                  <table  class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">
+                    <thead>
+                    <tr class="diagnosticStockTbTh3">
+                      <th>
+                        日期
+                      </th>
+                      <th>每日勾股</th>
+                      <th>勾出价格</th>
+                      <th>最新价格</th>
+                      <th>涨跌幅</th>
+                    </tr>
+                    </thead>
+                    <tbody v-if="everyStockList.length>0" >
+                    <tr v-for="(item,index) in  everyStockList">
+                      <td class="app_td">
+                        {{item.date}}
+                      </td>
+                      <td>
+                        {{item.name}}
+                      </td>
+                      <td>
+                        <div class="data_box2">
+                          {{item.oldPrice|toFixed2}}
+                        </div>
+                      </td>
+                      <td>
+                        <div class="data_box2">
+                          {{item.newPrice|toFixed2}}
+                        </div>
+                      </td>
+                      <td :class="{Green:item.rate<0,Red:item.rate>=0}">
+                        {{item.rate}}<span>%</span>
                       </td>
                     </tr>
                     </tbody>
@@ -59,7 +111,7 @@
     <div class="diagnosticStock1">
       <div class="diagnosticStockInfo1">
         <div class="diagnosticStockHead1">
-          <h3>毕达诊股(A股)</h3>
+          <h3>勾股诊股</h3>
         </div>
         <div class="diagnosticStockBar">
           <form class="form-search">
@@ -83,30 +135,31 @@
                   <table class="table table-striped  diagnosticStockInfoTb1" contenteditable="false" >
                     <tbody>
                     <tr class="">
-                        <th class="streatText">{{name}}({{code}})
+                        <th>
+                          <h4>{{name}}({{code}})</h4>
                         </th>
                     </tr>
                     <template  v-if="aiIndexBo.score!=null">
                       <tr class="">
-                        <th class="right_col">诊断日期：{{aiIndexBo.date}}
-                        </th>
+                        <td class="right_col">诊断日期：{{aiIndexBo.date}}
+                        </td>
                       </tr>
                       <tr class="">
-                        <th  >AI得分：<span class="streatText3" :class="{Green:resultScore<70,Red:resultScore>=70}">{{aiIndexBo.score | setNum}}分</span>
-                        </th>
+                        <td  class="right_col">AI得分：<span class="streatText3" :class="{Green:resultScore<70,Red:resultScore>=70}">{{aiIndexBo.score | setNum}}分</span>
+                        </td>
                       </tr>
                       <tr class="">
-                        <th class="right_col" ><span style="font-weight: 700">诊断结果：{{aiIndexBo.result}}</span></th>
+                        <td class="right_col"><span >诊断结果：{{aiIndexBo.result}}</span></td>
 
                       </tr>
                       <tr class="">
-                        <th class="">预期胜率：<span :class="{Green:resultScore<0,Red:resultScore>=0}">{{aiIndexBo.winRate | setNum}}%</span></th>
+                        <td class="right_col">预期胜率：<span :class="{Green:resultScore<0,Red:resultScore>=0}">{{aiIndexBo.winRate | setNum}}%</span></td>
                       </tr>
                       <tr class="">
-                        <th class="right_col" >综合诊断：该股票预期打败 <span :class="{Green:resultScore<0,Red:resultScore>=0}">{{aiIndexBo.beat | setNum}}%</span>的股票</th>
+                        <td class="right_col" >综合诊断：该股票预期打败 <span :class="{Green:resultScore<0,Red:resultScore>=0}">{{aiIndexBo.beat | setNum}}%</span>的股票</td>
                       </tr>
                       <tr class="">
-                        <th class="right_col">该股票持有15天预期收益率范围为 {{aiIndexBo.minProfitRate}}%~ +{{aiIndexBo.maxProfitRate | setNum}}%</th>
+                        <td class="right_col">该股票持有15天预期收益率范围为：<span :class="{Green:aiIndexBo.minProfitRate<0,Red:aiIndexBo.minProfitRate>=0}">{{aiIndexBo.minProfitRate}}%</span>~ <span :class="{Green:aiIndexBo.maxProfitRate<0,Red:aiIndexBo.maxProfitRate>=0}">+{{aiIndexBo.maxProfitRate | setNum}}%</span></td>
                       </tr>
                     </template>
                     <template v-else class="left_content_operate diagnosticResult">
@@ -122,22 +175,22 @@
                   <table class="table table-striped table-bordered table-advance diagnosticStockInfoTb1" contenteditable="false" >
                     <tbody>
                     <tr class="">
-                      <th class="streatText2">财务风险</th>
+                      <th ><h4>财务风险</h4></th>
                     </tr>
                     <tr class="">
-                      <th class="">更新日期为：{{financialRiskBo.date}}</th>
+                      <td class="right_col">更新日期为：{{financialRiskBo.date}}</td>
                     </tr>
                     <tr class="">
-                      <td class="right_col"><span style="font-weight: 700">该股票质押率为：</span><span :class="{Green:financialRiskBo.pledgeRate<0,Red:financialRiskBo.pledgeRate>=0}">{{financialRiskBo.pledgeRate}}%</span></td>
+                      <td class="right_col"><span >该股票质押率为：</span><span :class="{Green:financialRiskBo.pledgeRate<0,Red:financialRiskBo.pledgeRate>=0}">{{financialRiskBo.pledgeRate}}%</span></td>
                     </tr>
                     <tr class="">
-                      <td class="right_col"><span style="font-weight: 700">商誉占市值比：</span><span :class="{Green:financialRiskBo.goodwillRate<0,Red:financialRiskBo.goodwillRate>=0}">{{financialRiskBo.goodwillRate}}%</span></td>
+                      <td class="right_col"><span>商誉占市值比：</span><span :class="{Green:financialRiskBo.goodwillRate<0,Red:financialRiskBo.goodwillRate>=0}">{{financialRiskBo.goodwillRate}}%</span></td>
                     </tr>
                     <tr class="">
-                      <td class="right_col"><span style="font-weight: 700">公司负债率为：</span><span :class="{Green:financialRiskBo.debtRate<0,Red:financialRiskBo.debtRate>=0}">{{financialRiskBo.debtRate}}%</span></td>
+                      <td class="right_col"><span >公司负债率为：</span><span :class="{Green:financialRiskBo.debtRate<0,Red:financialRiskBo.debtRate>=0}">{{financialRiskBo.debtRate}}%</span></td>
                     </tr>
                     <tr class="">
-                      <td class="right_col"><span style="font-weight: 700">经营现金流占总资产：</span><span :class="{Green:financialRiskBo.netOperateCashFlowRate<0,Red:financialRiskBo.netOperateCashFlowRate>=0}">{{financialRiskBo.netOperateCashFlowRate}}%</span></td>
+                      <td class="right_col"><span >经营现金流占总资产：</span><span :class="{Green:financialRiskBo.netOperateCashFlowRate<0,Red:financialRiskBo.netOperateCashFlowRate>=0}">{{financialRiskBo.netOperateCashFlowRate}}%</span></td>
                     </tr>
                     </tbody>
                   </table>
@@ -158,16 +211,16 @@
                       <table class="table table-striped table-bordered table-advance diagnosticStockInfoTb1" contenteditable="false" >
                         <tbody>
                           <tr class="">
-                            <th class="streatText2">经营状况(参考 {{operateBo.dateRange}}年财报)</th>
+                            <th ><h4>经营状况({{operateBo.dateRange}}年财报)</h4></th>
                           </tr>
                           <tr class="">
-                            <td class="left_col"><span style="font-weight: 700">近5年来平均毛利率：</span><span :class="{Green:operateBo.grossProfitMarginAvg<0,Red:operateBo.grossProfitMarginAvg>=0}"> {{operateBo.grossProfitMarginAvg | setNum}}%</span>，<span style="font-weight: 700">平均增长速度为：</span><span :class="{Green:operateBo.grossProfitMarginGrowthRate<0,Red:operateBo.grossProfitMarginGrowthRate>=0}">{{operateBo.grossProfitMarginGrowthRate | setNum}}</span></td>
+                            <td class="left_col"><span >近5年来平均毛利率：</span><span :class="{Green:operateBo.grossProfitMarginAvg<0,Red:operateBo.grossProfitMarginAvg>=0}"> {{operateBo.grossProfitMarginAvg | setNum}}%</span>，<span >增长速度：</span><span :class="{Green:operateBo.grossProfitMarginGrowthRate<0,Red:operateBo.grossProfitMarginGrowthRate>=0}">{{operateBo.grossProfitMarginGrowthRate | setNum}}</span></td>
                           </tr>
                           <tr class="">
-                            <td class="left_col"><span style="font-weight: 700">近5年来平均ROE：</span><span :class="{Green:operateBo.roeAvg<0,Red:operateBo.roeAvg>=0}"> {{operateBo.roeAvg | setNum}}%</span>，<span style="font-weight: 700">平均增长速度为：</span><span :class="{Green:operateBo.roeGrowthRate<0,Red:operateBo.roeGrowthRate>=0}">{{operateBo.roeGrowthRate | setNum}}</span></td>
+                            <td class="left_col"><span >近5年来平均ROE：</span><span :class="{Green:operateBo.roeAvg<0,Red:operateBo.roeAvg>=0}"> {{operateBo.roeAvg | setNum}}%</span>，<span >增长速度：</span><span :class="{Green:operateBo.roeGrowthRate<0,Red:operateBo.roeGrowthRate>=0}">{{operateBo.roeGrowthRate | setNum}}</span></td>
                           </tr>
                           <tr class="">
-                            <td class="left_col"><span style="font-weight: 700">近5年来平均营收增长：</span><span :class="{Green:operateBo.operatingRevenueAvg<0,Red:operateBo.operatingRevenueAvg>=0}"> {{operateBo.operatingRevenueAvg | setNum}}%</span>，<span style="font-weight: 700">平均增长速度为：</span><span :class="{Green:operateBo.operatingRevenueGrowthRate<0,Red:operateBo.operatingRevenueGrowthRate>=0}">{{operateBo.operatingRevenueGrowthRate | setNum}}</span></td>
+                            <td class="left_col"><span >近5年来平均营收增长：</span><span :class="{Green:operateBo.operatingRevenueAvg<0,Red:operateBo.operatingRevenueAvg>=0}"> {{operateBo.operatingRevenueAvg | setNum}}%</span>，<span>增长速度：</span><span :class="{Green:operateBo.operatingRevenueGrowthRate<0,Red:operateBo.operatingRevenueGrowthRate>=0}">{{operateBo.operatingRevenueGrowthRate | setNum}}</span></td>
                           </tr>
                         </tbody>
                       </table>
@@ -176,10 +229,10 @@
                       <table class="table table-striped table-bordered table-advance diagnosticStockInfoTb1" contenteditable="false" >
                         <tbody>
                         <tr class="">
-                          <th class="streatText2">技术指标</th>
+                          <th ><h4>技术指标</h4></th>
                         </tr>
                         <tr class="" v-for="item2 of chooseStock">
-                          <td class="right_col"><span style="font-weight: 700">{{item2.title}}</span><span v-for="item3 of item2.value">{{item3}}&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                          <td class="right_col"><span >{{item2.title}}</span><span v-for="item3 of item2.value">{{item3}}&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
                         </tr>
                         </tbody>
                       </table>
@@ -237,75 +290,6 @@
     </div>
   </div>
 
-
-
-  <!--<div class="diagnosticStock3">-->
-    <!--<div class="diagnosticStockInfo3">-->
-      <!--<div class="diagnosticStockHead3">-->
-        <!--<h3>得分排名{{rankDate}}</h3>-->
-      <!--</div>-->
-      <!--<div class="row-fluid">-->
-        <!--<div class="span12">-->
-          <!--<div class="list">-->
-            <!--<template>-->
-              <!--<div>-->
-                <!--<table id="scoreRange" class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">-->
-                  <!--<thead>-->
-                  <!--<tr class="diagnosticStockTbTh3">-->
-                    <!--<th>股票代码<br>-->
-                      <!--公司名称-->
-                    <!--</th>-->
-                    <!--&lt;!&ndash;<th>诊断日期</th>&ndash;&gt;-->
-                    <!--<th @click="changePXData('ai_score',1)">AI评分<i class="iconfont icon-paixu-jiangxu"  :class="{isActive:isFlag==1}"></i></th>-->
-                    <!--<th  @click="changePXData('flush_score',2)">同花顺评分<i class="iconfont icon-paixu-jiangxu" :class="{isActive:isFlag==2}"></i></th>-->
-                    <!--<th  @click="changePXData('total_score',3)">综合评分<i class="iconfont icon-paixu-jiangxu" :class="{isActive:isFlag==3}"></i></th>-->
-                  <!--</tr>-->
-                  <!--</thead>-->
-
-                    <!--<tbody v-if="items.length>0 && hasAuthority" >-->
-                    <!--<tr v-for="(item,index) in  items">-->
-                      <!--<td class="app_td">-->
-                        <!--{{item.code}}<br>{{item.name}}-->
-                      <!--</td>-->
-                      <!--&lt;!&ndash;<td>&ndash;&gt;-->
-                      <!--&lt;!&ndash;{{item.date}}&ndash;&gt;-->
-                      <!--&lt;!&ndash;</td>&ndash;&gt;-->
-                      <!--<td>-->
-                        <!--{{item.aiScore}}-->
-                      <!--</td>-->
-                      <!--<td>-->
-                        <!--{{item.flushScore}}-->
-                      <!--</td>-->
-                      <!--<td>-->
-                        <!--{{item.totalScore}}-->
-                      <!--</td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                    <!--<tbody v-else-if="items.length<=0 && hasAuthority">-->
-                    <!--<tr >-->
-                      <!--<td colspan="9">暂无数据-->
-                      <!--</td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                    <!--<tbody v-else>-->
-                    <!--<tr >-->
-                      <!--<td colspan="9">您没有权限查看评分排名-->
-                      <!--</td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                <!--</table>-->
-              <!--</div>-->
-              <!--<pagination  :perPages="perPages" :page-index="currentPage" :total="count" :page-size="pageSize" @change="pageChange">-->
-              <!--</pagination>-->
-            <!--</template>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-
-
-
   </div>
 </template>
 
@@ -324,7 +308,7 @@
         count : 0, //总记录数
         items:[],
         resultScore:88,
-        code:"000002",
+        code:"",
         financial:[],
         title:[],
         chooseStock:[],
@@ -336,7 +320,9 @@
         rankDate:"",
         hasAuthority:false,
         isAsc:false,
-        filed:"ai_score"
+        filed:"ai_score",
+        everyStockList:"",
+        everyStockDate:""
       }
     },
     components: {
@@ -365,6 +351,8 @@
        */
       this.searchSelfStock();
 
+      this.everyStock();
+
     },
 
     methods:{
@@ -378,7 +366,8 @@
           if(res.body.code==0){
             this.chooseStock=res.body.data.entities;
           }else{
-            alert(res.body.message)
+            console.log(res)
+           // alert(res.body.message)
           }
         },function(){
           console.log("请求失败")
@@ -514,7 +503,6 @@
 
       /*删除自选股*/
       delSelfStock(code){
-        console.log(code)
         this.$http.get(httpUrl.diagnosticStocksDelApi, {
           params: {code:code}
         }).then(function(res){
@@ -527,9 +515,23 @@
         },function(){
           console.log("请求失败")
         });
+      },
+
+      /**
+       * 每日勾股
+       */
+      everyStock(){
+        this.$http.get(httpUrl.getEveryStockApi).then(function(res){
+          if(res.body.code==0){
+            this.everyStockList=res.body.data.entity.list;
+            this.everyStockDate=res.body.data.entity.date;
+          }else if(res.body.code!=0){
+            alert(res.body.msg)
+          }
+        },function(){
+          console.log("请求失败")
+        });
       }
-
-
 
     },
     watch:{
@@ -790,6 +792,7 @@
     color:#3D77E1;
   }
   .optStyle{
+    color: rgb(2, 117, 216);
     cursor: pointer;
   }
 

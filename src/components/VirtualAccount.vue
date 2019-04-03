@@ -2,7 +2,7 @@
   <div class="virtualAccount">
     <div class="row virtualAccountRow">
       <div class="virtualAccountHeader">
-        <h3 class="virtureAllLook">A股账户总览</h3>
+        <h3 class="virtureAllLook">勾股A股系统账户总览</h3>
       </div>
       <div class="row-fluid virtualAccountBox">
         <div class="col-md-12 virtualAccountC8">
@@ -152,8 +152,8 @@
                   </tr>
 
                   <tr>
-                    <th class="head_td head_td_pc">近一年最大回撤</th>
-                    <th class="head_td head_td_app">近一年最大<br>回撤</th>
+                    <th class="head_td head_td_pc">近一季最大回撤</th>
+                    <th class="head_td head_td_app">近一季最大<br>回撤</th>
                     <td>
                       <div class="data_box">{{totalAccountBo.maxWithdrawal|setNum}}%</div>
                     </td>

@@ -51,34 +51,32 @@ export default {
     if(getSession('username')){
       var tempArr=[
         {
-          title:'A股',
+          title:'每日勾股',
+          url:'DiagnosticStocks'
+        } ,
+        {
+          title:'A股公告',
           url:'index'
         }
         ,
         {
-          title:'美股',
+          title:'美股公告',
           url:'usStock'
-        }
-        ,
+        },
         {
-          title:'讨论区',
-          url:'Forum'
-        } ,
+          title:'参考指标',
+          url:'PriceTable'
+        },
         {
-          title:'A股诊股',
-          url:'DiagnosticStocks'
-        } ,
-        {
-          title:'排名',
+          title:'账户管理',
+          url:'InvestorRelation'
+        } ,{
+          title:'AI排名',
           url:'Rank'
         } ,
         {
-          title:'数据区',
+          title:'工具栏',
           url:'DataInquiry'
-        },
-        {
-          title:'价格表',
-          url:'PriceTable'
         },
         {
           title:'退出',
@@ -86,17 +84,12 @@ export default {
         }
       ];
       if (getSession('authority') != null && getSession('authority') != '') {
-        if(getSession('authority').search('US') == -1){
-          tempArr.splice(1,1);
-          if (getSession('authority').search('AD') == -1) {
-            tempArr.splice(2,1);
-          }
-        } else if (getSession('authority').search('AD') == -1) {
-          tempArr.splice(3,2);
+        if(getSession('authority').search('AR') == -1){
+          tempArr.splice(4,2);
         }
+
       } else {
-        tempArr.splice(1,1);
-        tempArr.splice(2,1);
+        tempArr.splice(4,2);
       }
       this.aa.seturl(tempArr);
       this.items=this.aa.url;
@@ -160,12 +153,14 @@ nav ul{
 }
 .
 a {
-  color: #00ADD2;
+  color:#FFFFFF!important;
+  font-weight: bolder;
   cursor: pointer;
 }
 .my-navbar{
-  background: #3B3F51;
+  background: #1369BF;
   color: #ffffff;
+  font-family: 'Biaodian Pro Sans GB',"Helvetica Neue",Helvetica,Arial,"pingfang sc","Hiragino Sans GB","Microsoft YaHei","微软雅黑",STHeiti,SimSun,sans-serif;
 }
 .icon-bar{
   background: #8C95A5;
@@ -182,7 +177,8 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #00ADD2;
+  color: #FFFFFF!important;
+  font-weight: bolder;
 }
 a:hover{
   text-decoration: none;

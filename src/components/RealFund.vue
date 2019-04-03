@@ -1,18 +1,13 @@
 <template>
-  <div class="price-table-content"  >
-
-    <div class="price-table-box">
+    <div class="RealFundContent">
+      <div class="index_contrast">
+        <fund-contrast :heading="heading"  @filterIndexCurImg="filterIndexCurImg($event)"  :GainInfo="GainInfo"  :select="curTime"></fund-contrast>
+      </div>
 
       <div class="price-table3">
         <div class="price-tableInfo3">
           <div class="price-tableHead3">
-            <h3>物料价格{{rankDate}}</h3>
-          </div>
-          <div class="price-table-Bar">
-            <form class="form-search">
-              <input type="text"  class="form-control" placeholder="输入物料关键字" v-model="searchName"/>
-              <button type="button" class="btn btn-default"  @click="getMaterielList()" >搜索</button>
-            </form>
+            <h3>{{title}}详情</h3>
           </div>
           <div class="row-fluid">
             <div class="span12">
@@ -22,46 +17,46 @@
                     <table id="scoreRange" class="table table-striped table-bordered table-advance price-tableInfoTb3" contenteditable="false">
                       <thead>
                       <tr class="price-tableTbTh3 specTable">
-                        <th  style="width: 20%;">
-                          物料名称
+                        <th  style="width:25%;">
+                          日期
                         </th>
-                        <th style="width: 20%">物料价格</th>
-                        <!--<th>诊断日期</th>-->
                         <th style="width: 30%">
-                          <i @click="changePXData('price_before_week',2,true)" class="iconfont icon-paixu-shengxu"  :class="{isActive:isFlag==2}"></i>
-                          较上周初
-                          <i @click="changePXData('price_before_week',1,false)" class="iconfont icon-paixu-jiangxu"  :class="{isActive:isFlag==1}"></i>
+                          总资产
                         </th>
-                        <th  style="width: 30%">
-                          <i @click="changePXData('price_before_month',3,true)" class="iconfont icon-paixu-shengxu"  :class="{isActive:isFlag==3}"></i>
-                          较上月初
-                          <i @click="changePXData('price_before_month',4,false)" class="iconfont icon-paixu-jiangxu" :class="{isActive:isFlag==4}"></i></th>
+                        <th style="width: 20%">
+                          当前净值
+                        </th>
+                        <th  style="width: 25%">
+                          周收益率
+                        </th>
                       </tr>
                       </thead>
-
                       <tbody v-if="items.length>0" >
                       <tr v-for="(item,index) in  items">
-                        <td class="app_td" @click="metailDetail(item.name)" style="width: 20%;color: rgb(2, 117, 216);cursor: pointer">
-                          <u> {{item.name}}</u>
+                        <td class="app_td" >
+                           {{item.date}}
                         </td>
                         <td>
                           <div class="data_box2">
-                            {{item.price|setNum1}}
+                            {{item.marketCap|setNum}}
                           </div>
                         </td>
-                        <td :class="{Green:item.priceBeforeWeek<0,Red:item.priceBeforeWeek>=0}">
-                          {{item.priceBeforeWeek}}<span v-if="item.priceBeforeWeek!=null">%</span>
+                        <td>
+                          <div class="data_box3">
+                          {{item.netWorth | toFixed4}}
+                          </div>
                         </td>
-                        <td :class="{Green:item.priceBeforeMonth<0,Red:item.priceBeforeMonth>=0}">
-                          {{item.priceBeforeMonth}}<span v-if="item.priceBeforeMonth!=null">%</span>
+                        <td :class="{Green:item.weekRate<0,Red:item.weekRate>=0}">
+                          {{item.weekRate *100 |toFixed2}}
+                          <span v-if="item.weekRate!=null">%</span>
                         </td>
                       </tr>
                       </tbody>
                       <tbody v-else>
-                      <tr >
-                        <td colspan="9">暂无数据
-                        </td>
-                      </tr>
+                        <tr >
+                          <td colspan="9">暂无数据
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -73,239 +68,94 @@
           </div>
         </div>
       </div>
-
     </div>
-
-    <el-dialog
-      title="物料详情"
-      :visible.sync="dialogVisible"
-      width="90%"
-      :before-close="handleClose">
-      <div class="row">
-        <div class="col-md-12" >
-          <img class="dialogImg" alt="物价走势图" :src="detail.priceUrl">
-        </div>
-      </div>
-      <div class="price-dialog-content">
-        <p>生产商：
-          <span class="dialog-product" v-for="item of detail.producer" @click="showUrl(item.v)"><u>{{item.k}}</u>&nbsp;&nbsp;&nbsp;</span>
-        </p>
-        <p>下游用户：
-          <span class="dialog-user" v-for="item1 of detail.user" @click="showUrl(item1.v)"><u>{{item1.k}}</u>&nbsp;&nbsp;&nbsp;</span>
-        </p>
-      </div>
-      <div class="price-dialog-cyl">
-        <img  class="dialogImg" :src="initUrl"/>
-      </div>
-
-    </el-dialog>
-
-
-  </div>
 </template>
 
 <script>
+  import FundContrast  from './fundContrast';
+  import IndexContrast  from './IndexContrast';
   import Pagination from "./Pagination"
   import {httpUrl} from '../apiConfig/api';
-  export default {
-    data () {
-      return {
-        isFlag:0,
-        perPages:1,
-        pageSize : 20 , //每页显示20条数据
-        currentPage : 1, //当前页码
-        count : 0, //总记录数
-        items:[],
-        id:"",
-        rankDate:"",
-        hasAuthority:false,
-        isAsc:false,
-        filed:"",
-        imgItems:[],
-        dialogVisible: false,
-        name:"",
-        detail:{},
-        initUrl:"",
-        searchName:""
-      }
-    },
-    components: {
-      Pagination
-    },
-    mounted: function () {
-
-      /**
-       * 获取物料的第一页数据
-       */
-      this.priceTablesData();
-
-      /**
-       * 获取初始物料的图片
-       */
-      this.metailImg();
-    },
-
-    methods:{
-      /**
-       * 获取诊股排名的数据
-       */
-      priceTablesData(){
-        this.$http.get(httpUrl.materialPriceTableApi, {
-          params: {pageSize:this.pageSize,pageNo:this.currentPage,filed:this.filed,isAsc:this.isAsc}
-        }).then(function(res){
-          if(res.body.code==0){
-            this.count = res.body.data.entity.total;
-            this.items=res.body.data.entity.materials;
-            this.rankDate=res.body.data.entity.date;
-          }else if(res.body.code!=0){
-            alert(res.body.message)
+    export default {
+        name: "RealFund",
+        components: {
+          Pagination,
+          FundContrast
+        },
+        data () {
+          return {
+            heading:sessionStorage.getItem("fundName")+'盈亏率对比',
+            perPages:1,
+            pageSize : 20 , //每页显示20条数据
+            currentPage : 1, //当前页码
+            count : 0, //总记录数
+            title:sessionStorage.getItem("fundName"),
+            items:[],
+            GainInfo:{},
+            curTime:"-1",
           }
-        },function(){
-          console.log("请求失败")
-        });
-      },
+        },
+        mounted(){
+            this.fundListDeatial();
+            this.getGainInfo();
+        },
+        methods:{
+          /**
+           * 从page组件传递过来的当前page
+           */
+          pageChange (page) {
+            this.currentPage = page;
+            this.fundListDeatial();
+          },
 
-      changePXData(data,flag,isAsc){
-        this.filed=data;
-        this.isFlag=flag;
-        this.isAsc=isAsc;
-        this.priceTablesData();
-      },
-
-      /**
-       * 从page组件传递过来的当前page
-       */
-      pageChange (page) {
-        this.currentPage = page;
-        this.priceTablesData();
-      },
-
-      /**
-       * 点击货物名称，修改展示的价格名称
-       */
-      metailImg(name){
-        this.id=name;
-        this.$http.get(httpUrl.materialPriceImgApi, {
-          params: {ids:this.id}
-        }).then(function(res){
-          if(res.body.code==0){
-            this.imgItems=res.body.data.entities;
-             sessionStorage.setItem('name',this.id);
-            if(name!==undefined){
-              this.$router.push({
-                name:'Dialog',
-                params:{
-                  "name":this.id
-                }
-              })
-
-            }
-          }else if(res.body.code!=0){
-            alert(res.body.message)
-          }
-        },function(){
-          console.log("请求失败")
-        });
-      },
+          fundListDeatial(){
+            this.$http.get(httpUrl.getFundListDetailApi,{
+              params: {
+                pageSize:this.pageSize,
+                pageNo:this.currentPage,
+                name:sessionStorage.getItem("fundName")
+              }
+            }).then(function (res) {
+              if (res.body.code == 0) {
+                console.log(res)
+                this.count = res.body.data.entity.total;
+                this.items=res.body.data.entity.list;
+              } else {
+                alert(res.body.message)
+              }
+            }, function () {
+              console.log("请求失败")
+            });
+          },
 
 
-      metailDetail(name){
-        this.id=name;
-        this.$http.get(httpUrl.materialPriceImgApi, {
-          params: {ids:this.id}
-        }).then(function(res){
-          if(res.body.code==0){
-            this.imgItems=res.body.data.entities;
-            this.name=this.id;
-            this.dialogVisible = true;
-            this.getMetailDetail();
-          }else if(res.body.code!=0){
-            alert(res.body.message)
-          }
-        },function(){
-          console.log("请求失败")
-        });
-      },
-      /**
-       * 点击x关闭弹框
-       */
-      handleClose(done) {
-        done();
-      },
+          filterIndexCurImg(obj){
+            console.log(obj)
+            this.curTime = obj.id;
+            this.getGainInfo();
+          },
 
-      /**
-       * 点击物料名称，查看物料详情
-       */
-      getMetailDetail(){
-        this.$http.get(httpUrl.materialPriceDetailApi, {
-          params: {name:this.name}
-        }).then(function(res){
-          if(res.body.code==0){
-             this.detail=res.body.data.entity;
-            this.initUrl=this.detail.industryUrl;
-          }else if(res.body.code!=0){
-            alert(res.body.message)
-          }
-        },function(){
-          console.log("请求失败")
-        });
-      },
+          getGainInfo:function(){
+            this.$http.get(httpUrl.getFundListLineApi,{
+              params:{name:sessionStorage.getItem("fundName")}
+            }).then(function (res) {
+              if (res.body.code == 0) {
+                this.GainInfo = res.body.data.entity;
+              } else {
+                alert(res.body.message)
+              }
+            }, function () {
+              console.log("请求失败")
+            });
+          },
 
-      /**
-       * 点击物料名称，查看物料走势图
-       */
-      showUrl(url){
-        console.log(url)
-        this.initUrl=url;
-      },
+        },
 
-      /**
-       * 输入物料名称，查询物料
-       */
-      getMaterielList(){
-        this.$http.get(httpUrl.materialPriceTableApi, {
-          params: {
-            pageSize:this.pageSize,
-            pageNo:this.currentPage,
-            filed:this.filed,
-            isAsc:this.isAsc,
-            name:this.searchName
-          }
-        }).then(function(res){
-          console.log(res)
-          if(res.body.code==0){
-
-            this.count = res.body.data.entity.total;
-            this.items=res.body.data.entity.materials;
-            this.rankDate=res.body.data.entity.date;
-          }else if(res.body.code!=0){
-            alert(res.body.message)
-          }
-        },function(){
-          console.log("请求失败")
-        });
-      }
-
-
-    },
-    watch:{
-      initAmount:function(val, oldVal){
-        this.fetchLastRecomData();
-        this.getDiagnosticStocksResult()
-      }
-    },
-
-  }
+    }
 </script>
 
 <style scoped>
   *
-  .price-table-content{
-    position: relative;
-  }
-  .price-table-box{
-    overflow: auto;
-  }
   .price-table1 {
     width: 96%;
     height: auto;
@@ -330,7 +180,6 @@
     height: auto;
     background: #ffffff;
     margin: 2rem 2% 3rem 2%;
-    /*overflow: auto;*/
   }
   .price-table3{
     width: 96%;
@@ -351,15 +200,15 @@
   .price-tableHead2{
     padding-top: 1rem;
     margin-top: 20px;
-    /*border-bottom: 1px solid #eef1f5;*/
+    border-bottom: 1px solid #eef1f5;
     margin-bottom: 10px;
   }
   .price-tableHead3{
-      padding-top: 1rem;
-      margin-top: 20px;
-      /*border-bottom: 1px solid #eef1f5;*/
-      margin-bottom: 10px;
-    }
+    padding-top: 1rem;
+    margin-top: 20px;
+    border-bottom: 1px solid #eef1f5;
+    margin-bottom: 10px;
+  }
   .price-tableHead4{
     padding-top: 1rem;
     margin-top: 20px;
@@ -545,7 +394,11 @@
     font-size: 22px;
   }
   .data_box2{
-    width: 60%;
+    padding-right:40%;
+    text-align: right;
+  }
+  .data_box3{
+    padding-right:40%;
     text-align: right;
   }
   .form-search{
@@ -575,23 +428,6 @@
     margin-left: -20px;
   }
 
-
-  .price-table-shadow{
-    text-align: center;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-   background-color: rgba(90, 90, 90, 0.5);
-    z-index: 999;
-  }
-  .price-table-shadow-detail{
-    width: 70%;
-    margin-left: 15%;
-    background: #ffffff;
-    margin-top: 2rem;
-    height: auto;
-  }
-
   /*
  屏幕兼容(平板)
   */
@@ -615,6 +451,10 @@
    */
   @media screen and (max-width:600px)
   {
+    .data_box3{
+      padding-right:20%;
+      text-align: right;
+    }
     .head_td_pc{
       display: none;
     }
@@ -689,8 +529,8 @@
       width: 70px!important;
     }
     .data_box2{
-     width:100%;
-      text-align: right;
+      padding-right:0%;
+      text-align: center;
     }
     .mb-td{
       padding: 0px;
@@ -748,44 +588,5 @@
     #scoreRange>thead>tr>th{
       font-size:12px!important;
     }
-  }
-  .price-dialog-img{
-    min-height: 300px;
-  }
-  .dialog-product{
-    cursor: pointer;
-    color: rgb(2, 117, 216)
-  }
-  .dialog-user{
-    cursor: pointer;
-    color: rgb(2, 117, 216)
-  }
-  .price-dialog-content{
-    padding: 30px 0;
-  }
-  .price-dialog-content p{
-    text-align: left;
-    padding: 0% 2% ;
-  }
-  .price-dialog img{
-    max-width: 100%;
-  }
-  .price-dialog-cyl{
-    padding: 20px 0;
-  }
-  .dialogImg{
-    max-width: 100%;
-  }
-.price-table-Bar{
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-  .price-table-Bar input{
-    width: 45%;
-    height: 30px;
-  }
-  .form-search input{
-    margin-right: 5px;
-    height: 34px;
   }
 </style>
