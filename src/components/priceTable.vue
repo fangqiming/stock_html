@@ -76,6 +76,8 @@
 
     </div>
 
+    <macro-index></macro-index>
+
     <el-dialog
       title="物料详情"
       :visible.sync="dialogVisible"
@@ -106,6 +108,7 @@
 
 <script>
   import Pagination from "./Pagination"
+  import MacroIndex from "./macroIndex"
   import {httpUrl} from '../apiConfig/api';
   export default {
     data () {
@@ -130,7 +133,8 @@
       }
     },
     components: {
-      Pagination
+      Pagination,
+      MacroIndex
     },
     mounted: function () {
 
