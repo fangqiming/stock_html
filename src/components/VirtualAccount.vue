@@ -11,6 +11,7 @@
               <table cellspacing="0" cellpadding="0" border="0"
                      class="virtable table table-striped table-bordered table-advance start_tb">
                 <tbody>
+
                   <tr>
                     <th class="head_td">当天日期</th>
                     <td><div class="data_box">{{todayAccountBo.date}}</div></td>
@@ -88,38 +89,30 @@
                     </td>
                   </tr>
                   <tr>
-                    <th class="head_td head_td_pc">挣钱股票</th>
-                    <th class="head_td head_td_app">挣钱股票</th>
+                    <th class="head_td">买入次数</th>
                     <td>
-                      <div class="data_box">{{operatorVo.profitNumber|setNum}}只</div>
+                      <div class="data_box">{{operatorVo.buyNumber|setNum}}次</div>
                     </td>
                   </tr>
                   <tr>
-                    <th class="head_td head_td_pc">赔钱股票</th>
-                    <th class="head_td head_td_app">赔钱股票</th>
+                    <th class="head_td">卖出次数</th>
                     <td>
-                      <div class="data_box">{{operatorVo.lossNumber|setNum}}只</div>
+                      <div class="data_box">{{operatorVo.sellNumber|setNum}}次</div>
                     </td>
                   </tr>
                   <tr>
-                    <th class="head_td head_td_pc">胜率</th>
-                    <th class="head_td head_td_app">胜率</th>
-                    <td>
-                      <div class="data_box" :class="{Green:operatorVo.winRate<50,Red:operatorVo.winRate>=0}">{{operatorVo.winRate|setNum}}%</div>
+                    <th class="head_td">平均盈亏率</th>
+                    <td v-if="operatorVo.avgProfitRate>0" :class="{Green:operatorVo.avgProfitRate<0,Red:operatorVo.avgProfitRate>=0}" >
+
+                      <div class="data_box">+{{operatorVo.avgProfitRate | toFixed2   }}%</div>
+
+                    </td>
+                    <td v-else :class="{Green:operatorVo.avgProfitRate<0,Red:operatorVo.avgProfitRate>=0}" >
+                      <div class="data_box">+{{operatorVo.avgProfitRate |toFixed2  }}%</div>
                     </td>
                   </tr>
-                  <tr>
-                    <th class="head_td head_td_pc">近一月单日最高盈亏率</th>
-                    <th class="head_td head_td_app">近一月单日<br>最高盈亏率</th>
-                    <td>
-                      <div v-if="operatorVo.maxGain>=0" class="data_box" :class="{Green:operatorVo.maxGain<0,Red:operatorVo.maxGain>=0}">
-                        +{{operatorVo.minGain != undefined ? (operatorVo.minGain).toFixed(2) : 0.00}}%
-                      </div>
-                      <div v-else="operatorVo.maxGain<0" class="data_box" :class="{Green:operatorVo.maxGain<0,Red:operatorVo.maxGain>=0}">
-                        -{{operatorVo.maxGain != undefined ? (operatorVo.maxGain).toFixed(2) : 0.00}}%
-                      </div>
-                    </td>
-                  </tr>
+
+
                 </tbody>
               </table>
             </div>
@@ -199,46 +192,36 @@
                     </td>
                   </tr>
                   <tr>
-                    <th class="head_td">平均盈亏率</th>
-                    <td v-if="operatorVo.avgProfitRate>0" :class="{Green:operatorVo.avgProfitRate<0,Red:operatorVo.avgProfitRate>=0}" >
-
-                      <div class="data_box">+{{operatorVo.avgProfitRate | toFixed2   }}%</div>
-
-                    </td>
-                    <td v-else :class="{Green:operatorVo.avgProfitRate<0,Red:operatorVo.avgProfitRate>=0}" >
-                      <div class="data_box">+{{operatorVo.avgProfitRate |toFixed2  }}%</div>
+                    <th class="head_td head_td_pc">胜率</th>
+                    <th class="head_td head_td_app">胜率</th>
+                    <td>
+                      <div class="data_box" :class="{Green:operatorVo.winRate<50,Red:operatorVo.winRate>=0}">{{operatorVo.winRate|setNum}}%</div>
                     </td>
                   </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">挣钱股票</th>
+                    <th class="head_td head_td_app">挣钱股票</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.profitNumber|setNum}}只</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">赔钱股票</th>
+                    <th class="head_td head_td_app">赔钱股票</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.lossNumber|setNum}}只</div>
+                    </td>
+                  </tr>
+
+
                   <tr>
                     <th class="head_td">平均持有天数</th>
                     <td>
                       <div class="data_box">{{operatorVo.avgHoldDay|setNum}}天</div>
                     </td>
                   </tr>
-                  <tr>
-                    <th class="head_td">买入次数</th>
-                    <td>
-                      <div class="data_box">{{operatorVo.buyNumber|setNum}}次</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="head_td">卖出次数</th>
-                    <td>
-                      <div class="data_box">{{operatorVo.sellNumber|setNum}}次</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="head_td head_td_pc">近一月单日最低盈亏率</th>
-                    <th class="head_td head_td_app">近一月单日<br>最低盈亏率</th>
-                    <td>
-                      <div v-if="operatorVo.minGain>=0" class="data_box" :class="{Green:operatorVo.minGain<0,Red:operatorVo.minGain>=0}">
-                        +{{operatorVo.minGain != undefined ? (operatorVo.minGain).toFixed(2) : 0.00}}%
-                      </div>
-                      <div v-else="operatorVo.minGain<0" class="data_box" :class="{Green:operatorVo.minGain<0,Red:operatorVo.minGain>=0}">
-                        -{{operatorVo.minGain != undefined ? (operatorVo.minGain).toFixed(2) : 0.00}}%
-                      </div>
-                    </td>
-                  </tr>
+
+
                 </tbody>
               </table>
             </div>

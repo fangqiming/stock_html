@@ -165,11 +165,11 @@
               <td class="head_td">胜率</td>
               <td  :class="{Green:userAccount.winRate<50,Red:userAccount.winRate>=0}" class="data_td">{{userAccount.winRate}}%</td>
             </tr>
-            <tr class="current-holding-thead-tr">
+           <!-- <tr class="current-holding-thead-tr">
               <td class="head_td head_td_pc">近一月单日最高盈亏率</td>
               <td class="head_td head_td_app">近一月单日最高<br>盈亏率</td>
               <td  :class="{Green:userAccount.maxGain<0,Red:userAccount.maxGain>=0}" class="data_td">+{{userAccount.maxGain *100|toFixed2}}%</td>
-            </tr>
+            </tr>-->
             </tbody>
           </table>
         </div>
@@ -193,11 +193,11 @@
               <td class="head_td">卖出次数</td>
               <td class="data_td">{{userAccount.sellNumber}}次</td>
             </tr>
-            <tr class="current-holding-thead-tr">
+            <!--<tr class="current-holding-thead-tr">
               <td class="head_td head_td_pc">近一月单日最低盈亏率</td>
               <td class="head_td head_td_app">近一月单日最低<br>盈亏率</td>
               <td  :class="{Green:userAccount.minGain<0,Red:userAccount.minGain>=0}" class="data_td">{{userAccount.minGain *100|toFixed2}}%</td>
-            </tr>
+            </tr>-->
             </tbody>
           </table>
         </div>

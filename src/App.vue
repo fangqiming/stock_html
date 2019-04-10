@@ -139,7 +139,7 @@ export default {
   background-image: none;
 }
 nav ul{
- /* padding-top: 10px;
+  /*padding-top: 10px;
   padding-bottom: 10px;*/
 }
 .content{
@@ -225,7 +225,6 @@ a:hover{
   }
   .navbar {
     margin-bottom: 0px;
-    height: 50px;
   }
   .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #fbfcfd;

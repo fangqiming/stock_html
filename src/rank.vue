@@ -101,8 +101,8 @@
                 <div>
                   <table id="scoreRange" class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">
                     <thead>
-                    <tr class="diagnosticStockTbTh3 font14">
-                      <th>
+                    <tr class="diagnosticStockTbTh3 rankwidth">
+                      <th >
                         股票代码
                       </th>
                       <th>公司名称</th>
@@ -120,7 +120,7 @@
                         <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: center"><u>{{item.name}}</u></a>
                       </td>
                       <td :class="{Green:item.changeStock<0,Red:item.changeStock>=0}">
-                        <div  class="data_box2">
+                        <div  class="data_box3">
                           {{item.changeStock | setNum}}
                         </div>
                       </td>
@@ -728,6 +728,10 @@
     padding-right:45%;
     text-align: right;
   }
+  .data_box3{
+    padding-right:45%;
+    text-align: right;
+  }
   .form-search{
     display: flex;
     justify-content: center;
@@ -874,7 +878,6 @@
     }
     .data_box2{
       padding-right:0%;
-      text-align: center;
     }
     .mb-td{
       padding: 0px;
@@ -958,6 +961,10 @@
       margin:0rem 2% 2rem 2%;
       overflow: auto;
     }
+    .data_box3{
+      padding-right:5%;
+      text-align: right;
+    }
   }
   .StockPoolText{
     text-align: center;
@@ -966,6 +973,9 @@
     display: block!important;
     text-align: center;
     font-weight: 400!important;
+  }
+  .rankwidth{
+    width: 25%;
   }
 
 

@@ -93,12 +93,12 @@
                     </td>
                   </tr>
                   <tr>
-                    <th class="head_td head_td_pc">交易总数</th>
-                    <th class="head_td head_td_app">交易总数&#12288;&#12288;</th>
+                    <th class="head_td">当前持仓</th>
                     <td>
-                      <div class="data_box">{{operatorUsVO.tradeNumber|setNum}}次</div>
+                      <div class="data_box">{{operatorUsVO.holdNumber|setNum}}只</div>
                     </td>
                   </tr>
+
                   <tr>
                     <th class="head_td head_td_pc">买入次数</th>
                     <th class="head_td head_td_app">账户余额&#12288;&#12288;&#12288;&#12288;</th>
@@ -201,23 +201,21 @@
                       <div class="data_box">{{totalAccountBo.maxWithdrawal|setNum}}%</div>
                     </td>
                   </tr>
-
                   <tr>
-                    <th class="head_td">理财收益($)</th>
-                    <td>
-                      <div class="data_box">{{totalAccountBo.repoProfit != undefined ? (totalAccountBo.repoProfit).toFixed(2) : 0}}</div>
+                    <th class="head_td">胜率</th>
+                    <td :class="{Red:operatorUsVO.winRate<50,Green:operatorUsVO.winRate>=0}">
+                      <div class="data_box">
+                        {{operatorUsVO.winRate |toFixed2 }}%
+                      </div>
                     </td>
+
                   </tr>
+
+
                   <tr>
                     <th class="head_td">做空胜率</th>
                     <td>
                       <div class="data_box">{{totalAccountBo.shortRate != undefined ? (totalAccountBo.shortRate).toFixed(2) : 0}}%</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="head_td">当前持仓</th>
-                    <td>
-                      <div class="data_box">{{operatorUsVO.holdNumber|setNum}}只</div>
                     </td>
                   </tr>
                   <tr>
@@ -245,13 +243,17 @@
                     </td>
                   </tr>
                   <tr>
-                    <th class="head_td">胜率</th>
-                    <td :class="{Red:operatorUsVO.winRate<50,Green:operatorUsVO.winRate>=0}">
-                      <div class="data_box">
-                      {{operatorUsVO.winRate |toFixed2 }}%
-                      </div>
+                    <th class="head_td head_td_pc">交易总数</th>
+                    <th class="head_td head_td_app">交易总数&#12288;&#12288;</th>
+                    <td>
+                      <div class="data_box">{{operatorUsVO.tradeNumber|setNum}}次</div>
                     </td>
-
+                  </tr>
+                  <tr>
+                    <th class="head_td">理财收益($)</th>
+                    <td>
+                      <div class="data_box">{{totalAccountBo.repoProfit != undefined ? (totalAccountBo.repoProfit).toFixed(2) : 0}}</div>
+                    </td>
                   </tr>
 
                 </tbody>
