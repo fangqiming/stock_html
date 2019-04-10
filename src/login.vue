@@ -6,7 +6,11 @@
       <input type="text" placeholder="请输入用户名" v-model="username">
       <input type="password" placeholder="请输入密码" v-model="password">
       <button v-on:click="login">登录</button>
-      <span v-on:click="ToRegister">没有账号？马上注册</span>
+      <span v-on:click="ToRegister">
+        <a>
+          <u>没有账号？马上注册</u>
+        </a>
+      </span>
     </div>
 
     <div class="register-wrap" v-show="showRegister">
@@ -162,4 +166,5 @@
   span:hover{
     color:#41b883;
   }
+
 </style>

@@ -218,5 +218,12 @@
       padding-right:20%;
       text-align: right;
     }
+    .investorRelation{
+      width: 96%;
+      height: auto;
+      background: #ffffff;
+      margin:0rem 2% 2rem 2%;
+      overflow: auto;
+    }
   }
 </style>

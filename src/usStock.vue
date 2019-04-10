@@ -1,80 +1,13 @@
 <template>
   <div class="recommend">
     <div class="paperTrading">
-      <us-virtual-account :todayAccountBo="todayAccountBo" :totalAccountBo="totalAccountBo" ></us-virtual-account>
+      <us-virtual-account :operatorUsVO="operatorUsVO":todayAccountBo="todayAccountBo" :totalAccountBo="totalAccountBo" ></us-virtual-account>
     </div>
     <div class="latest_recommend_list">
-      <us-latest-recommendation heading="勾股美股系统业绩总览" :recommendations="recommendationsList"></us-latest-recommendation>
+      <us-latest-recommendation heading="勾美股系统业绩总览" :recommendations="recommendationsList"></us-latest-recommendation>
     </div>
     <div class="indexmei'gu_contrast">
-      <us-index-contrast  heading="勾股美股系统盈亏率对比"  @filterIndexCurImg="filterIndexCurImg($event)"  :GainInfo="GainInfo"  :select="curTime"></us-index-contrast>
-    </div>
-    <div class="operationAccount">
-      <div class="currentHoldingHeader">
-        <h3>勾股美股系统交易统计</h3>
-        <h4 class="currentHoldingTime">{{holding.length ? holding[0].newData : ''}}</h4>
-      </div>
-      <div class="row operationAccountRow">
-        <div class="col-md-6 clearPadLeft now_tb">
-          <table class="table table-striped table-bordered table-advance curHoldingTable table_now" contenteditable="false" >
-            <tbody>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">交易总数</th>
-              <td class="data_box">{{userAccount.tradeNumber}}次</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">买入次数</th>
-              <td class="data_box">{{userAccount.buyNumber}}次</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">卖出次数</th>
-              <td class="data_box">{{userAccount.sellNumber}}次</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">做空次数</th>
-              <td class="data_box">{{userAccount.shortNumber}}次</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">平仓次数</th>
-              <td class="data_box">{{userAccount.coverNumber}}次</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-6 clearPadRig avg_tb">
-          <table class="table table-striped table-bordered table-advance curHoldingTable table_avg" contenteditable="false" >
-            <tbody>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">当前持仓</th>
-              <td class="data_box">{{userAccount.holdNumber}}只</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">赚钱股票</th>
-              <td class="data_box">{{userAccount.profitNumber}}只</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">赔钱股票</th>
-              <td class="data_box">{{userAccount.lossNumber}}只</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">平均持有天数</th>
-              <td class="data_box">{{userAccount.avgHoldDay}}天</td>
-            </tr>
-            <tr class="current-holding-thead-tr">
-              <th class="head_td">胜率</th>
-              <td class="data_box" :class="{Red:userAccount.winRate<50,Green:userAccount.winRate>=0}">{{userAccount.winRate |toFixed2 }}%</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="showTransactionRecord">
-        <a >
-          <router-link :to="{ path: '/components/us-transaction-record' }" >
-            <u>查看交易记录</u>
-          </router-link>
-        </a>
-      </div>
+      <us-index-contrast  heading="勾美股系统盈亏率对比"  @filterIndexCurImg="filterIndexCurImg($event)"  :GainInfo="GainInfo"  :select="curTime"></us-index-contrast>
     </div>
     <div class="paperTrading">
       <us-current-holding :holding="holding" :holdingCode="holdingCode"></us-current-holding>
@@ -82,8 +15,7 @@
     <div class="index_recommend">
       <div class="recommendRow1 recommendRownew">
         <div class="recommendHeader">
-          <h3 style="width: 100%;text-align: center">勾股美股系统交易计划<span class="recommentTime">{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(纽约时间)</span></span></h3>
-          <!--<h3 style="width: 100%;text-align: center">最新推荐 <span class="recommentTime">{{recommends.length>0 ? recommends[0].newDate : ""}}</span></h3>-->
+          <h3 style="width: 100%;text-align: center">勾美股系统交易计划<span class="recommentTime">{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(纽约时间)</span></span></h3>
         </div>
         <div class="recomment_row">
           <div class="row-fluid">
@@ -131,7 +63,7 @@
     <div class="index_recommend">
       <div class="recommendRow1 recommendRownew">
         <div class="recommendHeader">
-          <h3 style="width: 100%;text-align: center">勾股美股系统实盘展示<span class="recommentTime">{{holding.length ? fundList.date : ''}}<span class="timeArea">(周更)</span></span></h3>
+          <h3 style="width: 100%;text-align: center">勾美股系统实盘展示<span class="recommentTime">{{holding.length ? fundList.date : ''}}<span class="timeArea">(周更)</span></span></h3>
         </div>
         <div class="recomment_row">
           <div class="row-fluid">
@@ -169,38 +101,23 @@
       </div>
 
     </div>
-
-
-    <!--<div class="sysRegulation">
-      <div class="sysRegulationHead">
-        <h3 style="width: 100%; text-align: center">系统规则</h3>
-      </div>
-      <div class="sysRegulationInfo">
-        <div class="row-fluid">
-          <div class="span12">
-            <div class="sysRegulationInfoContent">
-              <p>
-                <b>【交易规则】</b>每个交易收盘后，系统自动学习更新，并作出第二天交易的推荐。买入卖出的股票价格以第二天的收盘价计。如果推荐股票在第二天涨停或跌停，系统将认为此股不可操作。
-              </p>
-              <p>
-                <b>【资金使用】</b>系统保留一定的仓位，在极个别情况下，系统将融资买入，最大融资额度不超过账户总值的25%。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
-
-
     <div class="feature">
       <div class="row_top">
         <div class="row row_about">
           <div class="col-md-12 col-md-6_about">
             <div class="icon_title">
               <div class="icon"><i class="iconfont icon-zhinengsuanfa iconfont-icon"></i></div>
-              <div class="title">毕达公告</div>
+              <div class="title">勾股公告</div>
             </div>
-            <div class="desc">毕达科技的勾股系统于2018/8/1正式上线测试。测试期间，账号免费公开。系统业绩透明。欢迎批评指导。也可以参考或跟随勾股系统交易。毕达科技不做任何承诺（包括系统的稳定性，推荐的正确性与数据的及时性），盈亏用户自负。请用户根据自身财力与风险承受力合理理财。</div>
+            <div class="desc">
+              勾股系统于2018/8/1正式上线测试。
+              测试期间，账号免费公开。
+              系统业绩透明。欢迎批评指导。
+              也可以参考或跟随勾股系统交易。
+              勾股定理科技不做任何承诺
+              （包括系统的稳定性，推荐的正确性与数据的及时性），
+              盈亏用户自负。请用户根据自身财力与风险承受力合理理财。
+            </div>
           </div>
           <div class="col-md-12 col-md-6_about">
             <div class="icon_title">
@@ -209,7 +126,16 @@
               </div>
               <div class="title">关于我们</div>
             </div>
-            <div class="desc">毕达科技是核心团队由硅谷资深的人工智能专家，及股票投资资深人士领头创建。主要开发人员分布于硅谷，北京，上海三地。勾股是毕达科技公司（Pyttatec.com）科学家及人工智能工程师为中国股市量身打造的股票交易系统。勾股系统的交易算法集巴菲特的价值投资，华尔街的量化风控策略，及机器深度学习于一身。勾股交易属于低频，稳健，长短结合型的价值投资。</div>
+            <div class="desc">
+              勾股定理科技的核心团队由硅谷资深人工智能专家，
+              及股票投资资深人士领头创建。主要开发人员分布于硅谷，北京，上海三地。
+              勾股系统是由勾股定理科技公司（Pyttatec.com）的科学家及人工智能工程师
+              为中国股市量身打造的股票交易系统。
+              勾股系统的交易算法集巴菲特的价值投资，
+              华尔街的量化风控策略，
+              及机器深度学习于一身。
+              勾股交易属于低频，稳健，长短结合型的价值投资。
+            </div>
           </div>
           <div class="col-md-12 col-md-6_about">
             <div class="icon_title">
@@ -219,7 +145,13 @@
               <div class="title">合作交流</div>
             </div>
             <div class="desc">
-              毕达正在策划私募基金，希望能与您共赢。与此同时，也愿与大资金机构或个人合作（5000万元资本以上），为您量身制定交易策略。有意者请与bd@pyttatec.com联系。如对我们的产品系统等有建议，请联系tec@pyttatec.com。
+              勾股定理科技正在策划私募基金，
+              希望能与您共赢。与此同时，
+              也愿与大资金机构或个人合作
+              （5000万元资本以上），
+              为您量身制定交易策略。
+              有意者请与bd@pyttatec.com联系。
+              如对我们的产品系统等有建议，请联系tec@pyttatec.com。
             </div>
           </div>
         </div>
@@ -253,6 +185,7 @@
       return {
         todayAccountBo:{},
         totalAccountBo:{},
+        operatorUsVO:{},
         virtualEmpPresent:0,
         recommendationsList:[],
         indexCompare:[],
@@ -456,6 +389,8 @@
           if (res.body.code == 0) {
             this.todayAccountBo=res.body.data.entity.todayAccountBo;
             this.totalAccountBo=res.body.data.entity.totalAccountBo;
+            this.operatorUsVO=res.body.data.entity.operatorUsVO;
+
           } else {
             alert(res.body.message)
           }
@@ -690,11 +625,9 @@
     height: auto;
     background: #ffffff;
     margin: 0 2%;
-    margin-top: 20px;
   }
   .operationAccountRow{
     width: 96%;
-    padding-top: 20px;
     margin: 0 2%;
   }
   .showTransactionRecord{
@@ -754,6 +687,7 @@
   }
   .current-holding-thead-tr th{
     text-align: center;
+    width: 50%;
   }
   .icon_title{
     display:flex;
@@ -761,8 +695,6 @@
     justify-content: flex-start;
   }
   .col-md-6_about{
-    padding-top: 5rem;
-    padding-bottom: 5rem;
   }
   a:hover{
     text-decoration:none;
@@ -1048,6 +980,10 @@
       cursor: pointer;
       color: rgb(2, 117, 216);
       text-align: center;
+    }
+    .operationAccountRow{
+      width: 98%;
+      margin: 0 2%;
     }
   }
   a {

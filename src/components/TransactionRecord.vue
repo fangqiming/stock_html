@@ -5,7 +5,7 @@
     <div class="recommendRow">
       <div class="recommendHeader">
         <h3></h3>
-        <h4 class="transactionRecordText" style="width: 100%;text-align: center">A股交易记录</h4>
+        <h4 class="transactionRecordText" style="width: 100%;text-align: center">勾A股系统交易记录</h4>
       </div>
       <div class="row-fluid">
         <div class="span12">
@@ -142,7 +142,7 @@
     <!--交易统计-->
     <div class="operationAccount1" style="margin-top: 1.5rem">
       <div class="recommendHeader">
-        <h4 class="transactionRecordText1" style="width: 100%;text-align: center">A股交易统计</h4>
+        <h4 class="transactionRecordText1" style="width: 100%;text-align: center">勾A股系统交易统计</h4>
         <!--<h4 class="currentHoldingTime">{{holding.length ? holding[0].newData : ''}}</h4>-->
       </div>
       <div class="row operationAccountRow">

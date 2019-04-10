@@ -75,11 +75,11 @@
     font-size: 20px;
     padding-bottom: 2rem;
   }
-  .recommendation:hover {
+  /*.recommendation:hover {
     transition: all 0.3s ease-out;
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-  }
+  }*/
   .header{
     display: flex;
     margin:  2rem 0;
@@ -127,7 +127,8 @@
     width: 100%;
     height:3rem;
     color: #5F5F5F;
-    font-size: 2rem;
+    font-size: 14px;
+    font-weight: 700;
   }
   .Green{
     color: #0B9F91;

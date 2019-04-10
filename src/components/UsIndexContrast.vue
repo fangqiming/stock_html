@@ -85,7 +85,7 @@
               },
               legend: {
                 x: 'center',
-                data: ['毕达指数','标普500','纳斯达克', '道琼斯']
+                data: ['勾股指数','标普500','纳斯达克', '道琼斯']
               },
               toolbox: {
                 show: false,
@@ -112,7 +112,7 @@
               series: [
                 {
                   symbol: "none",
-                  name:'毕达指数',
+                  name:'勾股指数',
                   type:'line',
                   data:this.GainInfo.stockGain,
                 },

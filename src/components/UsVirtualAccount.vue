@@ -2,12 +2,12 @@
   <div class="virtualAccount">
     <div class="row virtualAccountRow">
       <div class="virtualAccountHeader">
-        <h3 class="virtureAllLook">勾股美股系统账户总览</h3>
+        <h3 class="virtureAllLook">勾美股系统账户总览</h3>
       </div>
       <div class="row-fluid virtualAccountBox">
         <div class="col-md-12 virtualAccountC8">
           <div class="row">
-            <div class="col-md-6 clearPadRig accountOverview">
+            <div class="col-md-6 clearPadRig accountOverview1">
               <table cellspacing="0" cellpadding="0" border="0"
                      class="virtable table table-striped table-bordered table-advance start_tb">
                 <tbody>
@@ -92,11 +92,46 @@
                       <div class="data_box">{{todayAccountBo.cover|toInt}}</div>
                     </td>
                   </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">交易总数</th>
+                    <th class="head_td head_td_app">交易总数&#12288;&#12288;</th>
+                    <td>
+                      <div class="data_box">{{operatorUsVO.tradeNumber|setNum}}次</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">买入次数</th>
+                    <th class="head_td head_td_app">账户余额&#12288;&#12288;&#12288;&#12288;</th>
+                    <td>
+                      <div class="data_box">{{operatorUsVO.buyNumber|setNum}}次</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">卖出次数</th>
+                    <th class="head_td head_td_app">卖出次数</th>
+                    <td>
+                      <div class="data_box">{{operatorUsVO.sellNumber|setNum}}次</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">做空次数</th>
+                    <th class="head_td head_td_app">做空次数</th>
+                    <td>
+                      <div class="data_box">{{operatorUsVO.shortNumber|setNum}}次</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">平仓次数</th>
+                    <th class="head_td head_td_app">平仓次数</th>
+                    <td>
+                      <div class="data_box">{{operatorUsVO.coverNumber|setNum}}次</div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
             <div></div>
-            <div class="col-md-6 clearPadRig accountOverview">
+            <div class="col-md-6 clearPadRig accountOverview2">
               <table cellspacing="0" cellpadding="0" border="0"
                      class="virtable table table-striped table-bordered table-advance end_tb">
                 <tbody>
@@ -179,6 +214,46 @@
                       <div class="data_box">{{totalAccountBo.shortRate != undefined ? (totalAccountBo.shortRate).toFixed(2) : 0}}%</div>
                     </td>
                   </tr>
+                  <tr>
+                    <th class="head_td">当前持仓</th>
+                    <td>
+                      <div class="data_box">{{operatorUsVO.holdNumber|setNum}}只</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td">赚钱股票</th>
+                    <td class="data_box">
+                      <div class="data_box">
+                      {{operatorUsVO.profitNumber}}只
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td">赔钱股票</th>
+                    <td class="data_box">
+                      <div class="data_box">
+                      {{operatorUsVO.lossNumber}}只
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td">平均持有天数</th>
+                    <td class="data_box">
+                      <div class="data_box">
+                      {{operatorUsVO.avgHoldDay}}天
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td">胜率</th>
+                    <td :class="{Red:operatorUsVO.winRate<50,Green:operatorUsVO.winRate>=0}">
+                      <div class="data_box">
+                      {{operatorUsVO.winRate |toFixed2 }}%
+                      </div>
+                    </td>
+
+                  </tr>
+
                 </tbody>
               </table>
             </div>
@@ -186,8 +261,15 @@
         </div>
 
       </div>
+      <div class="showTransactionRecord">
+        <a >
+          <router-link :to="{ path: '/components/us-transaction-record' }" >
+            <u>查看交易记录</u>
+          </router-link>
+        </a>
+      </div>
     </div>
-     </div>
+  </div>
 </template>
 
 <script>
@@ -196,6 +278,10 @@
     name: "us-virtual-account",
     props:{
       todayAccountBo:{
+        type: Object,
+        required:true
+      },
+      operatorUsVO:{
         type: Object,
         required:true
       },
@@ -223,9 +309,9 @@
     methods: {
     },
     filters: {
-      toFixed2: function (value) {
+     /* toFixed2: function (value) {
         return value.toFixed(2);
-      }
+      }*/
     }
   }
 </script>
@@ -339,11 +425,30 @@
     padding-left: 0;
     padding-right: 0;
   }
-  .accountOverview th{
+  .accountOverview1{
+    padding-left: 0px;
+    padding-right: 15px;
+  }
+  .accountOverview2{
+  }
+  .accountOverview1 th{
     text-align: center;
+    width: 50%!important;
+  }
+  .accountOverview2 th{
+    text-align: center;
+    width: 50%!important;
   }
   .fontColor{
     color: rgb(51, 51, 51);
+  }
+  .showTransactionRecord{
+    padding-bottom: 2rem;
+    background: #ffffff;
+  }
+  a{
+    color: rgb(2, 117, 216)!important;
+    font-weight: 400;
   }
   /*
   pc端显示
@@ -407,7 +512,7 @@
     .row{
       width: 100%;
       margin: 0px;
-      margin-top: 20px;
+     /* margin-top: 20px;*/
     }
     .virtualAccountC8 {
       width: 100%;

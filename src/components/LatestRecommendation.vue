@@ -4,35 +4,8 @@
         <div class="heading"><h3>{{ heading }}</h3></div>
         <div class="virtualEmpty">&nbsp;&nbsp;</div>
       </div>
-        <!--<div v-for="(item,index) in recommendations" class="pysz_data">-->
-          <!--<div class="today_data">-->
-            <!--<div class="title_name_d">当天对比上证</div>-->
-            <!--<span v-if="recommendations[0].gain[4].profit>0" :class="{Green:recommendations[0].gain[4].profit<0,Red:recommendations[0].gain[4].profit>=0 }">+{{recommendations[0].gain[4].profit}}%</span>-->
-            <!--<span v-else="recommendations[0].gain[4].profit<=0" :class="{Green:recommendations[0].gain[4].profit<0,Red:recommendations[0].gain[4].profit>=0 }">{{recommendations[0].gain[4].profit}}%</span>-->
-          <!--</div>-->
-          <!--<div class="other_data">-->
-            <!--<div class="one_month other_one">-->
-              <!--<div class="title_name_1m">近一月对比</div>-->
-              <!--<span v-if="recommendations[1].gain[4].profit>0" :class="{Green:recommendations[1].gain[4].profit<0,Red:recommendations[1].gain[4].profit>=0 }">+{{recommendations[1].gain[4].profit}}%</span>-->
-              <!--<span v-else="recommendations[1].gain[4].profit<=0" :class="{Green:recommendations[1].gain[4].profit<0,Red:recommendations[1].gain[4].profit>=0 }">{{recommendations[1].gain[4].profit}}%</span>-->
-            <!--</div>-->
-            <!--<div class="three_month other_one">-->
-              <!--<div class="title_name_3m">近三月对比</div>-->
-              <!--<span v-if="recommendations[2].gain[4].profit>0" :class="{Green:recommendations[2].gain[4].profit<0,Red:recommendations[2].gain[4].profit>=0 }">+{{recommendations[2].gain[4].profit}}%</span>-->
-              <!--<span v-else="recommendations[2].gain[4].profit<=0" :class="{Green:recommendations[2].gain[4].profit<0,Red:recommendations[2].gain[4].profit>=0 }">{{recommendations[2].gain[4].profit}}%</span>-->
-            <!--</div>-->
-            <!--<div class="the_year other_one">-->
-              <!--<div class="title_name_y">近一年对比</div>-->
-              <!--<span v-if="recommendations[3].gain[4].profit>0" :class="{Green:recommendations[3].gain[4].profit<0,Red:recommendations[3].gain[4].profit>=0 }">+{{recommendations[3].gain[4].profit}}%</span>-->
-              <!--<span v-else="recommendations[3].gain[4].profit<=0" :class="{Green:recommendations[3].gain[4].profit<0,Red:recommendations[3].gain[4].profit>=0 }">{{recommendations[3].gain[4].profit}}%</span>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
         <div class="recommendation-items">
         <div v-for="(item,index) in recommendations" class="recommendation" >
-          <!--<div class="cover">-->
-            <!--<img :src="'https://aisharev1.oss-cn-beijing.aliyuncs.com/share/home_block_'+(index+1)+'.png'"/>-->
-          <!--</div>-->
           <div class="recommendation_time"></div>
           <div class="recommendation_income">{{item.title}}</div>
           <div class="recommendation_rowItem">
@@ -106,11 +79,11 @@
     font-size: 20px;
     padding-bottom: 2rem;
   }
-  .recommendation:hover {
+ /* .recommendation:hover {
     transition: all 0.3s ease-out;
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-  }
+  }*/
   .header{
     display: flex;
     margin:  2rem 0;
@@ -158,7 +131,8 @@
     width: 100%;
     height:3rem;
     color: #5F5F5F;
-    font-size: 2rem;
+    font-size: 14px;
+    font-weight: 700;
   }
   .Green{
     color: #0B9F91;
@@ -180,9 +154,6 @@
   .recommendation_row>div{
     margin:0.5rem  1rem;
   }
-  /*.pysz-box{*/
-    /*justify-content: space-around;*/
-  /*}*/
   .pysz_data{
     display: none;
   }
@@ -232,12 +203,6 @@
       color: #5F5F5F;
       line-height: 2rem;
       font-size: 1rem;
-    }
-    .recommendation_income{
-      width: 100%;
-      height:1.2rem;
-      color: #5F5F5F;
-      font-size: 1.2rem;
     }
 
     .cover {
@@ -332,6 +297,13 @@
       font-size: 1.5rem;
       padding-left: 0;
       padding-right: 0;
+    }
+    .recommendation_income{
+      width: 100%;
+      height:3rem;
+      color: #5F5F5F;
+      font-size: 12px;
+      font-weight: 700;
     }
   }
 </style>

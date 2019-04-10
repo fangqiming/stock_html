@@ -232,10 +232,11 @@
       font-size: 1rem;
       float: left;
       margin-bottom: 15px;
+      position: relative;
     }
     .DataInquiry_lab{
       float: left;
-      width: 35%;
+      width: 37%;
       text-align: left;
       margin-left: 2%;
     }
@@ -306,6 +307,21 @@
       /*text-align: right;*/
       /*padding-right: 2px;*/
       /*vertical-align: middle;*/
+    }
+    .DataInquiry{
+      width: 96%;
+      height: auto;
+      background: #ffffff;
+      margin:0rem 2% 2rem 2%;
+      overflow: auto;
+    }
+    .btn-default {
+      color: #333;
+      background-color: #fff;
+      border-color: #ccc;
+      position: absolute;
+      right: 10px;
+      bottom: 0px;
     }
   }
 

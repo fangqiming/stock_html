@@ -2,12 +2,12 @@
   <div class="virtualAccount">
     <div class="row virtualAccountRow">
       <div class="virtualAccountHeader">
-        <h3 class="virtureAllLook">勾股A股系统账户总览</h3>
+        <h3 class="virtureAllLook">勾A股系统账户总览</h3>
       </div>
       <div class="row-fluid virtualAccountBox">
         <div class="col-md-12 virtualAccountC8">
           <div class="row">
-            <div class="col-md-6 clearPadRig accountOverview">
+            <div class="col-md-6 clearPadRig accountOverview1">
               <table cellspacing="0" cellpadding="0" border="0"
                      class="virtable table table-striped table-bordered table-advance start_tb">
                 <tbody>
@@ -75,16 +75,56 @@
                   </tr>
                   <tr>
                     <th class="head_td head_td_pc">账户余额</th>
-                    <th class="head_td head_td_app">账户余额&#12288;&#12288;&#12288;</th>
+                    <th class="head_td head_td_app">账户余额&#12288;&#12288;&#12288;&#12288;</th>
                     <td>
                       <div class="data_box">{{todayAccountBo.balance|setNum}}</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">当前持股</th>
+                    <th class="head_td head_td_app">当前持股</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.holdNumber|setNum}}只</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">挣钱股票</th>
+                    <th class="head_td head_td_app">挣钱股票</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.profitNumber|setNum}}只</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">赔钱股票</th>
+                    <th class="head_td head_td_app">赔钱股票</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.lossNumber|setNum}}只</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">胜率</th>
+                    <th class="head_td head_td_app">胜率</th>
+                    <td>
+                      <div class="data_box" :class="{Green:operatorVo.winRate<50,Red:operatorVo.winRate>=0}">{{operatorVo.winRate|setNum}}%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">近一月单日最高盈亏率</th>
+                    <th class="head_td head_td_app">近一月单日<br>最高盈亏率</th>
+                    <td>
+                      <div v-if="operatorVo.maxGain>=0" class="data_box" :class="{Green:operatorVo.maxGain<0,Red:operatorVo.maxGain>=0}">
+                        +{{operatorVo.minGain != undefined ? (operatorVo.minGain).toFixed(2) : 0.00}}%
+                      </div>
+                      <div v-else="operatorVo.maxGain<0" class="data_box" :class="{Green:operatorVo.maxGain<0,Red:operatorVo.maxGain>=0}">
+                        -{{operatorVo.maxGain != undefined ? (operatorVo.maxGain).toFixed(2) : 0.00}}%
+                      </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div></div>
-            <div class="col-md-6 clearPadRig accountOverview">
+            <div class="col-md-6 clearPadRig accountOverview2">
               <table cellspacing="0" cellpadding="0" border="0"
                      class="virtable table table-striped table-bordered table-advance end_tb">
                 <tbody>
@@ -158,6 +198,47 @@
                       <div class="data_box">{{totalAccountBo.maxWithdrawal|setNum}}%</div>
                     </td>
                   </tr>
+                  <tr>
+                    <th class="head_td">平均盈亏率</th>
+                    <td v-if="operatorVo.avgProfitRate>0" :class="{Green:operatorVo.avgProfitRate<0,Red:operatorVo.avgProfitRate>=0}" >
+
+                      <div class="data_box">+{{operatorVo.avgProfitRate | toFixed2   }}%</div>
+
+                    </td>
+                    <td v-else :class="{Green:operatorVo.avgProfitRate<0,Red:operatorVo.avgProfitRate>=0}" >
+                      <div class="data_box">+{{operatorVo.avgProfitRate |toFixed2  }}%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td">平均持有天数</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.avgHoldDay|setNum}}天</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td">买入次数</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.buyNumber|setNum}}次</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td">卖出次数</th>
+                    <td>
+                      <div class="data_box">{{operatorVo.sellNumber|setNum}}次</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="head_td head_td_pc">近一月单日最低盈亏率</th>
+                    <th class="head_td head_td_app">近一月单日<br>最低盈亏率</th>
+                    <td>
+                      <div v-if="operatorVo.minGain>=0" class="data_box" :class="{Green:operatorVo.minGain<0,Red:operatorVo.minGain>=0}">
+                        +{{operatorVo.minGain != undefined ? (operatorVo.minGain).toFixed(2) : 0.00}}%
+                      </div>
+                      <div v-else="operatorVo.minGain<0" class="data_box" :class="{Green:operatorVo.minGain<0,Red:operatorVo.minGain>=0}">
+                        -{{operatorVo.minGain != undefined ? (operatorVo.minGain).toFixed(2) : 0.00}}%
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -165,7 +246,14 @@
         </div>
       </div>
     </div>
-     </div>
+    <div class="showTransactionRecord">
+      <a >
+        <router-link :to="{ path: '/components/transaction-record' }" >
+          <u>查看交易记录</u>
+        </router-link>
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -186,6 +274,10 @@
       //     required:true
       // },
       todayAccountBo:{
+        type: Object,
+        required:true
+      },
+      operatorVo:{
         type: Object,
         required:true
       },
@@ -213,9 +305,9 @@
     methods: {
     },
     filters: {
-      toFixed2: function (value) {
+     /* toFixed2: function (value) {
         return value.toFixed(2);
-      }
+      }*/
     }
   }
 </script>
@@ -332,11 +424,30 @@
     padding-left: 0;
     padding-right: 0;
   }
-  .accountOverview th{
+  .accountOverview1{
+    padding-left: 0px;
+    padding-right: 15px;
+  }
+  .accountOverview2{
+  }
+  .accountOverview1 th{
     text-align: center;
+    width: 50%!important;
+  }
+  .accountOverview2 th{
+    text-align: center;
+    width: 50%!important;
   }
   .fontColor{
     color: rgb(51, 51, 51);
+  }
+  .showTransactionRecord{
+    padding-bottom: 2rem;
+    background: #ffffff;
+  }
+  a{
+    color: rgb(2, 117, 216)!important;
+    font-weight: 400;
   }
   /*
   pc端显示
@@ -400,7 +511,7 @@
     .row{
       width: 100%;
       margin: 0px;
-      margin-top: 20px;
+     /* margin-top: 20px;*/
     }
     .virtualAccountC8 {
       width: 100%;

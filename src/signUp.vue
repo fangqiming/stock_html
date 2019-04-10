@@ -19,11 +19,13 @@
             <!--<span >没有帐号？马上注册</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>忘记密码？</span>-->
             <span >
               <span style="color: red">{{msg}}</span><br>
+              <a >
                 <router-link :to="{ path: '/Register' }" >
-                    没有帐号？马上注册
+                    <u>没有帐号？马上注册</u>
                 </router-link>
+              </a>
                 <br>
-                <h6 class="bdIntroduction">毕达简介：</h6>
+                <h6 class="bdIntroduction">勾股简介：</h6>
                 <h6 class="bdIntroduction">
                     &nbsp; &nbsp;&nbsp; &nbsp;两千五百年前古希腊先贤毕达哥拉斯（Pythagoras）提出“数是万物之本”，提出并证明了直角三角形的毕达哥拉斯定理（勾股定理）。毕达（Pyttatec.com）科学家与人工智能工程师团队经过一年半的研发努力，以美国百年的股票大数据及中国股市有史以来的大数据为本，通过机器深度学习，反复试验，发现了股市的（价值选股+量化风控+机器深度学习交易）勾股算法，并将这一发现反复在美股及A股市场中试验。
                 </h6>
@@ -253,7 +255,10 @@
     text-align: left;
     line-height: 1.6rem;
   }
-
+  a{
+    color: rgb(2, 117, 216)!important;
+    font-weight: 400;
+  }
   /*
   屏幕兼容(手机)
    */
@@ -268,6 +273,9 @@
     }
     .bdIntroductionMb{
       text-align: left;
+    }
+    .signUpBox{
+       margin: 0rem auto;
     }
   }
 </style>

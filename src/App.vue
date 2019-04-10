@@ -134,13 +134,13 @@ export default {
   margin: 0;
   border: 0;
   padding: 0;
-  height: 70px;
+  height: 50px;
   filter: none;
   background-image: none;
 }
 nav ul{
-  padding-top: 10px;
-  padding-bottom: 10px;
+ /* padding-top: 10px;
+  padding-bottom: 10px;*/
 }
 .content{
   background: #E9ECF3;
@@ -184,7 +184,8 @@ a:hover{
   text-decoration: none;
 }
 .logoimg{
-  height: 70px;
+  height: 50px;
+  margin: 0px 10px;
 }
 .footer{
   width: 100%;
@@ -224,6 +225,7 @@ a:hover{
   }
   .navbar {
     margin-bottom: 0px;
+    height: 50px;
   }
   .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #fbfcfd;
@@ -263,13 +265,27 @@ a:hover{
   th,td{
     vertical-align: middle!important;
   }
+  .h3, h3 {
+    font-size: 20px;
+  }
   /*
 屏幕兼容(手机)
 */
   @media screen and (max-width:600px)
   {
-    .logoimg{
-      margin-left: -10rem
+    .logoimg {
+      height: 40px;
+      -webkit-box-sizing: content-box;
+      box-sizing: content-box;
+      padding: 5px 0;
+      position: absolute;
+      left: 0px;
+      overflow: auto;
+      /* box-sizing: content-box; */
+      margin: 0;
+    }
+    .h3, h3 {
+      font-size: 15px;
     }
   }
 </style>

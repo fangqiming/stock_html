@@ -106,6 +106,7 @@
                         股票代码
                       </th>
                       <th>公司名称</th>
+                      <th>高管股份变动</th>
                       <th @click="changePXData('score',1)">AI评分<i class="iconfont icon-paixu-jiangxu"  :class="{isActive:isFlag==1}"></i></th>
                     </tr>
                     </thead>
@@ -118,7 +119,11 @@
                       <td>
                         <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: center"><u>{{item.name}}</u></a>
                       </td>
-
+                      <td :class="{Green:item.changeStock<0,Red:item.changeStock>=0}">
+                        <div  class="data_box2">
+                          {{item.changeStock | setNum}}
+                        </div>
+                      </td>
                       <td>
                         <div  class="data_box2">
                           {{item.aiScore | toFixed4}}
@@ -620,7 +625,7 @@
   }
   .diagnosticStockTbTh3 th{
     text-align: center;
-    width: 33.3%;
+    width:25%;
   }
   .theFirstColumn{
 
@@ -945,6 +950,13 @@
     .data_box2{
       padding-right:40%;
       text-align: right;
+    }
+    .diagnosticStock3{
+      width: 96%;
+      height: auto;
+      background: #ffffff;
+      margin:0rem 2% 2rem 2%;
+      overflow: auto;
     }
   }
   .StockPoolText{

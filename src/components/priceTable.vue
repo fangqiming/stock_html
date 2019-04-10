@@ -642,6 +642,13 @@
       width: 100%;
       margin-left: 0px;
     }
+    .price-table3{
+      width: 96%;
+      height: auto;
+      background: #ffffff;
+      margin:0rem 2% 2rem 2%;
+      overflow: auto;
+    }
     .price-table4{
       width: 100%;
       margin-left: 0px;

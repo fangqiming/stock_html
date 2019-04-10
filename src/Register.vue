@@ -40,9 +40,11 @@
                 <div class="col-sm-12">
                   <button  class="pure-button puree-button-primary puree-spinner-button clearMargin clearPadding"  v-on:click="register">立即注册</button>
                   <span >
+                    <a>
                       <router-link :to="{ path: '/sign-up' }" >
-                          已有账号？马上登录
+                          <u>已有账号？马上登录</u>
                       </router-link>
+                    </a>
                   </span>
                 </div>
               </div>
@@ -176,6 +178,10 @@
     text-align: center;
     margin: 0px;
   }
+  a{
+    color: rgb(2, 117, 216)!important;
+    font-weight: 400;
+  }
 
   /*
   屏幕兼容(手机)
@@ -191,6 +197,10 @@
     }
     .title_label{
       text-align: left;
+    }
+    a{
+      color: rgb(2, 117, 216)!important;
+      font-weight: 400;
     }
   }
 

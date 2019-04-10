@@ -2,7 +2,7 @@
   <div id="currentHolding" class="currentHoldingComponents">
     <div class="row currentHoldingRow">
       <div class="currentHoldingHeader">
-        <h3>勾股美股系统当前持仓 <span>{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(纽约时间)</span></span></h3>
+        <h3>勾美股系统当前持仓 <span>{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(纽约时间)</span></span></h3>
       </div>
       <div class="row-fluid">
       <div class="span6" style="float: left; width: 100%">
