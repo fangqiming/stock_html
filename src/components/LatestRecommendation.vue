@@ -6,7 +6,6 @@
       </div>
         <div class="recommendation-items">
         <div v-for="(item,index) in recommendations" class="recommendation" >
-          <div class="recommendation_time"></div>
           <div class="recommendation_income">{{item.title}}</div>
           <div class="recommendation_rowItem">
             <div class="recommendation_row">
@@ -38,10 +37,6 @@
                 <span v-if="item.gain[4].profit>0" :class="{Green:item.gain[4].profit<0,Red:item.gain[4].profit>=0 }">+{{item.gain[4].profit}}%</span>
                 <span v-else="item.gain[4].profit<=0" :class="{Green:item.gain[4].profit<0,Red:item.gain[4].profit>=0 }">{{item.gain[4].profit}}%</span>
               </div>
-              <!--<div class="pysz" style="visibility: hidden"> {{item.gain[4].indexName}}: <br>-->
-                <!--<span v-if="item.gain[4].profit>0" :class="{Green:item.gain[4].profit<0,Red:item.gain[4].profit>=0 }">+{{item.gain[4].profit}}%</span>-->
-                <!--<span v-else="item.gain[4].profit<=0" :class="{Green:item.gain[4].profit<0,Red:item.gain[4].profit>=0 }">{{item.gain[4].profit}}%</span>-->
-              <!--</div>-->
             </div>
           </div>
         </div>
@@ -129,7 +124,6 @@
   }
   .recommendation_income{
     width: 100%;
-    height:3rem;
     color: #5F5F5F;
     font-size: 14px;
     font-weight: 700;
@@ -300,7 +294,6 @@
     }
     .recommendation_income{
       width: 100%;
-      height:3rem;
       color: #5F5F5F;
       font-size: 12px;
       font-weight: 700;

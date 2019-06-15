@@ -4,6 +4,7 @@ let localhostDev =true;
 //let _host = localhostDev ? 'http://fqm0925.vicp.io:11336' : 'http://www.1000stock.com';
 let _host = localhostDev ? 'http://127.0.0.1:8080': 'http://www.1000stock.com';
 
+
 let httpUrl = {
   'newSearchLastGainApi': _host + '/trade/find_gain',//首页0331修改后获取最新赢利数据接口
   'searchLastGainApi': _host + '/trade/search_gain',//首页获取最新赢利数据接口

@@ -10,7 +10,7 @@
           </div>
           <div class="price-table-Bar">
             <form class="form-search">
-              <input type="text"  class="form-control" placeholder="输入物料关键字" v-model="searchName"/>
+              <input type="text"  class="form-control"  v-on:keyup.enter="getMaterielList" placeholder="输入物料关键字" v-model="searchName"/>
               <button type="button" class="btn btn-default"  @click="getMaterielList()" >搜索</button>
             </form>
           </div>
@@ -113,7 +113,7 @@
   export default {
     data () {
       return {
-        isFlag:0,
+        isFlag:1,
         perPages:1,
         pageSize : 20 , //每页显示20条数据
         currentPage : 1, //当前页码
@@ -123,7 +123,7 @@
         rankDate:"",
         hasAuthority:false,
         isAsc:false,
-        filed:"",
+        filed:"price_before_week",
         imgItems:[],
         dialogVisible: false,
         name:"",

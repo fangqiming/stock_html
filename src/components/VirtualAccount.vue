@@ -427,6 +427,7 @@
   .showTransactionRecord{
     padding-bottom: 2rem;
     background: #ffffff;
+    margin: 0 2%;
   }
   a{
     color: rgb(2, 117, 216)!important;

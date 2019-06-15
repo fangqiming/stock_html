@@ -117,7 +117,7 @@
               console.log(res.body.data.entity);
               var tempArr=[
                 {
-                  title:'每日勾股',
+                  title:'今日勾股',
                   url:'DiagnosticStocks'
                 },
                 {

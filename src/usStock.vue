@@ -163,7 +163,7 @@
           <div class="col-md-12">
             <span>Copyright</span>
             <span>©2018 pyttatec All Rights Reserved</span>
-            <a  href="http://www.miitbeian.gov.cn/">赣ICP备18004847号</a>
+            <a  href="http://www.miitbeian.gov.cn/"><u>赣ICP备18004847号</u></a>
           </div>
         </div>
       </div>
@@ -607,17 +607,17 @@
   }
   .footer{
     width: 100%;
-    height: 6rem;
-    background: #404040;
+    height: 4rem;
+    background: #FD0000;
   }
   .footer a{
     color: #00ADD2;
-    line-height: 6rem;
+    line-height: 4rem;
     font-size: 1rem;
   }
   .footer span{
     color: #ffffff;
-    line-height: 6rem;
+    line-height: 4rem;
     font-size: 1rem;
   }
   .operationAccount{
@@ -842,7 +842,8 @@
       font-size: 30px;
     }
     .title {
-      font-size: 1.5rem;
+      /*font-size: 1.5rem;*/
+      font-size: 14px;
       line-height: 200%;
       font-weight: bold;
       color: #595959;
@@ -974,7 +975,7 @@
       font-size: 1.2rem;
     }
     .timeArea{
-      font-size: 2rem;
+      /*font-size: 2rem;*/
     }
     .routerStyle{
       cursor: pointer;
@@ -984,6 +985,9 @@
     .operationAccountRow{
       width: 98%;
       margin: 0 2%;
+    }
+    .recommentTime{
+      font-size: 14px;
     }
   }
   a {

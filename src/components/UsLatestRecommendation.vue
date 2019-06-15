@@ -6,7 +6,6 @@
       </div>
         <div class="recommendation-items">
         <div v-for="(item,index) in recommendations" class="recommendation" >
-          <div class="recommendation_time"></div>
           <div class="recommendation_income">{{item.title}}</div>
           <div class="recommendation_rowItem">
             <div class="recommendation_row">
@@ -125,7 +124,6 @@
   }
   .recommendation_income{
     width: 100%;
-    height:3rem;
     color: #5F5F5F;
     font-size: 14px;
     font-weight: 700;
@@ -202,7 +200,7 @@
     }
     .recommendation_income{
       width: 100%;
-      height:1.2rem;
+     /* height:1.2rem;*/
       color: #5F5F5F;
       font-size: 1.2rem;
     }

@@ -2,72 +2,6 @@
   <div class="recommend">
     <div class="paperTrading">
       <virtual-account :todayAccountBo="todayAccountBo" :operatorVo="operatorVo" :totalAccountBo="totalAccountBo" ></virtual-account>
-      <!--<div class="operationAccount">
-        <div class="row operationAccountRow">
-          <div class="col-md-6 clearPadLeft now_tb">
-            <table class="table table-striped table-bordered table-advance curHoldingTable table_now" contenteditable="false" >
-              <tbody>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">当前持股</th>
-                <td class="data_box">{{userAccount.holdNumber}}只</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">挣钱股票</th>
-                <td class="data_box">{{userAccount.profitNumber}}只</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">赔钱股票</th>
-                <td class="data_box">{{userAccount.lossNumber}}只</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">胜率</th>
-                <td class="data_box" :class="{Green:userAccount.winRate<50,Red:userAccount.winRate>=0}">{{userAccount.winRate |toFixed2 }}%</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td head_td_pc">近一月单日最高盈亏率</th>
-                <th class="head_td head_td_app">近一月单日最高<br>盈亏率</th>
-                <td class="data_box" :class="{Green:userAccount.maxGain<0,Red:userAccount.maxGain>=0}">+{{userAccount.maxGain *100 |toFixed2 }}%</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-md-6 clearPadRig avg_tb">
-            <table class="table table-striped table-bordered table-advance curHoldingTable table_avg" contenteditable="false" >
-              <tbody>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">平均盈亏率</th>
-                <td v-if="userAccount.avgProfitRate>0" :class="{Green:userAccount.avgProfitRate<0,Red:userAccount.avgProfitRate>=0}" class="data_box">+{{userAccount.avgProfitRate |toFixed2  }}%</td>
-                <td v-else :class="{Green:userAccount.avgProfitRate<0,Red:userAccount.avgProfitRate>=0}" class="data_box">{{userAccount.avgProfitRate |toFixed2 }}%</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">平均持有天数</th>
-                <td class="data_box">{{userAccount.avgHoldDay}}天</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">买入次数</th>
-                <td class="data_box">{{userAccount.buyNumber}}次</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td">卖出次数</th>
-                <td class="data_box">{{userAccount.sellNumber}}次</td>
-              </tr>
-              <tr class="current-holding-thead-tr">
-                <th class="head_td head_td_pc">近一月单日最低盈亏率</th>
-                <th class="head_td head_td_app">近一月单日最低<br>盈亏率</th>
-                <td class="data_box" :class="{Green:userAccount.minGain<0,Red:userAccount.minGain>=0}">{{userAccount.minGain *100 |toFixed2 }}%</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="showTransactionRecord">
-          <a >
-            <router-link :to="{ path: '/components/transaction-record' }" >
-              <u>查看交易记录</u>
-            </router-link>
-          </a>
-        </div>
-      </div>-->
     </div>
     <div class="latest_recommend_list">
       <latest-recommendation heading="勾A股系统业绩总览" :recommendations="recommendationsList"></latest-recommendation>
@@ -255,7 +189,7 @@
           <div class="col-md-12">
             <span>Copyright</span>
             <span>©2018 pyttatec All Rights Reserved</span>
-            <a  href="http://www.miitbeian.gov.cn/">赣ICP备18004847号</a>
+            <a  href="http://www.miitbeian.gov.cn/"><u>赣ICP备18004847号</u></a>
           </div>
         </div>
       </div>
@@ -706,17 +640,17 @@
   }
   .footer{
     width: 100%;
-    height: 6rem;
-    background: #404040;
+    height: 4rem;
+    background: #FD0000;
   }
   .footer a{
     color: #00ADD2;
-    line-height: 6rem;
+    line-height: 4rem;
     font-size: 1rem;
   }
   .footer span{
     color: #ffffff;
-    line-height: 6rem;
+    line-height: 4rem;
     font-size: 1rem;
   }
   .operationAccount{
@@ -950,7 +884,8 @@
       font-size: 30px;
     }
     .title {
-      font-size: 1.5rem;
+     /* font-size: 1.5rem;*/
+      font-size: 14px;
       line-height: 200%;
       font-weight: bold;
       color: #595959;
@@ -1085,9 +1020,11 @@
       font-size: 1.2rem;
     }
     .timeArea{
-      font-size: 2rem;
+     /* font-size: 2rem;*/
     }
-
+    .recommentTime{
+      font-size: 14px;
+    }
   }
   a {
     color: rgb(2, 117, 216)!important;
