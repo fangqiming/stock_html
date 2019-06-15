@@ -218,7 +218,7 @@
       margin-left: 0px;
     }
     .timeArea{
-      font-size: 2rem;
+      /*font-size: 2rem;*/
     }
 
   }

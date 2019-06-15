@@ -101,7 +101,7 @@
 
                   <tr>
                     <th class="head_td head_td_pc">买入次数</th>
-                    <th class="head_td head_td_app">账户余额&#12288;&#12288;&#12288;&#12288;</th>
+                    <th class="head_td head_td_app">买入次数</th>
                     <td>
                       <div class="data_box">{{operatorUsVO.buyNumber|setNum}}次</div>
                     </td>

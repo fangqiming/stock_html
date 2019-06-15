@@ -4,7 +4,8 @@
       <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
-            <img class="logoimg" src="https://aisharev1.oss-cn-beijing.aliyuncs.com/share/logo.png"/>
+            <img class="logoimg" src="https://aisharev1.oss-cn-beijing.aliyuncs.com/share/logo.png?v=1.0"/>
+            勾股定理来勾股，人工智能在用武
             <button type="button" class="navbar-toggle" data-toggle="collapse"
                     data-target="#example-navbar-collapse">
               <span class="sr-only">切换导航</span>
@@ -51,7 +52,7 @@ export default {
     if(getSession('username')){
       var tempArr=[
         {
-          title:'每日勾股',
+          title:'今日勾股',
           url:'DiagnosticStocks'
         } ,
         {
@@ -138,6 +139,14 @@ export default {
   filter: none;
   background-image: none;
 }
+  .navbar-header{
+    line-height: 50px;
+    text-align: center;
+    margin-left: -36px!important;
+    font-family: cursive;
+    font-size: 16px;
+    font-weight: 700;
+  }
 nav ul{
   /*padding-top: 10px;
   padding-bottom: 10px;*/
@@ -148,8 +157,10 @@ nav ul{
 }
 .nav>li>a:focus, .nav>li>a:hover {
   text-decoration: none;
-  background-color: #0275D8!important;
-  color: #FFFFFF!important;
+  /*background-color: #0275D8!important;*/
+ /* color: #FFFFFF!important;*/
+  background: #ffffff!important;
+  color: #FD0000!important;
 }
 .
 a {
@@ -158,7 +169,8 @@ a {
   cursor: pointer;
 }
 .my-navbar{
-  background: #1369BF;
+  /*background: #1369BF;*/
+  background: #FD0000;
   color: #ffffff;
   font-family: 'Biaodian Pro Sans GB',"Helvetica Neue",Helvetica,Arial,"pingfang sc","Hiragino Sans GB","Microsoft YaHei","微软雅黑",STHeiti,SimSun,sans-serif;
 }
@@ -284,7 +296,16 @@ a:hover{
       margin: 0;
     }
     .h3, h3 {
-      font-size: 15px;
+      font-size: 14px!important;
+      font-weight: 700!important;
+    }
+    .navbar-header{
+      line-height: 50px;
+      text-align: center;
+      margin-left: 36px!important;
+      font-family: cursive;
+      font-size: 16px;
+      font-weight: 700;
     }
   }
 </style>

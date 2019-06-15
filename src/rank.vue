@@ -103,30 +103,46 @@
                     <thead>
                     <tr class="diagnosticStockTbTh3 rankwidth">
                       <th >
-                        股票代码
+                        股票代码<br>
+                        公司名称
                       </th>
-                      <th>公司名称</th>
-                      <th>高管股份变动</th>
+                      <!--<th>公司名称</th>-->
+                      <th>增持比例</th>
                       <th @click="changePXData('score',1)">AI评分<i class="iconfont icon-paixu-jiangxu"  :class="{isActive:isFlag==1}"></i></th>
+                      <th>
+                        PEG<br>
+                        夏普比率<br>
+                        PE/avg_PE
+                      </th>
                     </tr>
                     </thead>
 
                     <tbody v-if="items.length>0 && hasAuthority" >
                     <tr v-for="(item,index) in  items">
-                      <td class="app_td" @click="showDetail(item.code)" style="width: 20%;color: rgb(2, 117, 216);cursor: pointer">
-                        <u>{{item.code}}</u>
+                      <td class="app_td"  style="width: 25%;color: rgb(2, 117, 216);cursor: pointer">
+                        {{item.code}}
+                        <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style=";display: block!important;text-align: center"><u>{{item.name}}</u></a>
                       </td>
-                      <td>
-                        <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: center"><u>{{item.name}}</u></a>
+                     <!-- <td>
+                      </td>-->
+                      <td  :class="{Green:item.changeStock<0,Red:item.changeStock>=0}">
+                        <div  v-if="item.changeStock!=null" class="data_box8" style="width: 100%;color: rgb(2, 117, 216);cursor: pointer">
+                          <a :href="item.changeStockUrl" class="strongText blockA"  target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: right"><u>{{item.changeStock | setNum}}%</u></a>
+                        </div>
+                        <div  v-else class="data_box3">
+
+                        </div>
                       </td>
-                      <td :class="{Green:item.changeStock<0,Red:item.changeStock>=0}">
-                        <div  class="data_box3">
-                          {{item.changeStock | setNum}}
+                      <td @click="showDetail(item.code)"  style="width: 25%;color: rgb(2, 117, 216);cursor: pointer">
+                        <div  class="data_box2">
+                          <u>{{item.aiScore | toFixed4}}</u>
                         </div>
                       </td>
                       <td>
                         <div  class="data_box2">
-                          {{item.aiScore | toFixed4}}
+                          {{item.peg}}<br>
+                          {{item.sharpeRatio}}<br>
+                          {{item.pe }}/{{item.avgPe }}
                         </div>
                       </td>
                     </tr>
@@ -336,6 +352,7 @@
         }).then(function(res){
           console.log(res)
           if(res.body.code==0){
+            console.log(res)
             this.hasAuthority=true;
             this.count = res.body.data.entity.total;
             this.items=res.body.data.entity.ranks;
@@ -732,6 +749,10 @@
     padding-right:45%;
     text-align: right;
   }
+  .data_box8{
+    padding-right:45%;
+    text-align: right;
+  }
   .form-search{
     display: flex;
     justify-content: center;
@@ -965,6 +986,13 @@
       padding-right:5%;
       text-align: right;
     }
+    .data_box8{
+      padding-right:25%;
+      text-align: right;
+    }
+    .strongText{
+      font-size: 12px!important;
+    }
   }
   .StockPoolText{
     text-align: center;
@@ -977,6 +1005,4 @@
   .rankwidth{
     width: 25%;
   }
-
-
 </style>

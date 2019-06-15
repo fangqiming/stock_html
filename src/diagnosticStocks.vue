@@ -3,55 +3,7 @@
     <div class="diagnosticStock4">
       <div class="diagnosticStockInfo4">
         <div class="diagnosticStockHead3">
-          <h3>自选股票</h3>
-        </div>
-        <div class="row-fluid">
-          <div class="span12">
-            <div class="list">
-              <template>
-                <div>
-                  <table id="selfStock" class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">
-                    <thead>
-                    <tr class="diagnosticStockTbTh3">
-                      <th>股票代码<br>
-                        公司名称
-                      </th>
-                      <th> AI得分 </th>
-                      <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody v-if="selfChooseStock.length>0" >
-                    <tr v-for="(item,index) in  selfChooseStock">
-                      <td class="app_td">
-                        {{item.code}}<br>{{item.name}}
-                      </td>
-                      <td>
-                        {{item.aiScore}}
-                      </td>
-                      <td @click="delSelfStock(item.code)" class="optStyle">
-                        <u>删除</u>
-                      </td>
-                    </tr>
-                    </tbody>
-                    <tbody v-else>
-                    <tr >
-                      <td colspan="9">暂无数据
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </template>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="diagnosticStock4">
-      <div class="diagnosticStockInfo4">
-        <div class="diagnosticStockHead3">
-          <h3>每日勾股{{everyStockDate}}</h3>
+          <h3>今日勾股{{everyStockDate}}</h3>
         </div>
         <div class="row-fluid">
           <div class="span12">
@@ -107,7 +59,53 @@
         </div>
       </div>
     </div>
-
+    <div class="diagnosticStock4">
+      <div class="diagnosticStockInfo4">
+        <div class="diagnosticStockHead3">
+          <h3>自选股票</h3>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="list">
+              <template>
+                <div>
+                  <table id="selfStock" class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">
+                    <thead>
+                    <tr class="diagnosticStockTbTh3">
+                      <th>股票代码<br>
+                        公司名称
+                      </th>
+                      <th> AI得分 </th>
+                      <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody v-if="selfChooseStock.length>0" >
+                    <tr v-for="(item,index) in  selfChooseStock">
+                      <td class="app_td">
+                        {{item.code}}<br>{{item.name}}
+                      </td>
+                      <td>
+                        {{item.aiScore}}
+                      </td>
+                      <td @click="delSelfStock(item.code)" class="optStyle">
+                        <u>删除</u>
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tbody v-else>
+                    <tr >
+                      <td colspan="9">暂无数据
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="diagnosticStock1">
       <div class="diagnosticStockInfo1">
         <div class="diagnosticStockHead1">
@@ -115,7 +113,7 @@
         </div>
         <div class="diagnosticStockBar">
           <form class="form-search">
-            <input type="text"  class="form-control" placeholder="输入股票代码或公司名称" v-model="searchCode"/>
+            <input type="text"  class="form-control" v-on:keyup.enter="search" placeholder="输入股票代码或公司名称" v-model="searchCode"/>
             <button type="button" class="btn btn-default"  @click="search()">诊股</button>
             <button type="button" class="btn btn-default" @click="addSelfStock()">加入自选股</button>
           </form>
@@ -164,7 +162,7 @@
                     </template>
                     <template v-else class="left_content_operate diagnosticResult">
                       <div>
-                        暂未对该股票进行AI得分
+                        暂未对该股票进行AI评分
                       </div>
                      </template>
                     </tbody>
@@ -260,7 +258,6 @@
         <div class="span12">
           <div class="list list-flex">
             <template>
-              <div class="">
                 <table class="table table-striped table-bordered table-advance curHoldingTable pc_table" contenteditable="false" >
                   <thead>
                   <tr class="diagnosticStockTbTh2" >
@@ -282,7 +279,6 @@
                   </tr>
                   </tbody>
                 </table>
-              </div>
             </template>
           </div>
         </div>
@@ -822,6 +818,7 @@
     .head_td_pc{
       display: none;
     }
+
     .head_td_app{
       display: block;
       font-size: 12px;
@@ -958,6 +955,18 @@
       background: #ffffff;
       margin:0rem 2% 2rem 2%;
       overflow: auto;
+    }
+    .diagnosticStockTbTh3 > th{
+      font-size: 12px!important;
+    }
+    .diagnosticStock4  td{
+      font-size: 12px!important;
+    }
+    .diagnosticStock2 th{
+      font-size: 12px!important;
+    }
+    .diagnosticStock2 td{
+      font-size: 12px!important;
     }
   }
 </style>
