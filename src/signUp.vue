@@ -114,7 +114,6 @@
               setSession('username',res.body.data.entity.name);
               setSession('access_code',res.body.data.entity.accessCode);
               setSession('authority',res.body.data.entity.authority);
-              console.log(res.body.data.entity);
               var tempArr=[
                 {
                   title:'今日勾股',
@@ -154,6 +153,9 @@
                 if(getSession('authority').search('AR') == -1){
                   tempArr.splice(4,2);
                  }
+                if(getSession('authority').search('UV') == -1){
+                  tempArr.splice(2,1);
+                }
               } else {
                 tempArr.splice(4,2);
               }

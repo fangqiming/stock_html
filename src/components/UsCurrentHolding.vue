@@ -5,7 +5,7 @@
         <h3>勾美股系统当前持仓 <span>{{holding.length ? holding[0].newDate : ''}}<span class="timeArea">(纽约时间)</span></span></h3>
       </div>
       <div class="row-fluid">
-      <div class="span6" style="float: left; width: 100%">
+      <div class="span6" style="float: left; width: 100%;margin-bottom: 2rem;">
         <div class="currentHoldingTable">
           <table class="table table-striped table-bordered table-advance curHoldingTable pc_table" contenteditable="false" >
           <thead>
@@ -19,7 +19,10 @@
           </thead>
           <tbody v-if="holding.length>0 && holdingCode != '11090010' && holdingCode != '11090012'">
           <tr  v-for="(item,index) in holding" >
-            <td>{{item.name}}<br>{{item.stockName}}</td>
+            <td >
+              <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: center;color: rgb(2, 117, 216)!important;cursor: pointer;font-weight: 400"><u>{{item.name}}</u></a>
+              {{item.stockName}}
+            </td>
             <td>{{item.oldDate}}<br>{{item.amount | setNum}}<br><span :class="{Green:item.type == '做多',SomeRed:item.type == '做空'}">{{item.type}}</span></td>
             <td><div class="data_box2">{{item.oldPrice | setNum}}<br>{{item.newPrice | setNum}}</div></td>
             <td><div class="data_box3">{{item.cost | toInt}}<br>{{item.value | toInt}}</div></td>
@@ -56,7 +59,9 @@
           </thead>
           <tbody v-if="holding.length>0 && holdingCode != '11090010' && holdingCode != '11090012'">
           <tr v-for="(item,index) in holding" :class="item.gain>=0 ? 'success':''">
-            <td>{{item.name}}<br>{{item.stockName}}</td>
+            <td>
+              <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="font-weight: 400;display: block!important;text-align: center;color: rgb(2, 117, 216)!important;cursor: pointer"><u>{{item.name}}</u></a>
+              {{item.stockName}}</td>
             <td>{{item.oldDate}}<br>{{item.amount | setNum}}<br><span :class="{Green:item.type == '做多',SomeRed:item.type == '做空'}">{{item.type}}</span></td>
             <td><div class="data_box2">{{item.oldPrice | setNum}}<br>{{item.newPrice | setNum}}</div></td>
             <!--<td class="data_box2_td"><div class="data_box2"></div>{{item.amount | setNum}}</td>-->

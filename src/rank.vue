@@ -107,7 +107,11 @@
                         公司名称
                       </th>
                       <!--<th>公司名称</th>-->
-                      <th>增持比例</th>
+                      <th>
+                        增持均价<br>
+                        当前价格<br>
+                        增持金额(万)
+                      </th>
                       <th @click="changePXData('score',1)">AI评分<i class="iconfont icon-paixu-jiangxu"  :class="{isActive:isFlag==1}"></i></th>
                       <th>
                         PEG<br>
@@ -125,11 +129,25 @@
                       </td>
                      <!-- <td>
                       </td>-->
-                      <td  :class="{Green:item.changeStock<0,Red:item.changeStock>=0}">
-                        <div  v-if="item.changeStock!=null" class="data_box8" style="width: 100%;color: rgb(2, 117, 216);cursor: pointer">
-                          <a :href="item.changeStockUrl" class="strongText blockA"  target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: right"><u>{{item.changeStock | setNum}}%</u></a>
+                      <td  >
+                        <div id="dialogStockAvgCost" :class="{Green:item.avgCost<0,Red:item.avgCost>=0}"  v-if="item.avgCost!=null" class="data_box8" style="width: 100%;color: rgb(2, 117, 216);cursor: pointer">
+                          <a :href="item.changeStockUrl" class="strongText blockA"  target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: right">
+                            <u>{{item.avgCost | setNum}}</u>
+                          </a>
                         </div>
                         <div  v-else class="data_box3">
+
+                        </div>
+                        <div  v-if="item.close!=null" class="data_box2">
+                          {{item.close  | setNum}}
+                        </div>
+                        <div v-else class="data_box3">
+
+                        </div>
+                        <div :class="{Green:item.amount<0,Red:item.amount>=0}" v-if="item.amount!=null" class="data_box2">
+                          {{item.amount  | setNum}}
+                        </div>
+                        <div v-else class="data_box3">
 
                         </div>
                       </td>
@@ -227,6 +245,105 @@
     <div class="diagnosticStock3">
       <div class="diagnosticStockInfo3">
         <div class="diagnosticStockHead3">
+          <h3>小股池技术得分</h3>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="list">
+              <template>
+                <div>
+                  <table id="femoralPoolScore" class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">
+                    <thead>
+                    <tr class="diagnosticStockTbTh3 rankwidth">
+                      <th >
+                        股票代码<br>
+                        公司名称
+                      </th>
+                      <th>
+                        增持均价<br>
+                        当前价格<br>
+                        增持金额(万)
+                      </th>
+                      <th>
+                        AI得分<br>
+                        MACD(日)<br>
+                        MACD(周)
+                      </th>
+                      <th>
+                        成交量(%)<br>
+                        价格(%)
+                      </th>
+                    </tr>
+                    </thead>
+
+                    <tbody v-if="femoralPoolScore.length>0 && hasAuthority" >
+                    <tr v-for="(item,index) in  femoralPoolScore">
+                      <td class="app_td"  style="width: 25%;color: rgb(2, 117, 216);cursor: pointer">
+                        {{item.code}}
+                        <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style=";display: block!important;text-align: center"><u>{{item.name}}</u></a>
+                      </td>
+                      <td  >
+                        <div id="femoralPoolScoreAvgCost" :class="{Green:item.avgCost<0,Red:item.avgCost>=0}"  v-if="item.avgCost!=null" class="data_box8" style="width: 100%;color: rgb(2, 117, 216);cursor: pointer;">
+                          <a :href="item.changeStockUrl" class="strongText blockA"  target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: right;">
+                            <u>{{item.avgCost | setNum}}</u>
+                          </a>
+                        </div>
+                        <div  v-else class="data_box3">
+
+                        </div>
+                        <div  v-if="item.close!=null" class="data_box2">
+                          {{item.close  | setNum}}
+                        </div>
+                        <div v-else class="data_box3">
+
+                        </div>
+                        <div :class="{Green:item.amount<0,Red:item.amount>=0}" v-if="item.amount!=null" class="data_box2">
+                          {{item.amount  | setNum}}
+                        </div>
+                        <div v-else class="data_box3">
+
+                        </div>
+                      </td>
+                      <td>
+                        <div  class="data_box2">
+                          {{item.aiScore}}<br>
+                          <span :class="{Green:item.day<0,Red:item.day>=0}">{{item.day}}</span><br>
+                          <span :class="{Green:item.week<0,Red:item.week>=0}">{{item.week }}</span>
+                        </div>
+                      </td>
+                      <td  style="width: 25%;">
+                        <div  class="data_box2">
+                           <span :class="{Green:item.volume<0,Red:item.volume>=0}">{{item.volume}}</span><br>
+                           <span :class="{Green:item.price<0,Red:item.price>=0}">{{item.price}}</span><br>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tbody v-else-if="femoralPoolScore.length<=0 && hasAuthority">
+                    <tr >
+                      <td colspan="9">暂无数据
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tbody v-else>
+                    <tr >
+                      <td colspan="9">您没有权限查看小股池技术得分
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="diagnosticStock3">
+      <div class="diagnosticStockInfo3">
+        <div class="diagnosticStockHead3">
           <h3>小股池最新公告展示</h3>
         </div>
         <table class="table table-bordered">
@@ -300,6 +417,7 @@
         currentPage : 1, //当前页码
         count : 0, //总记录数
         items:[],
+        femoralPoolScore:[],//小股池技术得分
         name:"",
         rankDate:"",
         hasAuthority:false,
@@ -336,6 +454,11 @@
        */
       this.getStockPoolNotice();
 
+      /**
+       * 获取小股池技术得分
+       */
+      this.getFemoralPoolScore();
+
     },
 
     methods:{
@@ -357,6 +480,23 @@
             this.count = res.body.data.entity.total;
             this.items=res.body.data.entity.ranks;
             this.rankDate=res.body.data.entity.date;
+          }else if(res.body.code!=0){
+            this.hasAuthority=false;
+            alert(res.body.message)
+          }
+        },function(){
+          console.log("请求失败")
+        });
+      },
+
+      // 获取小股池技术得分
+      getFemoralPoolScore(){
+        this.$http.get(httpUrl.getFemoralPoolScoreApi, {
+          params: {}
+        }).then(function(res){
+          if(res.body.code==0){
+            this.hasAuthority=true;
+            this.femoralPoolScore=res.body.data.entity;
           }else if(res.body.code!=0){
             this.hasAuthority=false;
             alert(res.body.message)
@@ -992,6 +1132,12 @@
     }
     .strongText{
       font-size: 12px!important;
+    }
+    #femoralPoolScoreAvgCost{
+      padding-right: 40%;
+    }
+    #dialogStockAvgCost{
+      padding-right: 40%;
     }
   }
   .StockPoolText{

@@ -1,64 +1,64 @@
 <template>
   <div>
-    <div class="diagnosticStock4">
-      <div class="diagnosticStockInfo4">
-        <div class="diagnosticStockHead3">
-          <h3>今日勾股{{everyStockDate}}</h3>
-        </div>
-        <div class="row-fluid">
-          <div class="span12">
-            <div class="list">
-              <template>
-                <div>
-                  <table  class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">
-                    <thead>
-                    <tr class="diagnosticStockTbTh3">
-                      <th>
-                        日期
-                      </th>
-                      <th>每日勾股</th>
-                      <th>勾出价格</th>
-                      <th>最新价格</th>
-                      <th>涨跌幅</th>
-                    </tr>
-                    </thead>
-                    <tbody v-if="everyStockList.length>0" >
-                    <tr v-for="(item,index) in  everyStockList">
-                      <td class="app_td">
-                        {{item.date}}
-                      </td>
-                      <td>
-                        {{item.name}}
-                      </td>
-                      <td>
-                        <div class="data_box2">
-                          {{item.oldPrice|toFixed2}}
-                        </div>
-                      </td>
-                      <td>
-                        <div class="data_box2">
-                          {{item.newPrice|toFixed2}}
-                        </div>
-                      </td>
-                      <td :class="{Green:item.rate<0,Red:item.rate>=0}">
-                        {{item.rate}}<span>%</span>
-                      </td>
-                    </tr>
-                    </tbody>
-                    <tbody v-else>
-                    <tr >
-                      <td colspan="9">暂无数据
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </template>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div class="diagnosticStock4">-->
+<!--      <div class="diagnosticStockInfo4">-->
+<!--        <div class="diagnosticStockHead3">-->
+<!--          <h3>今日勾股{{everyStockDate}}</h3>-->
+<!--        </div>-->
+<!--        <div class="row-fluid">-->
+<!--          <div class="span12">-->
+<!--            <div class="list">-->
+<!--              <template>-->
+<!--                <div>-->
+<!--                  <table  class="table table-striped table-bordered table-advance diagnosticStockInfoTb3" contenteditable="false">-->
+<!--                    <thead>-->
+<!--                    <tr class="diagnosticStockTbTh3">-->
+<!--                      <th>-->
+<!--                        日期-->
+<!--                      </th>-->
+<!--                      <th>每日勾股</th>-->
+<!--                      <th>勾出价格</th>-->
+<!--                      <th>最新价格</th>-->
+<!--                      <th>涨跌幅</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody v-if="everyStockList.length>0" >-->
+<!--                    <tr v-for="(item,index) in  everyStockList">-->
+<!--                      <td class="app_td">-->
+<!--                        {{item.date}}-->
+<!--                      </td>-->
+<!--                      <td>-->
+<!--                        {{item.name}}-->
+<!--                      </td>-->
+<!--                      <td>-->
+<!--                        <div class="data_box2">-->
+<!--                          {{item.oldPrice|toFixed2}}-->
+<!--                        </div>-->
+<!--                      </td>-->
+<!--                      <td>-->
+<!--                        <div class="data_box2">-->
+<!--                          {{item.newPrice|toFixed2}}-->
+<!--                        </div>-->
+<!--                      </td>-->
+<!--                      <td :class="{Green:item.rate<0,Red:item.rate>=0}">-->
+<!--                        {{item.rate}}<span>%</span>-->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                    <tbody v-else>-->
+<!--                    <tr >-->
+<!--                      <td colspan="9">暂无数据-->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                  </table>-->
+<!--                </div>-->
+<!--              </template>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="diagnosticStock4">
       <div class="diagnosticStockInfo4">
         <div class="diagnosticStockHead3">
@@ -347,7 +347,7 @@
        */
       this.searchSelfStock();
 
-      this.everyStock();
+      // this.everyStock();
 
     },
 

@@ -25,7 +25,7 @@
                   </tr>
 
                   <tr>
-                    <th class="head_td">当天浮动盈亏</th>
+                    <th class="head_td">当天盈亏</th>
                     <td>
                       <div v-if="todayAccountBo.relativeProfit>0" class="data_box" :class="{Green:todayAccountBo.relativeProfit<0,Red:todayAccountBo.relativeProfit>=0}">
                         +{{todayAccountBo.relativeProfit|setNum}}
@@ -37,7 +37,7 @@
                   </tr>
 
                   <tr>
-                    <th class="head_td">当天浮动盈亏率</th>
+                    <th class="head_td">当天盈亏率</th>
                     <td>
                       <div v-if="todayAccountBo.relativeProfitRate>0" class="data_box" :class="{Green:todayAccountBo.relativeProfitRate<0,Red:todayAccountBo.relativeProfitRate>=0}">
                         +{{todayAccountBo.relativeProfitRate != undefined ? (todayAccountBo.relativeProfitRate * 100).toFixed(2) : 0.00}}%
@@ -76,7 +76,7 @@
                   </tr>
                   <tr>
                     <th class="head_td head_td_pc">账户余额</th>
-                    <th class="head_td head_td_app">账户余额&#12288;&#12288;&#12288;&#12288;</th>
+                    <th class="head_td head_td_app">账户<br/>余额</th>
                     <td>
                       <div class="data_box">{{todayAccountBo.balance|setNum}}</div>
                     </td>
@@ -135,7 +135,7 @@
                   </tr>
 
                   <tr>
-                    <th class="head_td">累计浮动盈亏</th>
+                    <th class="head_td">累计盈亏</th>
                     <td>
                       <div v-if="totalAccountBo.relativeProfit>0" class="data_box" :class="{Green:totalAccountBo.relativeProfit<0,Red:totalAccountBo.relativeProfit>=0}">
                         +{{totalAccountBo.relativeProfit|setNum}}
@@ -147,7 +147,7 @@
                   </tr>
 
                   <tr>
-                    <th class="head_td">累计浮动盈亏率</th>
+                    <th class="head_td">累计盈亏率</th>
                     <td>
                       <div v-if="totalAccountBo.relativeProfitRate>0" class="data_box" :class="{Green:totalAccountBo.relativeProfitRate<0,Red:totalAccountBo.relativeProfitRate>=0}">
                         +{{totalAccountBo.relativeProfitRate != undefined ? (totalAccountBo.relativeProfitRate * 100).toFixed(2) : 0.00}}%
@@ -229,13 +229,13 @@
         </div>
       </div>
     </div>
-    <div class="showTransactionRecord">
-      <a >
-        <router-link :to="{ path: '/components/transaction-record' }" >
-          <u>查看交易记录</u>
-        </router-link>
-      </a>
-    </div>
+<!--    <div class="showTransactionRecord">-->
+<!--      <a >-->
+<!--        <router-link :to="{ path: '/components/transaction-record' }" >-->
+<!--          <u>查看交易记录</u>-->
+<!--        </router-link>-->
+<!--      </a>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -463,6 +463,9 @@
 */
   @media screen and (max-width:600px)
   {
+    .head_td{
+      padding-right: 0px!important;
+    }
     .head_td_pc{
       display: none;
     }

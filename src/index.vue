@@ -33,8 +33,9 @@
                 </thead>
                 <tbody v-if="recommends.length>0 && recommendsCode != '11090010' && recommendsCode != '11090012'">
                 <tr v-for="(item,index) in recommends">
-                  <td >{{item.name}}<br/>{{item.stockName}}</td>
-
+                  <td>
+                    <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: center;color: rgb(2, 117, 216)!important;cursor: pointer"><u>{{item.name}}</u></a>
+                    {{item.stockName}}</td>
                   <td  :class="{Green:item.action=='卖出',Red:item.action=='买入'}">{{item.action}}</td>
                   <td>{{item.investmentRatio*100 |toFixed2 }}%<br>{{item.amount |setNum}}</td>
                   <td>{{item.note}}</td>
@@ -281,7 +282,6 @@
         var str=getSession('Amount-Share');
             this.initAmount=str;
       }
-      console.log( getSession('username'))
       if(getSession('username')){
         this.isLogin=false;
         var tempArr=[
@@ -502,7 +502,6 @@
         }).then(function (res) {
           if (res.body.code == 0) {
             this.fundList = res.body.data.entity;
-            console.log(res)
           } else {
             alert(res.body.message)
           }

@@ -88,7 +88,9 @@ export default {
         if(getSession('authority').search('AR') == -1){
           tempArr.splice(4,2);
         }
-
+        if(getSession('authority').search('UV') == -1){
+          tempArr.splice(2,1);
+        }
       } else {
         tempArr.splice(4,2);
       }

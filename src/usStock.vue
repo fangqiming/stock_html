@@ -31,7 +31,9 @@
                 </thead>
                 <tbody v-if="recommends.length > 0 && recommendsCode != '11090010' && recommendsCode != '11090012'">
                 <tr v-for="(item,index) in recommends">
-                  <td >{{item.name}}<br/>{{item.stockName}}</td>
+                  <td >
+                    <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: center;color: rgb(2, 117, 216)!important;cursor: pointer"><u>{{item.name}}</u></a>
+                    {{item.stockName}}</td>
                   <td  :class="{Red:item.action=='卖出', SomeRed:item.action=='做空', Green:item.action=='买入', SomeGreen:item.action=='平仓'}">{{item.action}}</td>
                   <td>{{item.investmentRatio |toFixed2 }}%<br>{{item.amount |setNum}}</td>
                   <td>{{item.note}}</td>

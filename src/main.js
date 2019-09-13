@@ -22,7 +22,6 @@ Vue.http.interceptors.push((request,next)=>{
   request.headers.set('Access-code',getSession("access_code")) // 请求headers携带参数
 
   if(getSession("username")!=""){
-    console.log("传递给后台的code："+encodeURI(getSession("username")))
     request.headers.set('Account-Code',encodeURI(getSession("username"))) // 请求headers携带参数
   }else {
     request.headers.set('Account-Code',"echo_gou") // 请求headers携带参数

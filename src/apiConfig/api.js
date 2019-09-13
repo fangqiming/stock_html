@@ -1,8 +1,8 @@
-let localhostDev =true;
+let localhostDev = false;
 //如果是本地开发，就把localhostDev 设置成true，连接就是拼成‘http://localhost:8080/api/test’
 //生产环境，就把localhostDev 设置成false，连接就是拼成‘http://xxx.com/api/test’
 //let _host = localhostDev ? 'http://fqm0925.vicp.io:11336' : 'http://www.1000stock.com';
-let _host = localhostDev ? 'http://127.0.0.1:8080': 'http://www.1000stock.com';
+let _host = localhostDev ? 'http://127.0.0.1:8082' : 'http://www.1000stock.com';
 
 
 let httpUrl = {
@@ -97,6 +97,7 @@ let httpUrl = {
   'getShowNoticeApi': _host + '/material/find_notice_by_code',//根据股票代码获取公司公告
   'getStockPoolApi': _host + '/material/find_stock_pool',//股池公告信息
   'getcoreStatisticsApi': _host + '/diagnosis/find_rank_scatter',//得分统计
+  'getFemoralPoolScoreApi': _host + '/diagnosis/find_focus',//小股池技术得分
 
 //////////////////////////////////////////宏观指数////////////////////////////////////
   'getPmiIndexApi': _host + '/material/find_pmi',//获取PMI指数
