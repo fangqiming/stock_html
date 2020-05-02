@@ -229,13 +229,13 @@
         </div>
       </div>
     </div>
-<!--    <div class="showTransactionRecord">-->
-<!--      <a >-->
-<!--        <router-link :to="{ path: '/components/transaction-record' }" >-->
-<!--          <u>查看交易记录</u>-->
-<!--        </router-link>-->
-<!--      </a>-->
-<!--    </div>-->
+    <div class="showTransactionRecord">
+      <a >
+        <router-link :to="{ path: '/components/transaction-record' }" >
+          <u>查看交易记录</u>
+        </router-link>
+      </a>
+    </div>
   </div>
 </template>
 

@@ -62,47 +62,47 @@
 
     </div>
 
-    <div class="index_recommend">
-      <div class="recommendRow1 recommendRownew">
-        <div class="recommendHeader">
-          <h3 style="width: 100%;text-align: center">勾美股系统实盘展示<span class="recommentTime">{{holding.length ? fundList.date : ''}}<span class="timeArea">(周更)</span></span></h3>
-        </div>
-        <div class="recomment_row">
-          <div class="row-fluid">
-            <div class="span12">
-              <table class="table table-striped table-bordered table-advance recomment_tb" >
-                <thead>
-                <tr class="recommend-thead-tr">
-                  <th>账户</th>
-                  <th>初始日期</th>
-                  <th>总资产</th>
-                  <th>初始净值<br>当前净值</th>
-                  <th>最大回撤</th>
-                </tr>
-                </thead>
-                <tbody >
-                <tr v-for="(item,index) in fundList.list">
-                  <td class="routerStyle" @click="showFundDetail(item.name)">
-                    <u>{{item.name}}</u>
-                  </td>
-                  <td >{{item.startDate}}</td>
-                  <td  ><div class="data_box1">{{item.marketCap | setNum}}</div></td>
-                  <td  ><div class="data_box1">{{item.initNetWorth | toFixed4}}<br>{{item.netWorth}}</div></td>
-                  <td ><div class="data_box1">{{item.withdrawal|toFixed2}}%</div></td>
-                </tr>
-                </tbody>
-              </table>
-              <div class="clear"></div>
-            </div>
-          </div>
-        </div>
-        <div class="showTransactionRecord showTransaction_Record">
-          <a class="recommend_info">
-          </a>
-        </div>
-      </div>
+<!--    <div class="index_recommend">-->
+<!--      <div class="recommendRow1 recommendRownew">-->
+<!--        <div class="recommendHeader">-->
+<!--          <h3 style="width: 100%;text-align: center">勾美股系统实盘展示<span class="recommentTime">{{holding.length ? fundList.date : ''}}<span class="timeArea">(周更)</span></span></h3>-->
+<!--        </div>-->
+<!--        <div class="recomment_row">-->
+<!--          <div class="row-fluid">-->
+<!--            <div class="span12">-->
+<!--              <table class="table table-striped table-bordered table-advance recomment_tb" >-->
+<!--                <thead>-->
+<!--                <tr class="recommend-thead-tr">-->
+<!--                  <th>账户</th>-->
+<!--                  <th>初始日期</th>-->
+<!--                  <th>总资产</th>-->
+<!--                  <th>初始净值<br>当前净值</th>-->
+<!--                  <th>最大回撤</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody >-->
+<!--                <tr v-for="(item,index) in fundList.list">-->
+<!--                  <td class="routerStyle" @click="showFundDetail(item.name)">-->
+<!--                    <u>{{item.name}}</u>-->
+<!--                  </td>-->
+<!--                  <td >{{item.startDate}}</td>-->
+<!--                  <td  ><div class="data_box1">{{item.marketCap | setNum}}</div></td>-->
+<!--                  <td  ><div class="data_box1">{{item.initNetWorth | toFixed4}}<br>{{item.netWorth}}</div></td>-->
+<!--                  <td ><div class="data_box1">{{item.withdrawal|toFixed2}}%</div></td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--              <div class="clear"></div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="showTransactionRecord showTransaction_Record">-->
+<!--          <a class="recommend_info">-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
 
-    </div>
+<!--    </div>-->
     <div class="feature">
       <div class="row_top">
         <div class="row row_about">

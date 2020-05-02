@@ -69,9 +69,14 @@ export default {
           url:'PriceTable'
         },
         {
-          title:'账户管理',
+          title:'投资者',
           url:'InvestorRelation'
-        } ,{
+        } ,
+        {
+          title:'账户管理',
+          url:'Account'
+        } ,
+        {
           title:'AI排名',
           url:'Rank'
         } ,
@@ -86,13 +91,13 @@ export default {
       ];
       if (getSession('authority') != null && getSession('authority') != '') {
         if(getSession('authority').search('AR') == -1){
-          tempArr.splice(4,2);
+          tempArr.splice(4,3);
         }
         if(getSession('authority').search('UV') == -1){
           tempArr.splice(2,1);
         }
       } else {
-        tempArr.splice(4,2);
+        tempArr.splice(4,3);
       }
       this.aa.seturl(tempArr);
       this.items=this.aa.url;
@@ -309,5 +314,8 @@ a:hover{
       font-size: 16px;
       font-weight: 700;
     }
+  }
+  .el-select-dropdown__list{
+    display: grid;
   }
 </style>

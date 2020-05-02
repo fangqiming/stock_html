@@ -12,10 +12,8 @@ import Rank from '@/rank'
 import Dialog from '../components/dialog'
 import RealFund from '../components/RealFund'
 import InvestorRelation from '../components/investorRelation'
-
-
+import Account from '../components/Account'
 import TestPage from '@/testPage'
-
 import RecommendInfo from '@/RecommendInfo'
 import DataInquiry   from "@/DataInquiry"
 import Recommend from '../components/Recommend'
@@ -118,6 +116,11 @@ export default new Router({
       path: '/investor-relation',
       name: 'InvestorRelation',
       component: InvestorRelation
+    },
+    {
+      path: '/account',
+      name: 'Account',
+      component: Account
     }
   ]
 

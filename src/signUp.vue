@@ -27,14 +27,24 @@
                 <br>
                 <h6 class="bdIntroduction">勾股简介：</h6>
                 <h6 class="bdIntroduction">
-                    &nbsp; &nbsp;&nbsp; &nbsp;两千五百年前古希腊先贤毕达哥拉斯（Pythagoras）提出“数是万物之本”，提出并证明了直角三角形的毕达哥拉斯定理（勾股定理）。毕达（Pyttatec.com）科学家与人工智能工程师团队经过一年半的研发努力，以美国百年的股票大数据及中国股市有史以来的大数据为本，通过机器深度学习，反复试验，发现了股市的（价值选股+量化风控+机器深度学习交易）勾股算法，并将这一发现反复在美股及A股市场中试验。
+                    &nbsp; &nbsp;&nbsp; &nbsp;勾股定理科技，由硅谷、深圳、北京三地计算机专家及金融投资人联合于2019年注册成立。专业从事软件开发，人工智能算法，大数据分析等。公司拥有国际一流的技术人才，国际领先的技术， 以及多个成熟软件产品。公司立志是成为国际一流的人工智能科技企业。
                 </h6>
             </span>
           </div>
         </div>
       </div>
     </div>
-
+    <div class="footer">
+      <div class="contentFooter">
+        <div class="row">
+          <div class="col-md-12">
+            <span>Copyright</span>
+            <span>©2018 pyttatec All Rights Reserved</span>
+            <a  href="http://beian.miit.gov.cn/"><u>赣ICP备18004847号</u></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -133,8 +143,12 @@
                   url:'PriceTable'
                 },
                 {
-                  title:'账户管理',
+                  title:'投资者',
                   url:'InvestorRelation'
+                } ,
+                {
+                  title:'账户管理',
+                  url:'Account'
                 } ,
                 {
                   title:'AI排名',
@@ -151,13 +165,13 @@
               ];
               if (getSession('authority') != null && getSession('authority') != '') {
                 if(getSession('authority').search('AR') == -1){
-                  tempArr.splice(4,2);
+                  tempArr.splice(4,3);
                  }
                 if(getSession('authority').search('UV') == -1){
                   tempArr.splice(2,1);
                 }
               } else {
-                tempArr.splice(4,2);
+                tempArr.splice(4,3);
               }
               this.aa.seturl(tempArr);
               setTimeout(function(){
@@ -179,7 +193,7 @@
   *
   .signUpContainer{
     margin: 0rem  auto ;
-    max-width: 1030px;
+    /*max-width: 1030px;*/
     min-width: 320px;
     position: relative;
   }
@@ -260,6 +274,23 @@
   a{
     color: rgb(2, 117, 216)!important;
     font-weight: 400;
+  }
+  .footer {
+    width: 100%;
+    height: 4rem;
+    background: #FD0000;
+    bottom: 0px;
+    position: fixed;
+  }
+  .footer a{
+    color: #00ADD2;
+    line-height: 4rem;
+    font-size: 1rem;
+  }
+  .footer span{
+    color: #ffffff;
+    line-height: 4rem;
+    font-size: 1rem;
   }
   /*
   屏幕兼容(手机)

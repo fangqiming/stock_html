@@ -10,7 +10,7 @@
           <table class="table table-striped table-bordered table-advance curHoldingTable pc_table" contenteditable="false" >
           <thead>
           <tr class="current-holding-thead-tr" >
-            <th>股票代码<br>公司名称</th>
+            <th>股票代码<br>公司名称<br>预测EPS</th>
             <th>交易日期<br>交易份数<br>交易类型</th>
             <th>交易价格<br>当前价格</th>
             <th>交易成本<br>目前市值</th>
@@ -21,7 +21,8 @@
           <tr  v-for="(item,index) in holding" >
             <td >
               <a :href="item.url" class="strongText blockA" target="_blank" rel="noopener noreferrer" style="display: block!important;text-align: center;color: rgb(2, 117, 216)!important;cursor: pointer;font-weight: 400"><u>{{item.name}}</u></a>
-              {{item.stockName}}
+              <span :class="{Red:item.eps !== null}">{{item.stockName}}</span><br>
+              <span :class="{Red:item.eps !== null}">{{item.eps}}</span>
             </td>
             <td>{{item.oldDate}}<br>{{item.amount | setNum}}<br><span :class="{Green:item.type == '做多',SomeRed:item.type == '做空'}">{{item.type}}</span></td>
             <td><div class="data_box2">{{item.oldPrice | setNum}}<br>{{item.newPrice | setNum}}</div></td>
@@ -227,6 +228,5 @@
     .timeArea{
      /* font-size: 2rem;*/
     }
-
   }
 </style>

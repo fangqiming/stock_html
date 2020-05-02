@@ -5,41 +5,66 @@
         <div class="virtualEmpty">&nbsp;&nbsp;</div>
       </div>
         <div class="recommendation-items">
-        <div v-for="(item,index) in recommendations" class="recommendation" >
-          <div class="recommendation_income">{{item.title}}</div>
-          <div class="recommendation_rowItem">
-            <div class="recommendation_row">
-              <div class="sysZS">{{item.gain[0].indexName}}: <br>
-                <span  v-if="item.gain[0].profit>0" :class="{Red:item.gain[0].profit<0,Green:item.gain[0].profit>=0 }">+{{item.gain[0].profit | setNum}}%</span>
-                <span  v-else="item.gain[0].profit<=0" :class="{Red:item.gain[0].profit<0,Green:item.gain[0].profit>=0 }">{{item.gain[0].profit | setNum}}%</span>
-              </div>
-            </div>
-            <div class="recommendation_row">
-              <div class="shZS">{{item.gain[1].indexName}}: <br>
-                <span v-if="item.gain[1].profit>0"  :class="{Red:item.gain[1].profit<0,Green:item.gain[1].profit>=0 }">+{{item.gain[1].profit | setNum}}%</span>
-                <span v-else="item.gain[1].profit<=0"  :class="{Red:item.gain[1].profit<0,Green:item.gain[1].profit>=0 }">{{item.gain[1].profit | setNum}}%</span>
-              </div>
-            </div>
-            <div class="recommendation_row">
-              <div class="h3ZS"> {{item.gain[2].indexName}}: <br>
-                <span v-if="item.gain[2].profit>0" :class="{Red:item.gain[2].profit<0,Green:item.gain[2].profit>=0 }">+{{item.gain[2].profit | setNum}}%</span>
-                <span v-else="item.gain[2].profit<=0" :class="{Red:item.gain[2].profit<0,Green:item.gain[2].profit>=0 }">{{item.gain[2].profit | setNum}}%</span>
-              </div>
-            </div>
-            <div class="recommendation_row">
-              <div class="cyZS"> {{item.gain[3].indexName}}: <br>
-                <span v-if="item.gain[3].profit>0" :class="{Red:item.gain[3].profit<0,Green:item.gain[3].profit>=0 }">+{{item.gain[3].profit | setNum}}%</span>
-                <span v-else="item.gain[3].profit<=0" :class="{Red:item.gain[3].profit<0,Green:item.gain[3].profit>=0 }">{{item.gain[3].profit | setNum}}%</span>
-              </div>
-            </div>
-            <div class="recommendation_row pysz-box">
-              <div class="pysz"> {{item.gain[4].indexName}}: <br>
-                <span v-if="item.gain[4].profit>0" :class="{Red:item.gain[4].profit<0,Green:item.gain[4].profit>=0 }">+{{item.gain[4].profit}}%</span>
-                <span v-else="item.gain[4].profit<=0" :class="{Red:item.gain[4].profit<0,Green:item.gain[4].profit>=0 }">{{item.gain[4].profit}}%</span>
+<!--        <div v-for="(item,index) in recommendations" class="recommendation" >-->
+<!--          <div class="recommendation_income">{{item.title}}</div>-->
+<!--          <div class="recommendation_rowItem">-->
+<!--            <div class="recommendation_row">-->
+<!--              <div class="sysZS">{{item.gain[0].indexName}}: <br>-->
+<!--                <span  v-if="item.gain[0].profit>0" :class="{Red:item.gain[0].profit<0,Green:item.gain[0].profit>=0 }">+{{item.gain[0].profit | setNum}}%</span>-->
+<!--                <span  v-else="item.gain[0].profit<=0" :class="{Red:item.gain[0].profit<0,Green:item.gain[0].profit>=0 }">{{item.gain[0].profit | setNum}}%</span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="recommendation_row">-->
+<!--              <div class="shZS">{{item.gain[1].indexName}}: <br>-->
+<!--                <span v-if="item.gain[1].profit>0"  :class="{Red:item.gain[1].profit<0,Green:item.gain[1].profit>=0 }">+{{item.gain[1].profit | setNum}}%</span>-->
+<!--                <span v-else="item.gain[1].profit<=0"  :class="{Red:item.gain[1].profit<0,Green:item.gain[1].profit>=0 }">{{item.gain[1].profit | setNum}}%</span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="recommendation_row">-->
+<!--              <div class="h3ZS"> {{item.gain[2].indexName}}: <br>-->
+<!--                <span v-if="item.gain[2].profit>0" :class="{Red:item.gain[2].profit<0,Green:item.gain[2].profit>=0 }">+{{item.gain[2].profit | setNum}}%</span>-->
+<!--                <span v-else="item.gain[2].profit<=0" :class="{Red:item.gain[2].profit<0,Green:item.gain[2].profit>=0 }">{{item.gain[2].profit | setNum}}%</span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="recommendation_row">-->
+<!--              <div class="cyZS"> {{item.gain[3].indexName}}: <br>-->
+<!--                <span v-if="item.gain[3].profit>0" :class="{Red:item.gain[3].profit<0,Green:item.gain[3].profit>=0 }">+{{item.gain[3].profit | setNum}}%</span>-->
+<!--                <span v-else="item.gain[3].profit<=0" :class="{Red:item.gain[3].profit<0,Green:item.gain[3].profit>=0 }">{{item.gain[3].profit | setNum}}%</span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="recommendation_row pysz-box">-->
+<!--              <div class="pysz"> {{item.gain[4].indexName}}: <br>-->
+<!--                <span v-if="item.gain[4].profit>0" :class="{Red:item.gain[4].profit<0,Green:item.gain[4].profit>=0 }">+{{item.gain[4].profit}}%</span>-->
+<!--                <span v-else="item.gain[4].profit<=0" :class="{Red:item.gain[4].profit<0,Green:item.gain[4].profit>=0 }">{{item.gain[4].profit}}%</span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+          <div class="recommendationNew">
+            <div class="row-fluid">
+              <div class="span12">
+                <table class="table table-striped table-bordered table-advance recommendation_tb" >
+                  <thead>
+                  <tr class="recommendation-thead-tr">
+                    <th>时间</th>
+                    <th>收益率</th>
+                    <th>SP500收益率</th>
+                    <th>跑赢SP500</th>
+                  </tr>
+                  </thead>
+                  <tbody >
+                  <tr v-for="(item,index) in recommendations">
+                    <td>{{item.title}}</td>
+                    <td :class="{Green:item.gain<0,Red:item.gain>=0}"><div class="data_box3"><span v-if="item.gain>=0">+</span>{{item.gain |toFixed2 }}%</div></td>
+                    <td :class="{Green:item.szGain<0,Red:item.szGain>=0}"><div class="data_box3"><span v-if="item.szGain>=0">+</span>{{item.szGain |toFixed2 }}%</div></td>
+                    <td :class="{Green:item.beta<0,Red:item.beta>=0}"><div class="data_box3"><span v-if="item.beta>=0">+</span>{{item.beta |toFixed2}}%</div></td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div class="clear"></div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
 </template>
@@ -81,7 +106,7 @@
   }*/
   .header{
     display: flex;
-    margin:  2rem 0;
+    margin:  2rem 0px 0px;
     justify-content:center;
     /*height:4rem ;*/
     width: 100%;
@@ -95,9 +120,9 @@
   .recommendation-items{
     /*margin-left: 10%;*/
     /*width: 80%;*/
-    height: 30rem;
+    /*height: 30rem;*/
     display: flex;
-    margin-top: 1rem;
+    /*margin-top: 1rem;*/
   }
   .recommendation{
     width: 23%;
@@ -151,7 +176,32 @@
   .pysz_data{
     display: none;
   }
-
+  .recommendationNew{
+    width: 100%;
+    height: 100%;
+    background: #e0e0e0;
+    margin: 0 1%;
+    background: #ffffff;
+    font-size: 14px;
+    /*padding: 2% 10%;*/
+  }
+  .recommendation-thead-tr th{
+    text-align: center;
+    color: #333333;
+  }
+  .recommendation_tb td{
+    border: 1px solid #ddd;
+  }
+  .data_box3{
+    width:58%;
+    text-align: right;
+  }
+  .row-fluid{
+    padding-top:20px;
+    width: 96%;
+    margin:0 2%;
+    padding-bottom: 5px;
+  }
   /*
 屏幕兼容(手机)
  */
@@ -163,12 +213,12 @@
     }
     .recommendation-items {
       width: 100%;
-      height:26rem;
+      /*height:26rem;*/
       margin: auto;
       color: #5F5F5F;
       /*line-height: 4rem;*/
       font-size: 1.6rem;
-      font-weight: 700;
+      /*font-weight: 700;*/
     }
 
     .recommendation{
@@ -183,7 +233,7 @@
       border-bottom: none;
     }
     .header{
-      margin: 2rem 0;
+      margin:  2rem 0px 0px;
     }
     .heading{
       font-size: 15px;
@@ -300,6 +350,13 @@
       font-size: 1.5rem;
       padding-left: 0;
       padding-right: 0;
+    }
+    .recommendationNew{
+      font-size: 12px;
+    }
+    .data_box3{
+      width:78%;
+      text-align: right;
     }
   }
 </style>

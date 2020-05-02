@@ -6,8 +6,9 @@ let _host = localhostDev ? 'http://127.0.0.1:8082' : 'http://www.1000stock.com';
 
 
 let httpUrl = {
-  'newSearchLastGainApi': _host + '/trade/find_gain',//首页0331修改后获取最新赢利数据接口
-  'searchLastGainApi': _host + '/trade/search_gain',//首页获取最新赢利数据接口
+ // 'newSearchLastGainApi': _host + '/trade/find_gain',//首页0331修改后获取最新赢利数据接口
+  'newSearchLastGainApi': _host + '/trade/find_history_gain',//首页0331修改后获取最新赢利数据接口
+  'searchLastGainApi': _host + '/trade/search_gain',//首页获取最新赢利数据接口npm npn
   'lastRecommendationApi': _host + '/recommend/find',//获取推荐信息中的最新推荐
   'GetContrastApi': _host + '/trade/get_index_contrast',//获取推荐信息中的大盘与引擎的走势
   'recommendFindApi': _host + '/recommend/find',//获取推荐信息中的最新推荐
@@ -36,7 +37,8 @@ let httpUrl = {
   'search_reverse_repoApi': _host + '/trade/search_reverse_repo',//获取逆回购记录信息
 
   ///////////////////////////////////////////美股接口////////////////////////////////////
-  'newSearchLastGainApiUs': _host + '/trade_us/find_gain',//首页0331修改后获取最新赢利数据接口
+  //'newSearchLastGainApiUs': _host + '/trade_us/find_gain',//首页0331修改后获取最新赢利数据接口
+  'newSearchLastGainApiUs': _host + '/trade_us/find_history_gain',//首页0331修改后获取最新赢利数据接口
   'searchLastGainApiUs': _host + '/trade_us/search_gain',//首页获取最新赢利数据接口
   'lastRecommendationApiUs': _host + '/trade_us/find_plan',//获取推荐信息中的最新推荐
   'GetContrastApiUs': _host + '/trade_us/get_index_contrast',//获取推荐信息中的大盘与引擎的走势
@@ -104,6 +106,14 @@ let httpUrl = {
   'getPpiIndexApi': _host + '/material/find_ppi',//获取PPI指数
   'getCpiIndexApi': _host + '/material/find_cpi',//查找CPI指数
   'getStockAccountApi': _host + '/material/find_new_stock_account',//全国新开股票账户
+
+//////////////////////////////////////////账户总览////////////////////////////////////
+  'getAccountCnApi': _host + '/account/get_cn',//获取A股最新的账户对比
+  'getAccountUsApi': _host + '/account/get_us',//获取美股最新的账户对比
+  'getChGainInfoApi': _host + '/account/get_cn_pictrue',//获取A股账户收益对比
+  'getUsGainInfoApi': _host + '/account/get_us_pictrue',//获取美股账户收益对比
+  'getAccountDiffDataApi': _host + '/account/get_diff_by_date',//由时间范围获取账户的跟踪误差
+  'getAccountDiffRangeApi': _host + '/account/get_diff_by_range'//由下拉选择获取账户的跟踪误差
 
 };
 export {httpUrl}

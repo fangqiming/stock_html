@@ -64,47 +64,46 @@
 
     </div>
       <!--实盘账户一览表-->
-      <div class="index_recommend">
-      <div class="recommendRow1 recommendRownew">
-        <div class="recommendHeader">
-          <h3 style="width: 100%;text-align: center">勾A股系统实盘展示<span class="recommentTime">{{holding.length ? fundList.date : ''}}<span class="timeArea">(周更)</span></span></h3>
-        </div>
-        <div class="recomment_row">
-          <div class="row-fluid">
-            <div class="span12">
-              <table class="table table-striped table-bordered table-advance recomment_tb" >
-                <thead>
-                <tr class="recommend-thead-tr">
-                  <td class="font-weight-bold">账户</td>
-                  <td class="font-weight-bold">初始日期</td>
-                  <td class="font-weight-bold">总资产</td>
-                  <td class="font-weight-bold">初始净值<br>当前净值</td>
-                  <td class="font-weight-bold">最大回撤</td>
-                </tr>
-                </thead>
-                <tbody >
-                <tr v-for="(item,index) in fundList.list">
-                  <td class="routerStyle" @click="showFundDetail(item.name)">
-                       <u>{{item.name}}</u>
-                  </td>
-                  <td >{{item.startDate}}</td>
-                  <td  ><div class="data_box1">{{item.marketCap | setNum}}</div></td>
-                  <td  ><div class="data_box1">{{item.initNetWorth | toFixed4}}<br>{{item.netWorth}}</div></td>
-                  <td ><div class="data_box1">{{item.withdrawal|toFixed2}}%</div></td>
-                </tr>
-                </tbody>
-              </table>
-              <div class="clear"></div>
-            </div>
-          </div>
-        </div>
-        <div class="showTransactionRecord showTransaction_Record">
-          <a class="recommend_info">
-          </a>
-        </div>
-      </div>
-
-    </div>
+<!--    <div class="index_recommend">-->
+<!--      <div class="recommendRow1 recommendRownew">-->
+<!--        <div class="recommendHeader">-->
+<!--          <h3 style="width: 100%;text-align: center">勾A股系统实盘展示<span class="recommentTime">{{holding.length ? fundList.date : ''}}<span class="timeArea">(周更)</span></span></h3>-->
+<!--        </div>-->
+<!--        <div class="recomment_row">-->
+<!--          <div class="row-fluid">-->
+<!--            <div class="span12">-->
+<!--              <table class="table table-striped table-bordered table-advance recomment_tb" >-->
+<!--                <thead>-->
+<!--                <tr class="recommend-thead-tr">-->
+<!--                  <td class="font-weight-bold">账户</td>-->
+<!--                  <td class="font-weight-bold">初始日期</td>-->
+<!--                  <td class="font-weight-bold">总资产</td>-->
+<!--                  <td class="font-weight-bold">初始净值<br>当前净值</td>-->
+<!--                  <td class="font-weight-bold">最大回撤</td>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody >-->
+<!--                <tr v-for="(item,index) in fundList.list">-->
+<!--                  <td class="routerStyle" @click="showFundDetail(item.name)">-->
+<!--                       <u>{{item.name}}</u>-->
+<!--                  </td>-->
+<!--                  <td >{{item.startDate}}</td>-->
+<!--                  <td  ><div class="data_box1">{{item.marketCap | setNum}}</div></td>-->
+<!--                  <td  ><div class="data_box1">{{item.initNetWorth | toFixed4}}<br>{{item.netWorth}}</div></td>-->
+<!--                  <td ><div class="data_box1">{{item.withdrawal|toFixed2}}%</div></td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--              <div class="clear"></div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="showTransactionRecord showTransaction_Record">-->
+<!--          <a class="recommend_info">-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <!--实盘账户一览表-->
     <!--<div class="sysRegulation">
       <div class="sysRegulationHead">
@@ -190,7 +189,7 @@
           <div class="col-md-12">
             <span>Copyright</span>
             <span>©2018 pyttatec All Rights Reserved</span>
-            <a  href="http://www.miitbeian.gov.cn/"><u>赣ICP备18004847号</u></a>
+            <a  href="http://www.beian.miit.gov.cn"><u>赣ICP备18004847号</u></a>
           </div>
         </div>
       </div>
