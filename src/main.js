@@ -11,28 +11,29 @@ import * as custom from "./apiConfig/filters";
 import aa from "./apiConfig/global";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false;
 //Vue.http.headers.common['Account-Code'] = 'root';
-Vue.http.interceptors.push((request,next)=>{
+Vue.http.interceptors.push((request, next) => {
   //request.credentials = true; // 接口每次请求会跨域携带cookie
   //request.method= 'POST'; // 请求方式（get,post）
-  request.headers.set('Access-Control-Allow-Origin',"*") // 请求headers携带参数
-  request.headers.set('Access-code',getSession("access_code")) // 请求headers携带参数
+  request.headers.set('Access-Control-Allow-Origin', "*") // 请求headers携带参数
+  request.headers.set('Access-code', getSession("access_code")) // 请求headers携带参数
 
-  if(getSession("username")!=""){
-    request.headers.set('Account-Code',encodeURI(getSession("username"))) // 请求headers携带参数
-  }else {
-    request.headers.set('Account-Code',"echo_gou") // 请求headers携带参数
+  if (getSession("username") != "") {
+    request.headers.set('Account-Code', encodeURI(getSession("username"))) // 请求headers携带参数
+  } else {
+    request.headers.set('Account-Code', "echo_gou") // 请求headers携带参数
   }
-  if(getSession("Amount-Share")!=""){
-    var AmountShare=getSession("Amount-Share").split("万")[0]+"0000"
-    request.headers.set('Amount-Share',AmountShare) // 请求headers携带参数
-  }else{
-    request.headers.set('Amount-Share',"10000000") // 请求headers携带参数
+  if (getSession("Amount-Share") != "") {
+    var AmountShare = getSession("Amount-Share").split("万")[0] + "0000"
+    request.headers.set('Amount-Share', AmountShare) // 请求headers携带参数
+  } else {
+    request.headers.set('Amount-Share', "10000000") // 请求headers携带参数
   }
-  next(function(response){
+  next(function (response) {
     return response;
 
   });
@@ -46,7 +47,7 @@ Object.keys(custom).forEach(key => {
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })
 

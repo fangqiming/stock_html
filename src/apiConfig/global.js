@@ -31,11 +31,11 @@ export default {
     //   url:'PriceTable'
     // },
     {
-      title:'登录',
-      url:'SignUp'
+      title: '登录',
+      url: 'SignUp'
     }
   ],
-  seturl (arr) {
+  seturl(arr) {
     this.url = arr;
   },
 }

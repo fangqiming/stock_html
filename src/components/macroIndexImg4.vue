@@ -1,35 +1,35 @@
 <template>
   <div class="box">
-    <div  :style="{height:height,width:width}" ref="myEchart2"></div>
+    <div :style="{height:height,width:width}" ref="myEchart2"></div>
   </div>
 </template>
 
 <script>
   import echarts from 'echarts'
+
   export default {
     name: "macroIndexImg",
     props: {
-      infoData4:{
-        type:Object,
-        required:true
+      infoData4: {
+        type: Object,
+        required: true
       },
-      title4:{
-        type:Array,
-        required:true
+      title4: {
+        type: Array,
+        required: true
       },
       width: {
         type: String,
-        default: (window.width*40)+"%"
+        default: (window.width * 40) + "%"
       },
       height: {
         type: String,
-        default: 400+"px"
+        default: 400 + "px"
       },
-      select:String
+      select: String
     },
-    data(){
-      return{
-      }
+    data() {
+      return {}
     },
     mounted() {
       this.initChart();
@@ -52,7 +52,7 @@
           },
           legend: {
             x: 'center',
-            data:this.infoData4.legendTitle
+            data: this.infoData4.legendTitle
           },
           toolbox: {
             show: false,
@@ -66,30 +66,30 @@
             },
             type: 'category',
             boundaryGap: false,
-            data:this.infoData4.date
+            data: this.infoData4.date
           },
           yAxis: {
-            name:this.infoData4.title,
+            name: this.infoData4.title,
             type: 'value',
             scale: true,
-            axisLabel:{
-              formatter:'{value}万'
+            axisLabel: {
+              formatter: '{value}万'
             }
           },
           series: [
             {
               symbol: "none",
-              name:this.title4[0],
-              type:'line',
-              data:this.infoData4.amount,
+              name: this.title4[0],
+              type: 'line',
+              data: this.infoData4.amount,
             }
           ]
         })
 
       }
     },
-    watch:{
-      infoData4:function(){
+    watch: {
+      infoData4: function () {
         this.initChart();
       }
     }
@@ -97,15 +97,15 @@
 </script>
 
 <style scoped>
-  .box{
+  .box {
     padding: 10px;
   }
+
   /*
  屏幕兼容(手机)
   */
-  @media screen and (max-width:600px)
-  {
-    .box{
+  @media screen and (max-width: 600px) {
+    .box {
       padding: 10px 0px;
     }
   }

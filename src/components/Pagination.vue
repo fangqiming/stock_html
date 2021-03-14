@@ -1,81 +1,85 @@
 <template>
   <ul class="mo-paging">
     <!-- prev -->
-    <li :class="['paging-item', 'paging-item--prev', {'paging-item--disabled' : index === 1}]" @click="prev"><i class="iconfont icon-arrow1-left"></i></li>
+    <li :class="['paging-item', 'paging-item--prev', {'paging-item--disabled' : index === 1}]" @click="prev"><i
+      class="iconfont icon-arrow1-left"></i></li>
 
     <!-- first -->
     <li :class="['paging-item', 'paging-item--first', {'paging-item--disabled' : index === 1}]" @click="first">首页</li>
 
     <!--<li :class="['paging-item', 'paging-item&#45;&#45;more']" v-if="showPrevMore">...</li>-->
 
-    <li :class="['paging-item', {'paging-item--current' : index === pager}]" v-for="pager in pagers" @click="go(pager)">{{ pager }}</li>
+    <li :class="['paging-item', {'paging-item--current' : index === pager}]" v-for="pager in pagers" @click="go(pager)">
+      {{ pager }}
+    </li>
 
-   <!-- <li :class="['paging-item', 'paging-item&#45;&#45;more']" v-if="showNextMore">...</li>-->
+    <!-- <li :class="['paging-item', 'paging-item&#45;&#45;more']" v-if="showNextMore">...</li>-->
 
     <!-- last -->
     <li :class="['paging-item', 'paging-item--last', {'paging-item--disabled' : index === pages}]" @click="last">尾页</li>
 
     <!-- next -->
-    <li :class="['paging-item', 'paging-item--next', {'paging-item--disabled' : index === pages}]" @click="next"><i class="iconfont icon-arrow-right"></i></li>
+    <li :class="['paging-item', 'paging-item--next', {'paging-item--disabled' : index === pages}]" @click="next"><i
+      class="iconfont icon-arrow-right"></i></li>
   </ul>
 </template>
 
 <script type="es6">
   export default {
-    name : 'MoPaging',
+    name: 'MoPaging',
     //通过props来接受从父组件传递过来的值
-    props : {
+    props: {
 
       //页面中的可见页码，其他的以...替代, 必须是奇数
-      perPages : {
-        type : Number,
-        default : 3
+      perPages: {
+        type: Number,
+        default: 3
       },
 
       //当前页码
-      pageIndex : {
-        type : Number,
-        default : 1
+      pageIndex: {
+        type: Number,
+        default: 1
       },
 
       //每页显示条数
-      pageSize : {
-        type : Number,
-        default : 10
+      pageSize: {
+        type: Number,
+        default: 10
       },
-      pageNo : {
-        type : Number,
-        default : 1
+      pageNo: {
+        type: Number,
+        default: 1
       },
 
       //总记录数
-      total : {
-        type : Number,
-        default : 1
+      total: {
+        type: Number,
+        default: 1
       },
     },
-    methods : {
-      prev(){
+    methods: {
+      prev() {
         if (this.index > 1) {
           this.go(this.index - 1)
         }
       },
-      next(){
+      next() {
         if (this.index < this.pages) {
           this.go(this.index + 1)
         }
       },
-      first(){
+      first() {
         if (this.index !== 1) {
           this.go(1)
         }
       },
-      last(){
+      last() {
         if (this.index != this.pages) {
           this.go(this.pages)
         }
       },
-      go (page) {
+      go(page) {
         if (this.index !== page) {
           this.index = page
           //父组件通过change方法来接受当前的页码
@@ -83,15 +87,15 @@
         }
       }
     },
-    computed : {
+    computed: {
 
       //计算总页码
-      pages(){
+      pages() {
         return Math.ceil(this.size / this.limit)
       },
 
       //计算页码，当count等变化时自动计算
-      pagers () {
+      pagers() {
         const array = []
         const perPages = this.perPages
         const pageCount = this.pages
@@ -100,8 +104,8 @@
 
 
         const offset = {
-          start : current - _offset,
-          end   : current + _offset
+          start: current - _offset,
+          end: current + _offset
         }
 
         //-1, 3
@@ -125,16 +129,16 @@
         return array
       }
     },
-    data () {
+    data() {
       return {
-        index : this.pageIndex, //当前页码
-        limit : this.pageSize, //每页显示条数
-        size : this.total || 1, //总记录数
-        showPrevMore : false,
-        showNextMore : false
+        index: this.pageIndex, //当前页码
+        limit: this.pageSize, //每页显示条数
+        size: this.total || 1, //总记录数
+        showPrevMore: false,
+        showNextMore: false
       }
     },
-    watch : {
+    watch: {
       pageIndex(val) {
         this.index = val || 1
       },
@@ -156,6 +160,7 @@
     font-size: 0;
     list-style: none;
     user-select: none;
+
     > .paging-item {
       display: inline;
       font-size: 14px;
@@ -168,31 +173,37 @@
       margin-left: -1px;
       cursor: pointer;
       color: #0275d8;
+
       &:first-child {
         margin-left: 0;
       }
+
       &:hover {
         background-color: #f0f0f0;
         color: #0275d8;
       }
+
       &.paging-item--disabled,
-      &.paging-item--more{
+      &.paging-item--more {
         background-color: #fff;
         color: #505050;
       }
+
       //禁用
       &.paging-item--disabled {
         cursor: not-allowed;
         opacity: .75;
       }
+
       &.paging-item--more,
       &.paging-item--current {
         cursor: default;
       }
+
       //选中
       &.paging-item--current {
         background-color: #0275d8;
-        color:#fff;
+        color: #fff;
         position: relative;
         z-index: 1;
         border-color: #0275d8;

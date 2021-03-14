@@ -12,7 +12,7 @@
         </div>
         <div class="clear"></div>
         <!--<div class="btn-group" role="group" style="margin-bottom: 20px;display: flex;padding-bottom: 2rem;">-->
-          <!--  <button  v-for="btn in btnArray" @click="changeTrendTime(btn.id)"  type="button" class="btn btn-default" :class="btn.id==select ? 'activeBtn':''">{{btn.time}}</button>-->
+        <!--  <button  v-for="btn in btnArray" @click="changeTrendTime(btn.id)"  type="button" class="btn btn-default" :class="btn.id==select ? 'activeBtn':''">{{btn.time}}</button>-->
         <!--</div>-->
       </div>
     </div>
@@ -20,9 +20,10 @@
 </template>
 <script>
   import echarts from 'echarts'
+
   export default {
     name: 'MarketTrend',
-    props:{
+    props: {
       className: {
         type: String,
         default: 'yourClassName'
@@ -33,37 +34,37 @@
       },
       width: {
         type: String,
-        default: (window.height*80)+"%"
+        default: (window.height * 80) + "%"
       },
       height: {
         type: String,
         default: '400px'
       },
-      trend:{
+      trend: {
         type: Object,
-        required:true
+        required: true
       },
-      select:String
+      select: String
     },
     data() {
       return {
         chart: null,
-        btnArray:[
+        btnArray: [
           {
-            id:'WEEK',
-            time:"1/周"
-          },{
-            id:'MONTH',
-            time:"1/月"
-          },{
-            id:'QUARTER',
-            time:"1/季度"
-          },{
-            id:'YEAR',
-            time:"1/年"
+            id: 'WEEK',
+            time: "1/周"
+          }, {
+            id: 'MONTH',
+            time: "1/月"
+          }, {
+            id: 'QUARTER',
+            time: "1/季度"
+          }, {
+            id: 'YEAR',
+            time: "1/年"
           }],
-        min:2000,
-        max:5000
+        min: 2000,
+        max: 5000
       }
     },
     mounted() {
@@ -79,17 +80,17 @@
     },
     methods: {
       initChart() {
-        this.chart = echarts.init(this.$refs.myEchart,'macarons');
+        this.chart = echarts.init(this.$refs.myEchart, 'macarons');
         if ($(window).width() <= 600) {
           // 把配置和数据放这里
           this.chart.setOption({
             tooltip: {
               trigger: 'axis'
             },
-            color: ['#C23531',"#2F4554"],
+            color: ['#C23531', "#2F4554"],
             legend: {
               x: 'center',
-              data: ['毕达指数','上证指数']
+              data: ['毕达指数', '上证指数']
             },
             toolbox: {
               show: false,
@@ -114,13 +115,13 @@
             yAxis: {
               type: 'value',
               min: this.min,
-              max:this.max,
+              max: this.max,
               axisLabel: {
                 formatter: '{value}',
               }
             },
             grid: {
-              x:39
+              x: 39
             },
             series: [
               {
@@ -131,87 +132,87 @@
               {
                 name: '上证指数',
                 type: 'line',
-                data:  this.trend.baseMarket
+                data: this.trend.baseMarket
               }
             ]
           })
         } else {
-        // 把配置和数据放这里
-        this.chart.setOption({
-          tooltip: {
-            trigger: 'axis'
-          },
-          legend: {
-            x: 'center',
-            data: ['毕达指数','上证指数']
-          },
-          toolbox: {
-            show: false,
-            feature: {
-              dataZoom: {
-                yAxisIndex: 'none'
+          // 把配置和数据放这里
+          this.chart.setOption({
+            tooltip: {
+              trigger: 'axis'
+            },
+            legend: {
+              x: 'center',
+              data: ['毕达指数', '上证指数']
+            },
+            toolbox: {
+              show: false,
+              feature: {
+                dataZoom: {
+                  yAxisIndex: 'none'
+                },
+                dataView: {readOnly: false},
+                magicType: {type: ['line', 'bar']},
+                restore: {},
+                saveAsImage: {}
+              }
+            },
+            xAxis: {
+              axisTick: {
+                show: false
               },
-              dataView: {readOnly: false},
-              magicType: {type: ['line', 'bar']},
-              restore: {},
-              saveAsImage: {}
-            }
-          },
-          xAxis: {
-            axisTick: {
-              show: false
+              type: 'category',
+              boundaryGap: false,
+              data: this.trend.time
             },
-            type: 'category',
-            boundaryGap: false,
-            data: this.trend.time
-          },
-          yAxis: {
-            type: 'value',
-            min: this.min,
-            axisLabel: {
-              formatter: '{value}'
-            }
-          },
-          series: [
-            {
-              symbol: "none",
-              name: '毕达指数',
-              type: 'line',
-              data: this.trend.aiMarket
+            yAxis: {
+              type: 'value',
+              min: this.min,
+              axisLabel: {
+                formatter: '{value}'
+              }
             },
-            {
-              symbol: "none",
-              name: '上证指数',
-              type: 'line',
-              data:  this.trend.baseMarket
-            }
+            series: [
+              {
+                symbol: "none",
+                name: '毕达指数',
+                type: 'line',
+                data: this.trend.aiMarket
+              },
+              {
+                symbol: "none",
+                name: '上证指数',
+                type: 'line',
+                data: this.trend.baseMarket
+              }
 
-          ]
-        })
+            ]
+          })
         }
       },
       changeTrendTime(e) {
         console.log(e)
         this.$emit('filterTrendTime', e)
       },
-      cpmputerMaxValue:function(){
-        var arr1 =  this.trend.baseMarket;
-        var arr2 =  this.trend.aiMarket;
+      cpmputerMaxValue: function () {
+        var arr1 = this.trend.baseMarket;
+        var arr2 = this.trend.aiMarket;
 
-       this.max = Math.max.apply(null, arr1)>Math.max.apply(null, arr2)? Math.max.apply(null, arr1) : Math.max.apply(null, arr2);
-        this.min = Math.min.apply(null, arr1)<Math.min.apply(null, arr2)? Math.min.apply(null, arr1) : Math.min.apply(null, arr2);
+        this.max = Math.max.apply(null, arr1) > Math.max.apply(null, arr2) ? Math.max.apply(null, arr1) : Math.max.apply(null, arr2);
+        this.min = Math.min.apply(null, arr1) < Math.min.apply(null, arr2) ? Math.min.apply(null, arr1) : Math.min.apply(null, arr2);
 
       }
     },
-    watch:{
-      trend:function(){
+    watch: {
+      trend: function () {
         this.initChart();
         this.cpmputerMaxValue();
       },
-      max:function () {
+      max: function () {
         this.initChart();
       },
-      min:function () {
+      min: function () {
         this.initChart();
       }
     }
@@ -219,29 +220,34 @@
 </script>
 <style>
   *
-  .marketTrendComponents{
+  .marketTrendComponents {
     margin-left: 2%;
     /* width: 80%; */
     width: 96%;
-   padding: 20px 0;
+    padding: 20px 0;
   }
+
   h1, h2 {
     font-weight: normal;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
   li {
     display: inline-block;
     margin: 0 10px;
   }
-  .marketTrendRow{
+
+  .marketTrendRow {
     width: 100%;
     height: auto;
     background: #ffffff;
   }
-  .marketTrendHeader{
+
+  .marketTrendHeader {
     width: 96%;
     border-bottom: 1px solid #EEF1F5;
     margin: 0 2%;
@@ -249,13 +255,15 @@
     flex-direction: row;
     justify-content: center;
   }
-  .btn-group{
+
+  .btn-group {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
   }
-  button{
+
+  button {
     background-color: #ffffff;
   }
 
@@ -263,32 +271,37 @@
   /*
  屏幕兼容(手机)
   */
-  @media screen and (max-width:600px){
-    .marketTrendComponents{
+  @media screen and (max-width: 600px) {
+    .marketTrendComponents {
       /*margin-left: 0.5%;*/
       margin-left: 0px;
       width: 100%;
       padding: 20px 0;
     }
+
     h1, h2 {
       font-weight: normal;
     }
+
     ul {
       list-style-type: none;
       padding: 0;
     }
+
     li {
       display: inline-block;
       margin: 0 10px;
     }
-    .marketTrendRow{
+
+    .marketTrendRow {
       /*width: 96%;*/
       width: 100%;
       height: auto;
       background: #ffffff;
       /*margin:0 2%;*/
     }
-    .marketTrendHeader{
+
+    .marketTrendHeader {
       width: 80%;
       border-bottom: 1px solid #EEF1F5;
       /*margin-left: 12%;*/
@@ -297,20 +310,24 @@
       flex-direction: row;
       justify-content: space-between;
     }
-    .marketTrendHeader h3{
+
+    .marketTrendHeader h3 {
       width: 100%;
       text-align: center;
     }
-    .btn-group{
+
+    .btn-group {
       display: flex;
       flex-direction: row;
       justify-content: center;
       width: 100%;
     }
-    button{
+
+    button {
       background-color: #ffffff;
     }
-    .activeBtn{
+
+    .activeBtn {
       background-color: #0275d8;
       color: #fff;
       position: relative;

@@ -2,7 +2,8 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
       (global.wangEditor = factory());
-}(this, (function () { 'use strict';
+}(this, (function () {
+  'use strict';
 
   /*
     poly-fill
@@ -43,7 +44,8 @@
       Element.prototype.matches = Element.prototype.matchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.oMatchesSelector || Element.prototype.webkitMatchesSelector || function (s) {
         var matches = (this.document || this.ownerDocument).querySelectorAll(s),
           i = matches.length;
-        while (--i >= 0 && matches.item(i) !== this) {}
+        while (--i >= 0 && matches.item(i) !== this) {
+        }
         return i > -1;
       };
     }
@@ -578,7 +580,7 @@
       }, {
         alt: '[污]',
         src: 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3c/pcmoren_wu_org.png'
-      },{
+      }, {
         src: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/7a/shenshou_thumb.gif',
         alt: '[草泥马]'
       }, {
@@ -587,180 +589,180 @@
       }, {
         src: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/bc/fuyun_thumb.gif',
         alt: '[浮云]'
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/1.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/2.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/3.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/4.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/5.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/6.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/7.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/8.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/9.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/10.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/11.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/12.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/13.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/14.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/15.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/16.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/17.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/18.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/18.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/19.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/20.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/21.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/22.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/23.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/24.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/25.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/26.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/27.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/28.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/29.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/30.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/31.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/32.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/33.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/34.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/35.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/36.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/37.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/38.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/38.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/39.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/40.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/41.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/42.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/43.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/43.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/44.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/45.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/46.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/47.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/48.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/49.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/50.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/51.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/52.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/53.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/54.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/55.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/56.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/57.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/58.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/59.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/60.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/61.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/62.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/63.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/64.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/65.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/66.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/67.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/68.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/69.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/70.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/71.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/72.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/73.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/74.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/75.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/76.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/77.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/78.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/79.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/80.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/81.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/82.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/83.gif"
-      },{
-        src:"https://aisharev1.oss-cn-beijing.aliyuncs.com/share/84.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/1.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/2.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/3.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/4.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/5.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/6.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/7.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/8.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/9.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/10.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/11.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/12.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/13.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/14.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/15.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/16.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/17.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/18.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/18.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/19.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/20.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/21.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/22.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/23.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/24.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/25.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/26.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/27.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/28.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/29.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/30.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/31.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/32.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/33.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/34.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/35.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/36.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/37.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/38.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/38.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/39.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/40.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/41.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/42.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/43.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/43.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/44.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/45.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/46.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/47.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/48.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/49.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/50.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/51.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/52.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/53.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/54.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/55.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/56.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/57.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/58.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/59.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/60.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/61.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/62.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/63.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/64.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/65.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/66.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/67.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/68.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/69.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/70.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/71.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/72.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/73.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/74.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/75.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/76.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/77.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/78.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/79.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/80.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/81.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/82.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/83.gif"
+      }, {
+        src: "https://aisharev1.oss-cn-beijing.aliyuncs.com/share/84.gif"
       }
       ]
     }/*, {
@@ -978,6 +980,7 @@
   /*
     bold-menu
 */
+
 // 构造函数
   function Bold(editor) {
     this.editor = editor;
@@ -1053,7 +1056,8 @@
   /*
     droplist
 */
-  var _emptyFn = function _emptyFn() {};
+  var _emptyFn = function _emptyFn() {
+  };
 
 // 构造函数
   function DropList(menu, opt) {
@@ -1180,6 +1184,7 @@
   /*
     menu - header
 */
+
 // 构造函数
   function Head(editor) {
     var _this = this;
@@ -1196,7 +1201,13 @@
       width: 100,
       $title: $('<p>设置标题</p>'),
       type: 'list', // droplist 以列表形式展示
-      list: [{ $elem: $('<h1>H1</h1>'), value: '<h1>' }, { $elem: $('<h2>H2</h2>'), value: '<h2>' }, { $elem: $('<h3>H3</h3>'), value: '<h3>' }, { $elem: $('<h4>H4</h4>'), value: '<h4>' }, { $elem: $('<h5>H5</h5>'), value: '<h5>' }, { $elem: $('<p>正文</p>'), value: '<p>' }],
+      list: [{$elem: $('<h1>H1</h1>'), value: '<h1>'}, {
+        $elem: $('<h2>H2</h2>'),
+        value: '<h2>'
+      }, {$elem: $('<h3>H3</h3>'), value: '<h3>'}, {$elem: $('<h4>H4</h4>'), value: '<h4>'}, {
+        $elem: $('<h5>H5</h5>'),
+        value: '<h5>'
+      }, {$elem: $('<p>正文</p>'), value: '<p>'}],
       onClick: function onClick(value) {
         // 注意 this 是指向当前的 Head 对象
         _this._command(value);
@@ -1258,7 +1269,19 @@
       width: 160,
       $title: $('<p>字号</p>'),
       type: 'list', // droplist 以列表形式展示
-      list: [{ $elem: $('<span style="font-size: x-small;">x-small</span>'), value: '1' }, { $elem: $('<span style="font-size: small;">small</span>'), value: '2' }, { $elem: $('<span>normal</span>'), value: '3' }, { $elem: $('<span style="font-size: large;">large</span>'), value: '4' }, { $elem: $('<span style="font-size: x-large;">x-large</span>'), value: '5' }, { $elem: $('<span style="font-size: xx-large;">xx-large</span>'), value: '6' }],
+      list: [{
+        $elem: $('<span style="font-size: x-small;">x-small</span>'),
+        value: '1'
+      }, {$elem: $('<span style="font-size: small;">small</span>'), value: '2'}, {
+        $elem: $('<span>normal</span>'),
+        value: '3'
+      }, {
+        $elem: $('<span style="font-size: large;">large</span>'),
+        value: '4'
+      }, {
+        $elem: $('<span style="font-size: x-large;">x-large</span>'),
+        value: '5'
+      }, {$elem: $('<span style="font-size: xx-large;">xx-large</span>'), value: '6'}],
       onClick: function onClick(value) {
         // 注意 this 是指向当前的 FontSize 对象
         _this._command(value);
@@ -1302,7 +1325,7 @@
       $title: $('<p>字体</p>'),
       type: 'list', // droplist 以列表形式展示
       list: fontNames.map(function (fontName) {
-        return { $elem: $('<span style="font-family: ' + fontName + ';">' + fontName + '</span>'), value: fontName };
+        return {$elem: $('<span style="font-family: ' + fontName + ';">' + fontName + '</span>'), value: fontName};
       }),
       onClick: function onClick(value) {
         // 注意 this 是指向当前的 FontName 对象
@@ -1325,7 +1348,8 @@
     panel
 */
 
-  var emptyFn = function emptyFn() {};
+  var emptyFn = function emptyFn() {
+  };
 
 // 记录已经显示 panel 的菜单
   var _isCreatedPanelMenus = [];
@@ -1517,6 +1541,7 @@
   /*
     menu - link
 */
+
 // 构造函数
   function Link(editor) {
     this.editor = editor;
@@ -1673,6 +1698,7 @@
   /*
     italic-menu
 */
+
 // 构造函数
   function Italic(editor) {
     this.editor = editor;
@@ -1726,6 +1752,7 @@
   /*
     redo-menu
 */
+
 // 构造函数
   function Redo(editor) {
     this.editor = editor;
@@ -1754,6 +1781,7 @@
   /*
     strikeThrough-menu
 */
+
 // 构造函数
   function StrikeThrough(editor) {
     this.editor = editor;
@@ -1807,6 +1835,7 @@
   /*
     underline-menu
 */
+
 // 构造函数
   function Underline(editor) {
     this.editor = editor;
@@ -1860,6 +1889,7 @@
   /*
     undo-menu
 */
+
 // 构造函数
   function Undo(editor) {
     this.editor = editor;
@@ -1888,6 +1918,7 @@
   /*
     menu - list
 */
+
 // 构造函数
   function List(editor) {
     var _this = this;
@@ -1904,7 +1935,10 @@
       width: 120,
       $title: $('<p>设置列表</p>'),
       type: 'list', // droplist 以列表形式展示
-      list: [{ $elem: $('<span><i class="w-e-icon-list-numbered"></i> 有序列表</span>'), value: 'insertOrderedList' }, { $elem: $('<span><i class="w-e-icon-list2"></i> 无序列表</span>'), value: 'insertUnorderedList' }],
+      list: [{
+        $elem: $('<span><i class="w-e-icon-list-numbered"></i> 有序列表</span>'),
+        value: 'insertOrderedList'
+      }, {$elem: $('<span><i class="w-e-icon-list2"></i> 无序列表</span>'), value: 'insertUnorderedList'}],
       onClick: function onClick(value) {
         // 注意 this 是指向当前的 List 对象
         _this._command(value);
@@ -1965,6 +1999,7 @@
   /*
     menu - justify
 */
+
 // 构造函数
   function Justify(editor) {
     var _this = this;
@@ -1981,7 +2016,13 @@
       width: 100,
       $title: $('<p>对齐方式</p>'),
       type: 'list', // droplist 以列表形式展示
-      list: [{ $elem: $('<span><i class="w-e-icon-paragraph-left"></i> 靠左</span>'), value: 'justifyLeft' }, { $elem: $('<span><i class="w-e-icon-paragraph-center"></i> 居中</span>'), value: 'justifyCenter' }, { $elem: $('<span><i class="w-e-icon-paragraph-right"></i> 靠右</span>'), value: 'justifyRight' }],
+      list: [{
+        $elem: $('<span><i class="w-e-icon-paragraph-left"></i> 靠左</span>'),
+        value: 'justifyLeft'
+      }, {
+        $elem: $('<span><i class="w-e-icon-paragraph-center"></i> 居中</span>'),
+        value: 'justifyCenter'
+      }, {$elem: $('<span><i class="w-e-icon-paragraph-right"></i> 靠右</span>'), value: 'justifyRight'}],
       onClick: function onClick(value) {
         // 注意 this 是指向当前的 List 对象
         _this._command(value);
@@ -2003,6 +2044,7 @@
   /*
     menu - Forecolor
 */
+
 // 构造函数
   function ForeColor(editor) {
     var _this = this;
@@ -2024,7 +2066,7 @@
       $title: $('<p>文字颜色</p>'),
       type: 'inline-block', // droplist 内容以 block 形式展示
       list: colors.map(function (color) {
-        return { $elem: $('<i style="color:' + color + ';" class="w-e-icon-pencil2"></i>'), value: color };
+        return {$elem: $('<i style="color:' + color + ';" class="w-e-icon-pencil2"></i>'), value: color};
       }),
       onClick: function onClick(value) {
         // 注意 this 是指向当前的 ForeColor 对象
@@ -2047,6 +2089,7 @@
   /*
     menu - BackColor
 */
+
 // 构造函数
   function BackColor(editor) {
     var _this = this;
@@ -2068,7 +2111,7 @@
       $title: $('<p>背景色</p>'),
       type: 'inline-block', // droplist 内容以 block 形式展示
       list: colors.map(function (color) {
-        return { $elem: $('<i style="color:' + color + ';" class="w-e-icon-paint-brush"></i>'), value: color };
+        return {$elem: $('<i style="color:' + color + ';" class="w-e-icon-paint-brush"></i>'), value: color};
       }),
       onClick: function onClick(value) {
         // 注意 this 是指向当前的 BackColor 对象
@@ -2091,6 +2134,7 @@
   /*
     menu - quote
 */
+
 // 构造函数
   function Quote(editor) {
     this.editor = editor;
@@ -2159,6 +2203,7 @@
   /*
     menu - code
 */
+
 // 构造函数
   function Code(editor) {
     this.editor = editor;
@@ -2294,6 +2339,7 @@
   /*
     menu - emoticon
 */
+
 // 构造函数
   function Emoticon(editor) {
     this.editor = editor;
@@ -2401,6 +2447,7 @@
   /*
     menu - table
 */
+
 // 构造函数
   function Table(editor) {
     this.editor = editor;
@@ -2746,6 +2793,7 @@
   /*
     menu - video
 */
+
 // 构造函数
   function Video(editor) {
     this.editor = editor;
@@ -2821,6 +2869,7 @@
   /*
     menu - img
 */
+
 // 构造函数
   function Image(editor) {
     this.editor = editor;
@@ -3080,6 +3129,7 @@
   /*
     菜单集合
 */
+
 // 构造函数
   function Menus(editor) {
     this.editor = editor;
@@ -3443,6 +3493,7 @@
         // 更新按钮 ative 状态
         editor.menus.changeActive();
       }
+
       // 按键后保存
       $textElem.on('keyup', saveRange);
       $textElem.on('mousedown', function (e) {
@@ -3627,6 +3678,7 @@
       // 粘贴图片、文本的事件，每次只能执行一个
       // 判断该次粘贴事件是否可以执行
       var pasteTime = 0;
+
       function canDo() {
         var now = Date.now();
         var flag = false;
@@ -3637,6 +3689,7 @@
         pasteTime = now;
         return flag;
       }
+
       function resetTime() {
         pasteTime = 0;
       }

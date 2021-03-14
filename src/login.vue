@@ -27,11 +27,12 @@
 </template>
 
 <script>
-  import { setCookie,getCookie } from './apiConfig/cookie.js'
+  import {setCookie, getCookie} from './apiConfig/cookie.js'
   import {httpUrl} from './apiConfig/api'
-  export default{
-    data(){
-      return{
+
+  export default {
+    data() {
+      return {
         username: '',
         password: '',
         newUsername: '',
@@ -40,32 +41,32 @@
         showTishi: false,
         showLogin: true,
         showRegister: false,
-        newInitAmount:'',
-        newInitNum:""
+        newInitAmount: '',
+        newInitNum: ""
       }
     },
-    mounted(){
-      if(getCookie('username')){
+    mounted() {
+      if (getCookie('username')) {
         this.$router.push('/index')
       }
     },
     methods: {
-      login(){
-        if(this.username == "" || this.password == ""){
+      login() {
+        if (this.username == "" || this.password == "") {
           alert("请输入用户名或密码")
-        }else{
-          let data = {'name':this.username,'password':this.password}
+        } else {
+          let data = {'name': this.username, 'password': this.password}
 
-          this.$http.post(httpUrl.userLoginApi,data).then((res)=>{
+          this.$http.post(httpUrl.userLoginApi, data).then((res) => {
             console.log(res)
-           if(res.body.code == 0){
-                 this.tishi = "登录成功"
-                 this.showTishi = true
-                 setCookie('username',this.username,1000*60)
-                 setTimeout(function(){
-                   this.$router.push({path:'index',query:{id:1}})
-                 }.bind(this),1000)
-            }else{
+            if (res.body.code == 0) {
+              this.tishi = "登录成功"
+              this.showTishi = true
+              setCookie('username', this.username, 1000 * 60)
+              setTimeout(function () {
+                this.$router.push({path: 'index', query: {id: 1}})
+              }.bind(this), 1000)
+            } else {
               this.tishi = res.body.message;
               this.showTishi = true
 
@@ -73,32 +74,37 @@
           })
         }
       },
-      ToRegister(){
+      ToRegister() {
         this.showRegister = true
         this.showLogin = false
       },
-      ToLogin(){
+      ToLogin() {
         this.showRegister = false
         this.showLogin = true
       },
-      register(){
-        if(this.newUsername == "" || this.newPassword == ""){
+      register() {
+        if (this.newUsername == "" || this.newPassword == "") {
           alert("请输入用户名或密码")
-        }else{
-          let data = {'name':this.newUsername,'password':this.newPassword, "initAmount":this.newInitAmount, "initNum":this.newInitNum}
-          this.$http.post(httpUrl.userRegisterApi,data).then((res)=>{
+        } else {
+          let data = {
+            'name': this.newUsername,
+            'password': this.newPassword,
+            "initAmount": this.newInitAmount,
+            "initNum": this.newInitNum
+          }
+          this.$http.post(httpUrl.userRegisterApi, data).then((res) => {
             console.log(res)
-            if(res.body.code == 0){
+            if (res.body.code == 0) {
               this.tishi = "注册成功"
-              setCookie('username',this.newUsername,1000*60)
+              setCookie('username', this.newUsername, 1000 * 60)
               this.showTishi = true
               this.username = ''
               this.password = ''
-              setTimeout(function(){
+              setTimeout(function () {
                 this.showRegister = false
                 this.showLogin = true
                 this.showTishi = false
-              }.bind(this),1000)
+              }.bind(this), 1000)
             }
           })
         }
@@ -108,63 +114,74 @@
 </script>
 
 <style scoped>
-  body{
-    background: #ffffff!important;
+  body {
+    background: #ffffff !important;
     height: 100%;
     width: 100%;
   }
+
   .content {
     background: #ffffff;
   }
-  .container{
+
+  .container {
     background: #ffffff;
   }
-  h3{
+
+  h3 {
     text-align: center;
   }
-  .login-wrap{
-    text-align:center;
+
+  .login-wrap {
+    text-align: center;
     background: #ffffff;
   }
-  .register-wrap{
+
+  .register-wrap {
     background: #ffffff;
   }
-  .login-wrap,register-wrap>h3{
+
+  .login-wrap, register-wrap > h3 {
     text-align: center;
 
   }
-  input{
-    display:block;
-    width:250px;
-    height:40px;
-    line-height:40px;
-    margin:0 auto;
-    margin-bottom: 10px;
-    outline:none;
-    border:1px solid #888;
-    padding:10px;
-    box-sizing:border-box;
-  }
-  p{
-    color:red;
-  }
-  button{
-    display:block;
-    width:250px;
-    height:40px;
+
+  input {
+    display: block;
+    width: 250px;
+    height: 40px;
     line-height: 40px;
-    margin:0 auto;
-    border:none;
-    background-color:#41b883;
-    color:#fff;
-    font-size:16px;
-    margin-bottom:5px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    outline: none;
+    border: 1px solid #888;
+    padding: 10px;
+    box-sizing: border-box;
   }
-  span{
-    cursor:pointer;
+
+  p {
+    color: red;
   }
-  span:hover{
-    color:#41b883;
+
+  button {
+    display: block;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    border: none;
+    background-color: #41b883;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  span:hover {
+    color: #41b883;
   }
 
 </style>

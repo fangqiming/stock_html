@@ -7,7 +7,7 @@
       <div class="row-fluid">
         <div class="span6">
           <div class="" style="">
-            <div  :style="{height:height,width:width}" ref="myEchart1"></div>
+            <div :style="{height:height,width:width}" ref="myEchart1"></div>
           </div>
         </div>
         <div class="clear"></div>
@@ -20,37 +20,37 @@
 <script>
   import echarts from 'echarts'
   import {httpUrl} from '../apiConfig/api'
+
   export default {
     name: "index-contrast",
     props: {
-      GainInfo:{
-        type:Object,
-        required:true
+      GainInfo: {
+        type: Object,
+        required: true
       },
-      heading:{
+      heading: {
         type: String,
         default: ""
       },
       width: {
         type: String,
-        default: (window.width*90)+"%"
+        default: (window.width * 90) + "%"
       },
       height: {
         type: String,
-        default: 400+"px"
+        default: 400 + "px"
       },
-      title:{
-        type:Array,
-        required:true
+      title: {
+        type: Array,
+        required: true
       },
-      series:{
-        type:Array,
-        required:true
+      series: {
+        type: Array,
+        required: true
       },
     },
-    data(){
-      return{
-      }
+    data() {
+      return {}
     },
     mounted() {
       this.initChart();
@@ -73,7 +73,7 @@
           /*  color: ['blue', 'red','#5AB1EF','black'],*/
           legend: {
             x: 'center',
-            data:this.title
+            data: this.title
           },
           toolbox: {
             show: false,
@@ -87,14 +87,14 @@
             },
             type: 'category',
             boundaryGap: false,
-            data:this.GainInfo.date
+            data: this.GainInfo.date
           },
           yAxis: {
             type: 'value',
             min: this.min,
-            max:this.max,
-            axisLabel:{
-              formatter:'{value}%'
+            max: this.max,
+            axisLabel: {
+              formatter: '{value}%'
             }
           },
           series: this.series
@@ -102,16 +102,16 @@
 
       },
       changeCurImg(e) {
-        var obj={};
-        obj.id=e;
-        obj.index=this.index;
+        var obj = {};
+        obj.id = e;
+        obj.index = this.index;
         console.log(e)
         console.log(this.index)
         this.$emit('filterIndexCurImg', obj)
       }
     },
-    watch:{
-      GainInfo:function(){
+    watch: {
+      GainInfo: function () {
         this.initChart();
       }
     }
@@ -122,33 +122,39 @@
 <style>
 
   *
-  #indexContrastContent{
+  #indexContrastContent {
     background: #ffffff;
   }
-  .indexContrastComponents1{
+
+  .indexContrastComponents1 {
     margin-top: 2rem;
     /* width: 80%; */
     /*padding: 20px 0;*/
     padding-bottom: 20px;
   }
+
   h1, h2 {
     font-weight: normal;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
   li {
     display: inline-block;
     margin: 0 10px;
   }
-  .indexContrastRow{
+
+  .indexContrastRow {
     width: 96%;
     height: auto;
     background: #ffffff;
-    margin:0 2%;
+    margin: 0 2%;
   }
-  .indexContrastHeader{
+
+  .indexContrastHeader {
     width: 96%;
     border-bottom: 1px solid #EEF1F5;
     margin: 0 2%;
@@ -156,16 +162,19 @@
     flex-direction: row;
     justify-content: center;
   }
-  .btn-group{
+
+  .btn-group {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
   }
-  button{
+
+  button {
     background-color: #ffffff;
   }
-  .activeBtn{
+
+  .activeBtn {
     background-color: #0275d8;
     color: #fff;
     position: relative;
@@ -176,8 +185,8 @@
   /*
  屏幕兼容(手机)
   */
-  @media screen and (max-width:600px){
-    .indexContrastComponents1{
+  @media screen and (max-width: 600px) {
+    .indexContrastComponents1 {
       /*margin-left: 2%;*/
       /*width: 96%;*/
       margin-left: 0px;
@@ -185,24 +194,29 @@
       /*padding: 20px 0;*/
       padding-bottom: 20px;
     }
+
     h1, h2 {
       font-weight: normal;
     }
+
     ul {
       list-style-type: none;
       padding: 0;
     }
+
     li {
       display: inline-block;
       margin: 0 10px;
     }
-    .indexContrastRow{
+
+    .indexContrastRow {
       width: 96%;
       height: auto;
       background: #ffffff;
-      margin:0 2%;
+      margin: 0 2%;
     }
-    .indexContrastHeader{
+
+    .indexContrastHeader {
       width: 96%;
       border-bottom: 1px solid #EEF1F5;
       margin: 0 2%;
@@ -210,16 +224,19 @@
       flex-direction: row;
       justify-content: center;
     }
-    .btn-group{
+
+    .btn-group {
       display: flex;
       flex-direction: row;
       justify-content: center;
       width: 100%;
     }
-    button{
+
+    button {
       background-color: #ffffff;
     }
-    .activeBtn{
+
+    .activeBtn {
       background-color: #0275d8;
       color: #fff;
       position: relative;

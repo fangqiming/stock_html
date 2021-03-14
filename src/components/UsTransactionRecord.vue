@@ -1,5 +1,5 @@
 <template>
-  <div class="transactionRecord" >
+  <div class="transactionRecord">
 
     <!--交易记录-->
     <div class="recommendRow">
@@ -32,26 +32,27 @@
                   </td>
                   <td>
                     <div class="data_box3">
-                      <span :class="{SomeGreen:item.action=='平仓',Red:item.action == '卖出'}">{{item.action}}</span><br/>{{item.amount |setNum}}
+                      <span :class="{SomeGreen:item.action=='平仓',Red:item.action == '卖出'}">{{item.action}}</span><br/>{{item.amount
+                      |setNum}}
                     </div>
                   </td>
                   <td>
                     <div class="data_box3">
-                        {{item.oldPrice  | setNum2}}<br/>
-                        {{item.newPrice  | setNum2}}
+                      {{item.oldPrice | setNum2}}<br/>
+                      {{item.newPrice | setNum2}}
                     </div>
                   </td>
                   <td v-if="item.gainRate>0" :class="{Red:item.gainRate<0,Green:item.gainRate>=0}">
-                      <div class="data_box3">
-                        +{{item.gainRate}}%
-                        <br/>
-                        {{item.gain | setNum}}
-                      </div>
+                    <div class="data_box3">
+                      +{{item.gainRate}}%
+                      <br/>
+                      {{item.gain | setNum}}
+                    </div>
                   </td>
                   <td v-else-if="item.gainRate<0" :class="{Red:item.gainRate<0,Green:item.gainRate>=0}">
                     <div class="data_box3">
                       {{item.gainRate}}%<br/>
-                      {{item.gain  | setNum}}
+                      {{item.gain | setNum}}
                     </div>
                   </td>
                   <td v-else="item.gainRate==undefined">
@@ -61,13 +62,14 @@
                 </tr>
                 </tbody>
                 <tbody v-else>
-                    <tr >
-                      <td colspan="9">当前股市波动较大，无交易操作
-                      </td>
-                    </tr>
+                <tr>
+                  <td colspan="9">当前股市波动较大，无交易操作
+                  </td>
+                </tr>
                 </tbody>
               </table>
-              <pagination :perPages="perPages" :page-index="currentPage" :total="count" :page-size="pageSize" @change="pageChange">
+              <pagination :perPages="perPages" :page-index="currentPage" :total="count" :page-size="pageSize"
+                          @change="pageChange">
               </pagination>
             </template>
           </div>
@@ -91,7 +93,8 @@
       </div>
       <div class="row operationAccountRow">
         <div class="col-md-6">
-          <table class="table table-striped table-bordered table-advance curHoldingTable table_now" contenteditable="false" >
+          <table class="table table-striped table-bordered table-advance curHoldingTable table_now"
+                 contenteditable="false">
             <tbody>
             <tr class="current-holding-thead-tr">
               <td class="head_td">交易总数</td>
@@ -117,7 +120,8 @@
           </table>
         </div>
         <div class="col-md-6">
-          <table class="table table-striped table-bordered table-advance curHoldingTable table_avg" contenteditable="false" >
+          <table class="table table-striped table-bordered table-advance curHoldingTable table_avg"
+                 contenteditable="false">
             <tbody>
             <tr class="current-holding-thead-tr">
               <td class="head_td">当前持仓</td>
@@ -137,7 +141,9 @@
             </tr>
             <tr class="current-holding-thead-tr">
               <td class="head_td">胜率</td>
-              <td class="data_td" :class="{Red:userAccount.winRate<50,Green:userAccount.winRate>=0}">{{userAccount.winRate |toFixed2 }}%</td>
+              <td class="data_td" :class="{Red:userAccount.winRate<50,Green:userAccount.winRate>=0}">
+                {{userAccount.winRate |toFixed2 }}%
+              </td>
             </tr>
             </tbody>
           </table>
@@ -151,34 +157,34 @@
   import Pagination from "./Pagination";
   import {httpUrl} from '../apiConfig/api';
   import CurrentHolding from "./UsCurrentHolding";
-  import { setSession,getSession } from '../apiConfig/cookie.js';
+  import {setSession, getSession} from '../apiConfig/cookie.js';
 
   export default {
     name: "us-transaction-record",
     data() {
       return {
         //交易记录
-        perPages:1,
+        perPages: 1,
         pageSize: 20, //每页显示20条数据
         currentPage: 1, //当前页码
         count: 0, //总记录数
         //逆回购纪录
-        perPages2:1,
+        perPages2: 1,
         pageSize2: 20, //每页显示20条数据
         currentPage2: 1, //当前页码
         count2: 0, //总记录数
         //
-        items:[],
-        temp:[],
-        userAccount:[],
-        holding:[],
-        holdingCode:'',
-        reverseRecords:[]
+        items: [],
+        temp: [],
+        userAccount: [],
+        holding: [],
+        holdingCode: '',
+        reverseRecords: []
       }
     },
     components: {
       "pagination": Pagination,
-      'us-current-holding':CurrentHolding,
+      'us-current-holding': CurrentHolding,
     },
     methods: {
       //获取数据
@@ -197,11 +203,11 @@
        */
       getTransformRecord: function () {
         this.$http.get(httpUrl.getTradeRecordApiUs, {
-          params: {pageSize:this.pageSize,pageNo:this.currentPage}
+          params: {pageSize: this.pageSize, pageNo: this.currentPage}
         }).then(function (res) {
           if (res.body.code == 0) {
             this.count = res.body.data.total;
-            this.items= res.body.data.entities;
+            this.items = res.body.data.entities;
             console.log(this.items)
           } else {
             alert(res.body.message)
@@ -222,11 +228,11 @@
        */
       searchReverseRepo: function () {
         this.$http.get(httpUrl.search_reverse_repoApi, {
-          params: {pageSize:this.pageSize2,pageNo:this.currentPage2}
+          params: {pageSize: this.pageSize2, pageNo: this.currentPage2}
         }).then(function (res) {
           if (res.body.code == 0) {
             this.count2 = res.body.data.total;
-            this.reverseRecords= res.body.data.entities;
+            this.reverseRecords = res.body.data.entities;
             console.log(this.reverseRecords)
           } else {
             alert(res.body.message)
@@ -244,7 +250,7 @@
       /**
        * 获取操作统计数据
        */
-      getOperatorSummary:function () {
+      getOperatorSummary: function () {
         this.$http.get(httpUrl.getOperatorSummaryApiUs).then(function (res) {
           if (res.body.code == 0) {
             this.userAccount = res.body.data.entity;
@@ -259,20 +265,18 @@
       /**
        * 获取当前持股信息
        */
-      fetchCurStockeData (){
-        this.$http.get(httpUrl.tradeFindStockApiUs).then(function(res){
-          this.holdingCode=res.body.code;
-          if(res.body.code==0){
-            this.holding=res.body.data.entities;
-          }else{
+      fetchCurStockeData() {
+        this.$http.get(httpUrl.tradeFindStockApiUs).then(function (res) {
+          this.holdingCode = res.body.code;
+          if (res.body.code == 0) {
+            this.holding = res.body.data.entities;
+          } else {
             //alert(res.body.message)
           }
-        },function(){
+        }, function () {
           console.log("请求失败")
         });
       },
-
-
 
 
     },
@@ -287,7 +291,7 @@
       transactionRecord(val) {
         this.items = val;
       },
-      date(val){
+      date(val) {
         this.getList(val);
       }
     }
@@ -302,18 +306,22 @@
     margin: 0 2% 2% 2%;
     /*background: #ffffff;*/
   }
-  .recommendRow{
+
+  .recommendRow {
     background: #fff;
   }
-  .recommendRow{
+
+  .recommendRow {
     background: #ffffff;
   }
-  .paperTrading{
+
+  .paperTrading {
     /*width: 96%;*/
     height: auto;
     margin-left: -2%;
     margin-right: -2%;
   }
+
   .transactionRecordText {
     height: 4rem;
     font-size: 24px;
@@ -321,6 +329,7 @@
     text-align: center;
     margin: 0 0%;
   }
+
   .transactionRecordText1 {
     height: 4rem;
     font-size: 24px;
@@ -449,63 +458,70 @@
   tr > th {
     text-align: center;
   }
-  tr>td{
+
+  tr > td {
     text-align: center;
   }
 
-  .data_td{
+  .data_td {
     text-align: center;
   }
-  .head_td{
+
+  .head_td {
     font-weight: bold;
   }
 
-  .data_box{
-    width:60%;
+  .data_box {
+    width: 60%;
     text-align: right;
   }
-  .operationAccount1{
+
+  .operationAccount1 {
     width: 100%;
     height: auto;
     background: #ffffff;
     padding-bottom: 2rem;
   }
-  .operationAccountRow{
+
+  .operationAccountRow {
     margin-top: 2rem;
     margin-right: 0px;
     margin-left: 0px;
     background: #ffffff;
   }
-  .data_box3{
-    width:68%;
+
+  .data_box3 {
+    width: 68%;
     text-align: right;
   }
 
   /*
     pc端隐藏
     */
-  @media screen and (min-width:601px)
-  {
-    .head_td_app{
+  @media screen and (min-width: 601px) {
+    .head_td_app {
       display: none;
     }
   }
+
   /*
 屏幕兼容(手机)
 */
-  @media screen and (max-width:600px)
-  {
-    .head_td_pc{
+  @media screen and (max-width: 600px) {
+    .head_td_pc {
       display: none;
     }
-    .data_box3{
-      width:90%;
+
+    .data_box3 {
+      width: 90%;
     }
+
     .transactionRecord {
       width: 100%;
       margin-left: 0px;
       /*background: #ffffff;*/
     }
+
     /*.transactionRecordTable {*/
     .list {
       /*font-size: 0.5rem;*/
@@ -514,26 +530,33 @@
       padding: 0px;
       overflow: scroll;
     }
-    .table>thead>tr>th {
+
+    .table > thead > tr > th {
       padding: 1px;
     }
-    .transactionRecordTable td{
+
+    .transactionRecordTable td {
       padding: 0px;
       vertical-align: middle;
     }
-    .transactionRecordText{
+
+    .transactionRecordText {
       width: 100%;
     }
-    .transactionRecordText1{
+
+    .transactionRecordText1 {
       width: 100%;
     }
-    .pc_app_dis_th{
+
+    .pc_app_dis_th {
       display: none;
     }
-    .pc_app_dis_td{
+
+    .pc_app_dis_td {
       display: none;
     }
-    .curHoldingTable{
+
+    .curHoldingTable {
       /*width: 50%;*/
       width: 49%;
       float: left;
@@ -542,42 +565,52 @@
       font-size: 1.2rem;
       border: none;
     }
-    .table_now{
+
+    .table_now {
       border-right: 2px solid #ddd;
     }
-    .data_td{
+
+    .data_td {
       width: 40%;
-      border:none;
+      border: none;
       text-align: right;
     }
-    .head_td{
+
+    .head_td {
       width: 60%;
       text-align: left;
-      border:none;
+      border: none;
     }
-    .col-md-6{
+
+    .col-md-6 {
       /*padding-top: 0px;*/
       padding-left: 2%;
       padding-right: 2%;
     }
-    .table_avg{
+
+    .table_avg {
       /*padding-top: -2px;*/
       float: left;
       margin-left: 1px;
     }
-    .pc_th{
+
+    .pc_th {
       display: none;
     }
-    .pc_td{
+
+    .pc_td {
       display: none;
     }
-    .app_td{
+
+    .app_td {
       display: table-cell;
     }
-    .app_th{
+
+    .app_th {
       display: table-cell;
     }
-    .paperTrading_app{
+
+    .paperTrading_app {
       padding-left: 6px;
       padding-right: 6px;
     }

@@ -1,12 +1,13 @@
 let localhostDev = false;
+let localhostDevOA = true;
 //如果是本地开发，就把localhostDev 设置成true，连接就是拼成‘http://localhost:8080/api/test’
 //生产环境，就把localhostDev 设置成false，连接就是拼成‘http://xxx.com/api/test’
 //let _host = localhostDev ? 'http://fqm0925.vicp.io:11336' : 'http://www.1000stock.com';
 let _host = localhostDev ? 'http://127.0.0.1:8082' : 'http://www.1000stock.com';
-
+let _hostOA = localhostDevOA ? 'http://127.0.0.1:8001' : 'http://www.1000stock.com';
 
 let httpUrl = {
- // 'newSearchLastGainApi': _host + '/trade/find_gain',//首页0331修改后获取最新赢利数据接口
+  // 'newSearchLastGainApi': _host + '/trade/find_gain',//首页0331修改后获取最新赢利数据接口
   'newSearchLastGainApi': _host + '/trade/find_history_gain',//首页0331修改后获取最新赢利数据接口
   'searchLastGainApi': _host + '/trade/search_gain',//首页获取最新赢利数据接口npm npn
   'lastRecommendationApi': _host + '/recommend/find',//获取推荐信息中的最新推荐
@@ -113,7 +114,29 @@ let httpUrl = {
   'getChGainInfoApi': _host + '/account/get_cn_pictrue',//获取A股账户收益对比
   'getUsGainInfoApi': _host + '/account/get_us_pictrue',//获取美股账户收益对比
   'getAccountDiffDataApi': _host + '/account/get_diff_by_date',//由时间范围获取账户的跟踪误差
-  'getAccountDiffRangeApi': _host + '/account/get_diff_by_range'//由下拉选择获取账户的跟踪误差
+  'getAccountDiffRangeApi': _host + '/account/get_diff_by_range',//由下拉选择获取账户的跟踪误差
+
+  //////////////////////////////////////////OA管理////////////////////////////////////
+  'submitPlanApi':_hostOA + '/plan/submit_plan', //提交交易计划
+  'findPlanApi':_hostOA + '/plan/find_plan',  //查找交易计划
+  'cancelPlanApi':_hostOA + '/plan/cancel_plan', //取消交易计划
+  'getStockPriceApi':_hostOA + '/plan/get_price', //获取股价
+  'getHoldQtyApi':_hostOA + '/plan/get_hold_qty', //获取持仓数量
+  'getHoldMoneyApi':_hostOA + '/plan/get_hold_amount', //获取持仓金额
+  'findBrokerApi':_hostOA + '/plan/find_broker', //查找券商
+  'submitDayTradeApi':_hostOA + '/day_trade/submit_day_trade', //提交T0计划
+  'findDayTradeApi':_hostOA + '/day_trade/find_day_trade', //查找日内交易计划
+  'cancelDayTradeApi':_hostOA + '/day_trade/cancel_day_trade', //取消日内交易计划
+  'submitAvgPlanApi':_hostOA + '/plan/submit_avg_plan', //提交交易计划
+  'findTradeListApi':_hostOA + '/plan/find_avg_plan', //查询交易计划
+  'findStrategyListApi':_hostOA + '/plan/find_strategy', //查询交易策略
+  'findPositionListApi':_hostOA + '/position/find_position', //查询持仓
+  'cancelAvgPlanApi':_hostOA + '/plan/cancel_avg_plan', //取消交易计划
+
+
+
+
+
 
 };
 export {httpUrl}

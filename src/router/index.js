@@ -13,24 +13,27 @@ import Dialog from '../components/dialog'
 import RealFund from '../components/RealFund'
 import InvestorRelation from '../components/investorRelation'
 import Account from '../components/Account'
+import OrderList from '../components/orderManagement/orderList'
+import HoldList from '../components/orderManagement/holdLisst'
 import TestPage from '@/testPage'
 import RecommendInfo from '@/RecommendInfo'
-import DataInquiry   from "@/DataInquiry"
+import DataInquiry from "@/DataInquiry"
 import Recommend from '../components/Recommend'
 import TransactionRecord from '../components/TransactionRecord'
 import PriceTable from '../components/priceTable'
 import UsTransactionRecord from '../components/UsTransactionRecord'
 import VueResource from 'vue-resource'
 import {getCookie} from "../apiConfig/cookie";
+
 Vue.use(Router)
 Vue.use(VueResource);
 
 export default new Router({
   routes: [
-   {
+    {
       path: '/',
-     name: 'SignUp',
-     component: SignUp
+      name: 'SignUp',
+      component: SignUp
     },
     {
       path: '/index',
@@ -103,6 +106,11 @@ export default new Router({
       component: Rank
     },
     {
+      path: '/hold',
+      name: 'HoldList',
+      component: HoldList
+    },
+    {
       path: '/dialog',
       name: 'Dialog',
       component: Dialog
@@ -121,6 +129,11 @@ export default new Router({
       path: '/account',
       name: 'Account',
       component: Account
+    },
+    {
+      path: '/order',
+      name: 'OrderList',
+      component: OrderList
     }
   ]
 

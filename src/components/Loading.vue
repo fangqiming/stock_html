@@ -8,13 +8,14 @@
 
 </script>
 <style scoped>
-.loading{
-  height: 6rem;
-  width: 100%;
-}
-.loading>img{
-  height:4rem;
-  width: 10%;
-  margin: auto 1rem;
-}
+  .loading {
+    height: 6rem;
+    width: 100%;
+  }
+
+  .loading > img {
+    height: 4rem;
+    width: 10%;
+    margin: auto 1rem;
+  }
 </style>

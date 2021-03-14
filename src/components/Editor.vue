@@ -1,4 +1,5 @@
-<<template>
+<
+<template>
   <div>
     <div class="" ref="editor" style="text-align:left;flex-wrap: wrap!important;"></div>
     <button type="button" class="btn btn-success" v-on:click="getContent">发表</button>
@@ -10,10 +11,10 @@
 
   export default {
     name: 'editor',
-    data () {
+    data() {
       return {
         editorContent: '',
-        obj:{}
+        obj: {}
       }
     },
     methods: {
@@ -27,14 +28,14 @@
       editor.customConfig.onchange = (html) => {
         this.editorContent = html
       }
-      this.obj=editor;
+      this.obj = editor;
       editor.create()
     }
   }
 </script>
 
 <style scoped>
-  button{
+  button {
     margin-top: 1.5rem;
   }
 </style>

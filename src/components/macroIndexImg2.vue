@@ -1,35 +1,35 @@
 <template>
   <div class="box">
-    <div  :style="{height:height,width:width}" ref="myEchart2"></div>
+    <div :style="{height:height,width:width}" ref="myEchart2"></div>
   </div>
 </template>
 
 <script>
   import echarts from 'echarts'
+
   export default {
     name: "macroIndexImg",
     props: {
-      infoData2:{
-        type:Object,
-        required:true
+      infoData2: {
+        type: Object,
+        required: true
       },
-      title2:{
-        type:Array,
-        required:true
+      title2: {
+        type: Array,
+        required: true
       },
       width: {
         type: String,
-        default: (window.width*45)+"%"
+        default: (window.width * 45) + "%"
       },
       height: {
         type: String,
-        default: 400+"px"
+        default: 400 + "px"
       },
-      select:String
+      select: String
     },
-    data(){
-      return{
-      }
+    data() {
+      return {}
     },
     mounted() {
       this.initChart();
@@ -52,7 +52,7 @@
           },
           legend: {
             x: 'center',
-            data:this.infoData2.legendTitle
+            data: this.infoData2.legendTitle
           },
           toolbox: {
             show: false,
@@ -66,36 +66,36 @@
             },
             type: 'category',
             boundaryGap: false,
-            data:this.infoData2.date
+            data: this.infoData2.date
           },
           yAxis: {
-            name:this.infoData2.title,
+            name: this.infoData2.title,
             type: 'value',
             scale: true,
-            axisLabel:{
-              formatter:'{value}'
+            axisLabel: {
+              formatter: '{value}'
             }
           },
           series: [
             {
               symbol: "none",
-              name:this.title2[0],
-              type:'line',
-              data:this.infoData2.month,
+              name: this.title2[0],
+              type: 'line',
+              data: this.infoData2.month,
             },
             {
               symbol: "none",
-              name:this.title2[1],
-              type:'line',
-              data:this.infoData2.total,
+              name: this.title2[1],
+              type: 'line',
+              data: this.infoData2.total,
             }
           ]
         })
 
       }
     },
-    watch:{
-      infoData2:function(){
+    watch: {
+      infoData2: function () {
         this.initChart();
       }
     }
@@ -103,15 +103,15 @@
 </script>
 
 <style scoped>
-  .box{
+  .box {
     padding: 10px;
   }
+
   /*
  屏幕兼容(手机)
   */
-  @media screen and (max-width:600px)
-  {
-    .box{
+  @media screen and (max-width: 600px) {
+    .box {
       padding: 10px 0px;
     }
   }
