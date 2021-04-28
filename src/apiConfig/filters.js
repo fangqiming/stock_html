@@ -1,3 +1,5 @@
+import {httpUrl} from "./api";
+
 function setNum(num) {//保留2位小数，如果没小数位自动补全.00
   if (num && num != null) {
     num = String(num);
@@ -77,5 +79,25 @@ function toInt(x) {
   return f.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 }
+function getCommonData(_this,param,url) {
+  return new Promise((resolve, reject) => {
+    _this.$http.get(url, {
+      params: param
+    }).then(function (res) {
+      resolve(res)
+    }).catch(err => {
+      reject()
+    })
+  })
+}
 
-export {setNum, toFixed2, setNum2, toInt, setNum4, toFixed4, setNum1}
+function postCommonData(_this,param,url) {
+  return new Promise((resolve, reject) => {
+    _this.$http.post(url, param).then(function (res) {
+      resolve(res)
+    }).catch(err => {
+      reject()
+    })
+  })
+}
+export {setNum, toFixed2, setNum2, toInt, setNum4, toFixed4, setNum1,getCommonData,postCommonData}

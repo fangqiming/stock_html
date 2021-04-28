@@ -1,10 +1,10 @@
 let localhostDev = false;
-let localhostDevOA = true;
+let localhostDevOA = false;
 //如果是本地开发，就把localhostDev 设置成true，连接就是拼成‘http://localhost:8080/api/test’
 //生产环境，就把localhostDev 设置成false，连接就是拼成‘http://xxx.com/api/test’
 //let _host = localhostDev ? 'http://fqm0925.vicp.io:11336' : 'http://www.1000stock.com';
 let _host = localhostDev ? 'http://127.0.0.1:8082' : 'http://www.1000stock.com';
-let _hostOA = localhostDevOA ? 'http://127.0.0.1:8001' : 'http://www.1000stock.com';
+let _hostOA = localhostDevOA ? 'http://127.0.0.1:8887' : 'http://www.1000stock.com';
 
 let httpUrl = {
   // 'newSearchLastGainApi': _host + '/trade/find_gain',//首页0331修改后获取最新赢利数据接口
@@ -130,8 +130,33 @@ let httpUrl = {
   'submitAvgPlanApi':_hostOA + '/plan/submit_avg_plan', //提交交易计划
   'findTradeListApi':_hostOA + '/plan/find_avg_plan', //查询交易计划
   'findStrategyListApi':_hostOA + '/plan/find_strategy', //查询交易策略
-  'findPositionListApi':_hostOA + '/position/find_position', //查询持仓
+  'findPositionListApi':_hostOA + '/focus/find_focus', //查询关注股票
   'cancelAvgPlanApi':_hostOA + '/plan/cancel_avg_plan', //取消交易计划
+  'deleteFocusApi':_hostOA + '/focus/delete_focus', //删除关注股票
+  'addFocusApi':_hostOA + '/focus/add_focus', //追加关注股票
+  'updataFocusApi':_hostOA + '/focus/update_focus', //手动触发更新关注股票列表的数据
+  'getMarketInfoAPi':_hostOA + '/config/get_market_info', //获取市场的开收盘时间信息
+  'updateMarketInfoAPi':_hostOA + '/config/update_market_info', //更新市场的开盘收盘时间信息
+  'getGoStockAccount':_hostOA + '/config/get_gougu_account', //获取账户跟随勾股策略执行的资金信息
+  'updateGoStockAccount':_hostOA + '/config/update_gougu_account', //更新账户跟随勾美股操作的资金量分配信息
+  'findGoStockPlan':_hostOA + '/config/find_gougu_plan', //获取跟随勾美股操作的具体计划
+  'updateGoStockPlan':_hostOA + '/config/update_gougu_plan', //更新跟随勾美股策略的某只股票的交易金额
+  'resetGoStockPlan':_hostOA + '/config/reset_gougu_plan', //重置勾股的交易计划
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

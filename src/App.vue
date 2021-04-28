@@ -82,7 +82,7 @@
             url: 'OrderList'
           },
           {
-            title: '持仓',
+            title: '配置',
             url: 'HoldList'
           },
           {
